@@ -12,7 +12,7 @@ for i in range(1, 21):
     print('Downloading page %d' % i)
     # Get the raw html of the page
     raw_html = simple_get(documents_url % i)
-    soup = BeautifulSoup(raw_html, 'html.parser')
+    soup = BeautifulSoup(raw_html, 'html.parser') 
 
     # Find the listing of the documents
     documents = soup.find('div', {'class': 'common results'})
