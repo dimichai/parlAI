@@ -35,3 +35,8 @@ We use [Angular Material](https://material.angular.io) for the controls, for the
 
 There are buttons, check boxes, lists, whatever you need to add in a page you can find it there.
 
+### How to see the controls you added
+After you run ng-serve and you see the initial screen, you don't have to worry about it again(most of the times). If you change a component's html/css/ts and you save the file, it will automatically recompile and refresh the page, so your change is immediately visible.
+
+There are some special cases in which you need to re-run 'ng serve', for example when you install a new package or add new external modules but for now you don't have to worry about it.
+
