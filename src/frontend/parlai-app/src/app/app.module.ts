@@ -13,6 +13,7 @@ import { QuestionInspectComponent } from './question-inspect/question-inspect.co
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { QuestionComposeComponent } from './question-compose/question-compose.component';
 import { QuestionSubmittedComponent } from './question-submitted/question-submitted.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { QuestionSubmittedComponent } from './question-submitted/question-submit
     DocumentViewComponent,
     QuestionComposeComponent,
     QuestionSubmittedComponent,
+    StartComponent,
   ],
   imports: [
     BrowserModule,

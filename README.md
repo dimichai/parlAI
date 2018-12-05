@@ -19,11 +19,14 @@ For now, we will treat each page as a single component because it's easier to ge
 Assuming you are in the project folder, you will find the components in 'src/app/' under the folders. Those outside of the folders are the basic angular components and their configuration.
 
 I added the following components for now:
+- start: the welcome message and start button
 - upload: where the user uploads a question
 - question-inspect: the whole select question, view entities process
 - document-view: for when you need to view an article
 - question-compose: when you move on with writing the question
 - question-submitted: the final message when you're done.
+
+I also added a nav bar to quickly navigate through the components. In case you want to test layouts, comment out the whole \<nav\> tag on app.component.html
 
 I will later add instructions on generating new components.
 
