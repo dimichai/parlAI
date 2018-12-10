@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionInspectComponent implements OnInit {
 
+  selectedQuestion = 'q1';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  questionSelected(selected: string) {
+    this.selectedQuestion = selected;
   }
 
 }
