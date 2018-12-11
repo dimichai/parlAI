@@ -32,3 +32,7 @@
 .card li {
     margin-bottom: 7px;
 }
+
+.card .selected mat-card {
+    background-color: aliceblue;
+}

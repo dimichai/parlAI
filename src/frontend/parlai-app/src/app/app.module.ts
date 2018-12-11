@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
 import { QuestionInspectComponent } from './question-inspect/question-inspect.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
@@ -30,7 +30,8 @@ import { StartComponent } from './start/start.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

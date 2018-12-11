@@ -9,7 +9,7 @@
       <h2>Please select a Question</h2>
 
       <ul class="card">
-        <li>
+        <li [class.selected]="selectedQuestion === 'q1'">
           <mat-card class="example-card">
             <mat-card-header>
               <mat-card-title>Question 1</mat-card-title>
@@ -25,7 +25,7 @@
             </mat-card-actions>
           </mat-card>
         </li>
-        <li>
+        <li [class.selected]="selectedQuestion === 'q2'">
           <mat-card class="example-card">
             <mat-card-header>
               <mat-card-title>Question 2</mat-card-title>
@@ -41,7 +41,7 @@
             </mat-card-actions>
           </mat-card>
         </li>
-        <li>
+        <li [class.selected]="selectedQuestion === 'q3'">
           <mat-card class="example-card">
             <mat-card-header>
               <mat-card-title>Question 3</mat-card-title>
@@ -53,7 +53,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-raised-button>Select</button>
+              <button mat-raised-button (click)="questionSelected('q3')">Select</button>
             </mat-card-actions>
           </mat-card>
         </li>
@@ -85,7 +85,7 @@
           </ul>
         </div>
 
-        <button mat-raised-button color="primary" [routerLink]="['/question-compose']">Compose Question</button>
+        <button mat-raised-button color="primary" [routerLink]="['/question-compose']">Compose Answer</button>
     </div>
   </div>
 
