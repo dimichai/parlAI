@@ -1,3 +1,42 @@
-<p>
-  question-compose works!
-</p>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="mat-typography">
+
+  <div class="row">
+    <div class="column">
+      <h2>Answer the questions here</h2>
+
+      <div>
+        <p class="mat-body-strong">Question 1</p>
+        <p>This is question 1 and talks about blah blah blah blah.</p>
+        <mat-form-field>
+          <textarea matInput placeholder="Answer"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <p class="mat-body-strong">Question 2</p>
+        <p>This is question 2 and talks about blah blah blah blah.</p>
+        <mat-form-field>
+          <textarea matInput placeholder="Answer"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <p class="mat-body-strong">Question 3</p>
+        <p>This is question 3 and talks about blah blah blah blah.</p>
+        <mat-form-field>
+          <textarea matInput placeholder="Answer"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="column">
+      <h2>Final Document</h2>
+
+      <button mat-raised-button color="primary" [routerLink]="['/question-submitted']">Submit Answer</button>
+    </div>
+  </div>
+
+</body>
