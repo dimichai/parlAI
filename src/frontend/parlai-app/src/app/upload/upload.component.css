@@ -1,0 +1,11 @@
+.form-wrapper {
+  display: inline-block;
+}
+
+.submit-form {
+  width: 500px;
+}
+
+.submit-form-full-width {
+  width: 100%;
+}
