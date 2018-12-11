@@ -21,7 +21,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button (click)="questionSelected('q1')">Select</button>
+              <button mat-raised-button (click)="questionSelected('q1')">Select</button>
             </mat-card-actions>
           </mat-card>
         </li>
@@ -37,7 +37,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button (click)="questionSelected('q2')">Select</button>
+              <button mat-raised-button (click)="questionSelected('q2')">Select</button>
             </mat-card-actions>
           </mat-card>
         </li>
@@ -53,7 +53,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>Select</button>
+              <button mat-raised-button>Select</button>
             </mat-card-actions>
           </mat-card>
         </li>
@@ -85,6 +85,7 @@
           </ul>
         </div>
 
+        <button mat-raised-button color="primary" [routerLink]="['/question-compose']">Compose Question</button>
     </div>
   </div>
 
