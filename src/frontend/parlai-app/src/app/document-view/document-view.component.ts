@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-document-view',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-view.component.css']
 })
 export class DocumentViewComponent implements OnInit {
+  pdfSrc: string = '/assets/example-doc.pdf';
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit() {
+  }
+
+  backClicked() {
+    this.location.back();
   }
 
 }
