@@ -1,3 +1,9 @@
-<p>
-  question-submitted works! Yes it does!
-</p>
+<div style="text-align:center" class="mat-typography">
+    <h1>
+      Answer was successfully submitted
+    </h1>
+  
+    <h2>Upload another question document?</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/upload']">Yes</button>
+    <button mat-raised-button color="alert" [routerLink]="['/start']">No</button>
+  </div>
