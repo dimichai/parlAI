@@ -16,9 +16,7 @@
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <p>
-                What does the minister think about the report that blah blah.
-              </p>
+                <p>Kent u het bericht «Schokkende toename vliegverkeer Buitenveldertbaan»?</p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q1')">Select</button>
@@ -33,7 +31,9 @@
             </mat-card-header>
             <mat-card-content>
               <p>
-                What does the minister think about the report that blah blah.
+                Klopt het dat in 2017 overdag 34% méér vliegtuigen gebruik hebben gemaakt van
+de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+daggebruik van de Buitenveldertbaan terug te dringen?
               </p>
             </mat-card-content>
             <mat-card-actions>
@@ -49,11 +49,115 @@
             </mat-card-header>
             <mat-card-content>
               <p>
-                What does the minister think about the report that blah blah.
+                Klopt het dat in 2017 ‘s nachts 13% méér vliegtuigen gebruik hebben gemaakt
+van de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+nachtgebruik van de Buitenveldertbaan terug te dringen?
               </p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q3')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q4'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 4</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+Bent u ermee bekend dat de inzet van de Buitenveldertbaan al jaren hoger is dan
+nodig? Zo nee, waaruit blijkt het tegendeel?
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q4')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q5'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 5</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn overdag
+slechts 37% bedraagt? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+aantal vliegtuigloze uren te verhogen?
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q5')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q6'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 6</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn in de
+nacht nog geen driekwart van de tijd bedraagt? Zo nee, hoe zit het dan? Zo ja,
+wat is uw inzet om het aantal vliegtuigloze uren te verhogen?
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q6')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q7'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 7</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Klopt het dat alle gemeten waarden 1 tot ruim 2 dB hoger liggen dan de door het
+Nederlands Lucht- en Ruimtevaartcentrum (in opdracht van Schiphol) berekende
+waarden? Zo nee, hoe zit het dan?
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q7')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q8'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 8</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Kunt u, naar aanleiding van deze berichtgeving, reflecteren op de ontwikkelingen
+op de woningmarkt in de regio rond Schiphol?
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q8')">Select</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+                  <li [class.selected]="selectedQuestion === 'q9'">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Question 9</mat-card-title>
+              <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Hoeveel woningen zijn er sinds 1990 jaarlijks gebouwd op plaatsen waar je
+vliegtuigen die gebruikmaken van de Buitenveldertbaan kan horen? Kunt u eenzelfde overzicht verschaffen van alle andere landingsbanen? Zo nee, waarom
+niet? 
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="questionSelected('q9')">Select</button>
             </mat-card-actions>
           </mat-card>
         </li>
@@ -68,9 +172,9 @@
           The following entities have been indentified in question 1:
         </p>
         <ul>
-          <li> <a href="/document-view">Law 12 Paragraph 42 </a> </li>
-          <li>Den Haag Court</li>
-          <li>Telegraph newspaper</li>
+          <li> <a href="https://schipholwatch.nl/2018/11/12/schokkende-toename-vliegverkeer-buitenveldertbaan/" target="_blank">Schokkende toename vliegverkeer Buitenveldertbaan</a> </li>
+          <li>Buitenveldertbaan</li>
+            <li><a href="/document-view">Rapport namens Schiphol</a></li>
         </ul>
       </div>
 
@@ -79,9 +183,88 @@
             The following entities have been indentified in question 2:
           </p>
           <ul>
-            <li>Law 45 Paragraph 12</li>
-            <li>Ministry of Innovation</li>
-            <li>Leiden University</li>
+              <li> <a href="/document-view">Rapport van LVNL</a></li>
+            <li>Buitenveldertbaan</li>
+            <li>Daggebruik</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q3'">
+          <p>
+            The following entities have been indentified in question 3:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Rapport van LVNL</a></li>
+            <li>Buitenveldertbaan</li>
+            <li>Nachtgebruik</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q4'">
+          <p>
+            The following entities have been indentified in question 4:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Rapport van LVNL</a></li>
+            <li>Buitenveldertbaan</li>
+            <li>Inzet vliegverkeer</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q5'">
+          <p>
+            The following entities have been indentified in question 5:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Nieuwe Normen en
+Handhavingsstelsel</a></li>
+            <li>Geluidsoverlast schiphol</li>
+            <li>Percentages</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q6'">
+          <p>
+            The following entities have been indentified in question 6:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Nieuwe Normen en
+Handhavingsstelsel</a></li>
+            <li>Geluidsoverlast schiphol</li>
+            <li>Percentages</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q7'">
+          <p>
+            The following entities have been indentified in question 7:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Kamerstukken II 2018-2019, 31 936, nr. 518</a></li>
+            <li>Nederlands Lucht- en Ruimtevaartcentrum</li>
+            <li>Geluidsniveaus</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q8'">
+          <p>
+            The following entities have been indentified in question 8:
+          </p>
+          <ul>
+              <li> <a href="/document-view">LIB</a></li>
+            <li>Woningmarkt</li>
+            <li>Schiphol</li>
+          </ul>
+        </div>
+        
+              <div class="q2" *ngIf="selectedQuestion === 'q9'">
+          <p>
+            The following entities have been indentified in question 9:
+          </p>
+          <ul>
+              <li> <a href="/document-view">Compendium van de Leefomgeving </a></li>
+            <li>Buitenveldertbaan</li>
+            <li>Geluidsoverlast</li>
           </ul>
         </div>
 
