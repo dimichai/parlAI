@@ -107,3 +107,15 @@ Data/*
 .vscode/launch.json
 
 src/backend/libs/mallet-2\.0\.8/
+
+\.idea/inspectionProfiles/Project_Default\.xml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/parlAI\.iml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml
