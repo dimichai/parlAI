@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
 import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule } from '@angular/material';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 // 3rd Party Components
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // ParlAI Components
@@ -38,7 +38,8 @@ import { StartComponent } from './start/start.component';
     MatCardModule,
     MatInputModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
