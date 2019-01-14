@@ -3,11 +3,11 @@ import csv
 
 namespaces = {'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
-root = etree.parse('./word/document.xml').getroot()
+root = etree.parse('./document.xml').getroot()
 
 Question_data = open('question_data.csv', 'w')
 
-csvwriter = csv.writer(Question_data)
+csvwriter = csv.writer(Question_data,dialect='excel',quoting=1)
 question_head = []
 
 # create some switches for the different elements
