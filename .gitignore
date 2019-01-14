@@ -122,3 +122,7 @@ src/backend/libs/mallet-2\.0\.8/
 
 src/extras/document_dummy.xml
 src/extras/question_data.csv
+
+src/backend/libs/spacy_ner\.py
+
+resources/topic-modelling-with-spacy-and-scikit-learn\.ipynb

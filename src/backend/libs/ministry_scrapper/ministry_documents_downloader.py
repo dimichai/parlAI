@@ -14,16 +14,16 @@ def get_json_from_url(url):
 connector = MySqlConnector('parlai')
 
 # Get json document Types
-# documentTypes = get_json_from_url(doctype_url)
-# # Insert document Types into the db
-# for docType in documentTypes:
-#     infoType = docType['informationtype']
-#     infoId = docType['id']
-#     name = docType['name']
-#     namesingular = docType['namesingular']
-#     lastmodified = datetime.strptime(docType['lastmodified'], '%Y-%m-%dT%H:%M:%S.%fZ')
-#
-#     connector.insert_documentType((infoType, infoId, name, namesingular, lastmodified))
+documentTypes = get_json_from_url(doctype_url)
+# Insert document Types into the db
+for docType in documentTypes:
+    infoType = docType['informationtype']
+    infoId = docType['id']
+    name = docType['name']
+    namesingular = docType['namesingular']
+    lastmodified = datetime.strptime(docType['lastmodified'], '%Y-%m-%dT%H:%M:%S.%fZ')
+
+    connector.insert_documentType((infoType, infoId, name, namesingular, lastmodified))
 
 # Get json documents
 offset = 0
@@ -53,4 +53,3 @@ while lookForMore:
     total = offset + rows
     print('Successfully downloaded and inserted ' + str(total) + ' documents to the database.')
     offset += rows
-#     lookForMore = False # todo: remove this line
