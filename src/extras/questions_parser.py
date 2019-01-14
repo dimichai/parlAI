@@ -3,11 +3,11 @@ import csv
 
 namespaces = {'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
-root = etree.parse('./document.xml').getroot()
+root = etree.parse('./document_dummy.xml').getroot()
 
 Question_data = open('question_data.csv', 'w')
 
-csvwriter = csv.writer(Question_data,dialect='excel',quoting=1)
+csvwriter = csv.writer(Question_data,dialect='excel',delimiter=';')
 question_head = []
 
 # create some switches for the different elements
@@ -43,6 +43,8 @@ for e in root.findall('.//w:t', namespaces):
         questions_header.extend(['Title','Keywords','Questions'])
         csvwriter.writerow(questions_header)
         count = count + 1
+    elif e.text == '':
+        continue
     elif e.text == 'Antwoord':
         questions_next = 0
         questions_filler.append('</question>')

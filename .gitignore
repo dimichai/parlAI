@@ -119,3 +119,6 @@ src/backend/libs/mallet-2\.0\.8/
 \.idea/vcs\.xml
 
 \.idea/workspace\.xml
+
+src/extras/document_dummy.xml
+src/extras/question_data.csv
