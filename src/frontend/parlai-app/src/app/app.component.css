@@ -12,3 +12,14 @@
     margin: 5px;
     margin-right:20px;
 }
+.sticky {
+    background: #fff;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    height: 70px;
+    width: 100%;
+}
+.empty-space{
+    margin:10px;
+}
