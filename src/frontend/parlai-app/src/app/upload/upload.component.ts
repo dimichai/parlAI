@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-upload',
@@ -9,27 +7,16 @@ import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular
 })
 export class UploadComponent implements OnInit {
 
-uploadForm: FormGroup;
-items: FormArray;
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() { }
 
   ngOnInit() {
-  this.uploadForm = this.formBuilder.group({
-    question: '',
-    items: this.formBuilder.array([ this.createItem() ])
-  });
-}
+  }
   
-createItem(): FormGroup {
-  return this.formBuilder.group({
-  question: '',
-  });
-}
-
-addItem(): void {
-  this.items = this.uploadForm.get('items') as FormArray;
-  this.items.push(this.createItem());
-}
+    addTextArea(){
+    var textBox = document.createElement("textarea");
+    textBox.placeholder="Paste your questions here";
+    // textBox.matinput;
+    document.getElementById("textAreas").appendChild(textBox);
+  }
 
 }
