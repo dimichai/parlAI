@@ -14,12 +14,14 @@ question_head = []
 title_next = 0
 questions_next = 0
 keyword_next = 0
+function_next = 0
 
 # create empty arrays to gather the contents of our elements
 title_filler = []
 questions_filler = []
 keyword_filler = []
 question = []
+function_filler = []
 
 # create a header and for the csv table and a counter
 questions_header = []
@@ -40,7 +42,7 @@ for number in number_array:
 for e in root.findall('.//w:t', namespaces):
     # first create a header for the csv (when there is none)
     if count == 0:
-        questions_header.extend(['Title','Keywords','Questions'])
+        questions_header.extend(['Title','Funtion','Keywords','Questions'])
         csvwriter.writerow(questions_header)
         count = count + 1
     elif e.text == '':
@@ -81,6 +83,19 @@ for e in root.findall('.//w:t', namespaces):
         keyword_field = e.text
         keyword_filler.append(keyword_field)
         keyword_filler.append('#')
+    elif e.text == 'Trefwoord(en)':
+        function_next = 0
+        function_concat = ''.join(function_filler)
+        question.append(function_concat)
+        function_filler = []
+        print(function_concat)
+    elif e.text == 'Functie':
+        function_next += 1
+    elif function_next == 1:
+        continue
+    elif function_next == 2:
+        function_field = e.text
+        function_filler.append(function_field)
     elif e.text == 'Indiener':
         title_next = 0
         title_concat = ''.join(title_filler)
