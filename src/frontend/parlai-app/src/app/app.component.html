@@ -1,12 +1,28 @@
-<button mat-button [routerLink]="['/start']">parlAI</button>
-<button mat-button [matMenuTriggerFor]="menu">navigate</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/start']">start</button>
-  <button mat-menu-item [routerLink]="['/upload']">upload</button>
-  <button mat-menu-item [routerLink]="['/question-inspect']">question inspect</button>
-  <button mat-menu-item [routerLink]="['/question-compose']">question compose</button>
-  <button mat-menu-item [routerLink]="['/question-submitted']">question submitted</button>
-  <button mat-menu-item [routerLink]="['/document-view']">document view</button>
-</mat-menu>
+<nav id="systemNav">
+    <div>
+        <img class="system-logo"
+             src="assets/logo.png"
+             alt="">
+    </div>
+    <button mat-button
+            [routerLink]="['/start']">parlAI</button>
+    <button mat-button
+            [matMenuTriggerFor]="menu">navigate</button>
+    <mat-menu #menu="matMenu"
+              color="primary">
+        <button mat-menu-item
+                [routerLink]="['/start']">start</button>
+        <button mat-menu-item
+                [routerLink]="['/upload']">upload</button>
+        <button mat-menu-item
+                [routerLink]="['/question-inspect']">question inspect</button>
+        <button mat-menu-item
+                [routerLink]="['/question-compose']">question compose</button>
+        <button mat-menu-item
+                [routerLink]="['/question-submitted']">question submitted</button>
+        <button mat-menu-item
+                [routerLink]="['/document-view']">document view</button>
+    </mat-menu>
+</nav>
 
 <router-outlet></router-outlet>
