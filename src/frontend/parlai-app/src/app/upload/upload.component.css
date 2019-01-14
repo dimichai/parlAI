@@ -9,3 +9,7 @@
 .submit-form-full-width {
   width: 100%;
 }
+
+.uploadButton {
+    margin:10px;
+}
