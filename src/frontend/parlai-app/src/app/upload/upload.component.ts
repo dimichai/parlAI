@@ -11,5 +11,12 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+    addTextArea(){
+    var textBox = document.createElement("textarea");
+    textBox.placeholder="Paste your questions here";
+    textBox.matinput;
+    document.getElementById("textAreas").appendChild(textBox);
+  }
 
 }
