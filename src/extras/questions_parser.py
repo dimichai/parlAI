@@ -1,9 +1,10 @@
 from lxml import etree
 import csv
+import sys
 
 namespaces = {'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
-root = etree.parse('./document_dummy.xml').getroot()
+root = etree.parse(sys.argv[1]).getroot()
 
 Question_data = open('question_data.csv', 'w')
 
