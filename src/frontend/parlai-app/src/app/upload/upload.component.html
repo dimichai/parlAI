@@ -2,16 +2,24 @@
     <h1>
         Please upload your parliamentary questions
     </h1>
-    <div class="form-wrapper">
-        <form action="#" class="submit-form">
 
-            <div id="textAreas">
-                <mat-form-field class="submit-form-full-width">
-                    <textarea matInput placeholder="Paste your questions here"></textarea>
-                </mat-form-field>
+    <div class="form-wrapper">
+<!--
+        <form [formGroup]="uploadForm">
+-->
+
+            <div formArrayName="items" 
+                 *ngFor="let item of uploadForm.get('items').controls; let i = index;"> 
+                    <div [formGroupName]="i">
+                        <mat-form-field class="submit-form-full-width">
+                            <textarea matInput formControlName="question" placeholder="Paste your question here"></textarea>
+                        </mat-form-field>
+                    </div>
             </div>
-            <button mat-raised-button color="primary" (click)="addTextArea()" class="uploadButton">Upload Question</button>
+
+            <button mat-raised-button color="primary" (click)="addItem()" class="uploadButton">Upload Question</button>
             <button mat-raised-button color="primary" class="uploadButton" [routerLink]="['/question-inspect']">Submit Questions</button>
-        </form>
+
+       <!-- </form>-->
     </div>
 </div>
