@@ -2,23 +2,24 @@
 
 import mysql.connector
 
-class MySqlConnector: 
+
+class MySqlConnector:
     def __init__(self, databaseName):
         # todo: change password to get it from environmental variables.
         self.connector = mysql.connector.connect(
-            host = 'localhost',
-            user = 'root',
-            passwd = 'dspparlai',
-            database = databaseName
+            host='localhost',
+            user='root',
+            passwd='dspparlai',
+            database=databaseName
         )
 
     def insert_documentType(self, data):
         cursor = self.connector.cursor()
         insert_script = ("INSERT INTO documentType (informationtype, infoId, name, namesingular, lastmodified) "
-                "VALUES (%s, %s, %s, %s, %s)")
+                         "VALUES (%s, %s, %s, %s, %s)")
 
         cursor.execute(insert_script, data)
-        
+
         self.connector.commit()
         cursor.close()
 
@@ -45,13 +46,37 @@ class MySqlConnector:
         select_script = ("SELECT * FROM document WHERE fileurls IS NULL")
 
         cursor.execute(select_script)
-        
+
         return cursor
-    
+
     def update_document_set_file_url(self, data):
         cursor = self.connector.cursor()
         update_script = ("UPDATE document SET fileurls = %s WHERE id = %s")
-        
+
+        cursor.execute(update_script, data)
+        self.connector.commit()
+        cursor.close()
+
+    def update_document_set_title_intro(self, data):
+        cursor = self.connector.cursor()
+        update_script = ("UPDATE document SET title = %s, introduction=%s WHERE id = %s")
+
+        cursor.execute(update_script, data)
+        self.connector.commit()
+        cursor.close()
+
+    def update_document_set_title_keywords(self, data):
+        cursor = self.connector.cursor()
+        update_script = ("UPDATE document SET title_keywords=%s WHERE id = %s")
+
+        cursor.execute(update_script, data)
+        self.connector.commit()
+        cursor.close()
+
+    def update_document_set_intro_keywords(self, data):
+        cursor = self.connector.cursor()
+        update_script = ("UPDATE document SET intro_keywords=%s WHERE id = %s")
+
         cursor.execute(update_script, data)
         self.connector.commit()
         cursor.close()
@@ -59,8 +84,8 @@ class MySqlConnector:
     def insert_document(self, data):
         cursor = self.connector.cursor()
         insert_script = ("INSERT INTO document "
-            "(docid, type, typeId, canonical, dataurl, title, introduction, lastmodified, frontenddate) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
+                         "(docid, type, typeId, canonical, dataurl, title, introduction, lastmodified, frontenddate) "
+                         "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
         cursor.execute(insert_script, data)
 
