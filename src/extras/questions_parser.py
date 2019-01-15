@@ -43,7 +43,7 @@ for number in number_array:
 for e in root.findall('.//w:t', namespaces):
     # first create a header for the csv (when there is none)
     if count == 0:
-        questions_header.extend(['Title','Funtion','Keywords','Questions'])
+        questions_header.extend(['title','funtion','keywords','questions'])
         csvwriter.writerow(questions_header)
         count = count + 1
     elif e.text == '':
