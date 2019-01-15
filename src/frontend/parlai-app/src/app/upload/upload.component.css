@@ -9,3 +9,25 @@
 .submit-form-full-width {
   width: 100%;
 }
+
+.uploadButton {
+    margin:10px;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.3;
+}
+
+.spinner-loading{
+  text-align: center;
+  display: inline-block;
+  top: 40%;
+  position: absolute;
+  z-index: 999;
+}

@@ -1,0 +1,14 @@
+#systemNav{
+    margin: -8px  -8px 8px  -8px;
+    height: 70px;
+    line-height: 70px;
+    color: white;
+    background:#124175
+    ;
+}
+.system-logo{
+    float: left;
+    height: 60px;
+    margin: 5px;
+    margin-right:20px;
+}
