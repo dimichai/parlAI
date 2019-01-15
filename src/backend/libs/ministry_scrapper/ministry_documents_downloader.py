@@ -1,14 +1,9 @@
-import urllib.request, json 
 from mysql_connector import MySqlConnector
 from datetime import datetime
+from json_helper import get_json_from_url
 
 doc_url = "https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/documents?output=json&organisationalunit=ministerie-van-infrastructuur-en-waterstaat"
 doctype_url = "https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/documents/infotypes?rows=200&output=json"
-
-def get_json_from_url(url):
-    with urllib.request.urlopen(url) as url:
-        data = json.loads(url.read().decode())
-        return data
 
 # Initialize MySQL connector
 connector = MySqlConnector('parlai')

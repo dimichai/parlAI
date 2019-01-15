@@ -1,3 +1,5 @@
+# Provides access to the database using mysql-connector.
+
 import mysql.connector
 
 class MySqlConnector: 
@@ -30,6 +32,29 @@ class MySqlConnector:
 
         return response['id']
 
+    def get_all_documents_cursor(self):
+        cursor = self.connector.cursor(buffered=True)
+        select_script = ("SELECT * FROM document")
+
+        cursor.execute(select_script)
+
+        return cursor
+
+    def get_empty_fileurls_documents_cursor(self):
+        cursor = self.connector.cursor(buffered=True)
+        select_script = ("SELECT * FROM document WHERE fileurls IS NULL")
+
+        cursor.execute(select_script)
+        
+        return cursor
+    
+    def update_document_set_file_url(self, data):
+        cursor = self.connector.cursor()
+        update_script = ("UPDATE document SET fileurls = %s WHERE id = %s")
+        
+        cursor.execute(update_script, data)
+        self.connector.commit()
+        cursor.close()
 
     def insert_document(self, data):
         cursor = self.connector.cursor()
