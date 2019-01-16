@@ -9,44 +9,32 @@ class MinistryRake:
     def __init__(self, language):
         self.rake_object = Rake(language=language) # Initialize rake with the Dutch stopwords
 
-    def extract_title_keywords(self):
+    def _extract_keywords_from_field(self, field):
+        self.rake_object.extract_keywords_from_text(field)
+
+        keywords = ''
+        for kw in self.rake_object.get_ranked_phrases():
+            kw = re.sub(r'[^\w\s]', '', kw) # remove punctuation from the keyword
+            kw = kw.strip()
+            keywords += kw + ';'
+
+        return keywords.strip()
+
+    def extract_keywords(self):
         connector = MySqlConnector('parlai')
         docs_cursor = connector.get_all_documents_cursor()
 
         for row in docs_cursor:
             row_dict = dict(zip(docs_cursor.column_names, row))
             id = row_dict['id']
+
             title = row_dict['title']
-
-            self.rake_object.extract_keywords_from_text(title)
-            
-            keywords = ''
-            for kw in self.rake_object.get_ranked_phrases():
-                keywords += kw + ';'
-
-            keywords = keywords.strip()
-            connector.update_document_set_title_keywords((keywords, id))
-
-    def extract_intro_keywords(self):
-        connector = MySqlConnector('parlai')
-        docs_cursor = connector.get_all_documents_cursor()
-
-        for row in docs_cursor:
-            row_dict = dict(zip(docs_cursor.column_names, row))
-            id = row_dict['id']
+            title_keywords = self._extract_keywords_from_field(title)
             intro = row_dict['introduction']
+            intro_keywords = self._extract_keywords_from_field(intro)
 
-            self.rake_object.extract_keywords_from_text(intro)
-            
-            keywords = ''
-            for kw in self.rake_object.get_ranked_phrases():
-                keywords += kw + ';'
-
-            keywords = keywords.strip()
-            connector.update_document_set_intro_keywords((keywords, id))
-
+            connector.update_document_set_keywords((title_keywords, intro_keywords, id))
 
 if __name__ == "__main__":
     rake = MinistryRake('dutch')
-    rake.extract_title_keywords()
-    rake.extract_intro_keywords()
+    rake.extract_keywords()

@@ -65,17 +65,9 @@ class MySqlConnector:
         self.connector.commit()
         cursor.close()
 
-    def update_document_set_title_keywords(self, data):
+    def update_document_set_keywords(self, data):
         cursor = self.connector.cursor()
-        update_script = ("UPDATE document SET title_keywords=%s WHERE id = %s")
-
-        cursor.execute(update_script, data)
-        self.connector.commit()
-        cursor.close()
-
-    def update_document_set_intro_keywords(self, data):
-        cursor = self.connector.cursor()
-        update_script = ("UPDATE document SET intro_keywords=%s WHERE id = %s")
+        update_script = ("UPDATE document SET title_keywords=%s, intro_keywords=%s WHERE id = %s")
 
         cursor.execute(update_script, data)
         self.connector.commit()
