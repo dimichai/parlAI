@@ -36,7 +36,7 @@ addItem(): void {
   this.items.push(this.createItem());
 }
 
-  submitQuestion () {
+  submitQuestion() : void {
     const that = this;
     this.isShowSpinner = true;
     window.setTimeout(function () {

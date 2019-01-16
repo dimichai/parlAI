@@ -19,7 +19,7 @@
             </div>
 
             <button mat-raised-button color="primary" (click)="addItem()" class="uploadButton">Add new question</button>
-            <button mat-raised-button color="primary" class="uploadButton" [routerLink]="['/question-inspect']">Submit all questions</button>
+            <button mat-raised-button color="primary" class="uploadButton" (click)="submitQuestion()">Submit all questions</button>
 
         </form>
     </div>
