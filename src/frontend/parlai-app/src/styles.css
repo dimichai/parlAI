@@ -6,6 +6,38 @@
 .mat-raised-button.mat-primary {
     background-color: #124175 !important;
 }
+
 .top-margin{
     margin-top:5%;
+}
+
+.fixed-text{
+    position:fixed;
+    top:8%;
+    background:#124175;
+    z-index: 1;
+    border-style:outset;
+    border-color:white;
+    width:48%;
+    height:4%;
+    color:white;
+    text-align: center;
+}
+
+.fixed-white-space{
+    position: fixed;
+    background: white;
+    z-index: 1;
+    width: 50%;
+    height: 5%;
+    left:0px;
+    top: 6.4%
+}
+
+.empty-space{
+    height:11%;
+}
+
+.empty-space-2{
+    height:22%;
 }

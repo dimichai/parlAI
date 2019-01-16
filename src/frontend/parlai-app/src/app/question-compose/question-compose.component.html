@@ -8,8 +8,11 @@
 
     <div class="row">
         <div class="column">
-            <h2>Answer the questions here</h2>
-
+            <div class="fixed-white-space"> </div>
+            <div class="fixed-text">
+                <h2>Answer the questions here</h2>
+            </div>
+            <div class="empty-space"></div>
             <div>
                 <p class="mat-body-strong">Question 1</p>
                 <p>Kent u het bericht «Schokkende toename vliegverkeer Buitenveldertbaan»?</p>
@@ -94,10 +97,13 @@
 
         </div>
         <div class="scrolling-column">
+            <div class="fixed-text">
             <h2>Final Document</h2>
-
+            </div>
+            <div class="empty-space-2"></div>
+            <p align="center">
             <button mat-raised-button color="primary" [routerLink]="['/question-submitted']">Submit Answer</button>
-
+            </p>
             <app-scroll-top></app-scroll-top>
 
         </div>
