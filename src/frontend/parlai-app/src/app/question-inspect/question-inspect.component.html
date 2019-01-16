@@ -13,13 +13,13 @@
       <ul class="card">
         <li [class.selected]="selectedQuestion === 'q1'">
           <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Question 1</mat-card-title>
+           <mat-card-header>
+            <mat-card-title style="font-weight: 400;font-size: 14px;">1. Kent u het bericht «Schokkende toename vliegverkeer Buitenveldertbaan»?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Kent u het bericht «Schokkende toename vliegverkeer Buitenveldertbaan»?</p>
-            </mat-card-content>
+           </mat-card-header>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q1')">Select</button>
             </mat-card-actions>
@@ -28,16 +28,14 @@
         <li [class.selected]="selectedQuestion === 'q2'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 2</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">2. Klopt het dat in 2017 overdag 34% méér vliegtuigen gebruik hebben gemaakt van
+                de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+                daggebruik van de Buitenveldertbaan terug te dringen?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>
-                Klopt het dat in 2017 overdag 34% méér vliegtuigen gebruik hebben gemaakt van
-de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
-daggebruik van de Buitenveldertbaan terug te dringen?
-              </p>
-            </mat-card-content>
+              <mat-form-field>
+                <textarea matInput placeholder="Answer"></textarea>
+              </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q2')">Select</button>
             </mat-card-actions>
@@ -46,16 +44,14 @@ daggebruik van de Buitenveldertbaan terug te dringen?
         <li [class.selected]="selectedQuestion === 'q3'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 3</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">3. Klopt het dat in 2017 ‘s nachts 13% méér vliegtuigen gebruik hebben gemaakt
+                van de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+                nachtgebruik van de Buitenveldertbaan terug te dringen?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>
-                Klopt het dat in 2017 ‘s nachts 13% méér vliegtuigen gebruik hebben gemaakt
-van de Buitenveldertbaan? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
-nachtgebruik van de Buitenveldertbaan terug te dringen?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q3')">Select</button>
             </mat-card-actions>
@@ -64,15 +60,13 @@ nachtgebruik van de Buitenveldertbaan terug te dringen?
                   <li [class.selected]="selectedQuestion === 'q4'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 4</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">4. Bent u ermee bekend dat de inzet van de Buitenveldertbaan al jaren hoger is dan
+                nodig? Zo nee, waaruit blijkt het tegendeel?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>
-Bent u ermee bekend dat de inzet van de Buitenveldertbaan al jaren hoger is dan
-nodig? Zo nee, waaruit blijkt het tegendeel?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q4')">Select</button>
             </mat-card-actions>
@@ -81,16 +75,14 @@ nodig? Zo nee, waaruit blijkt het tegendeel?
                   <li [class.selected]="selectedQuestion === 'q5'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 5</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">5. Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn overdag
+                slechts 37% bedraagt? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
+                aantal vliegtuigloze uren te verhogen?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>
-Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn overdag
-slechts 37% bedraagt? Zo nee, hoe zit het dan? Zo ja, wat is uw inzet om het
-aantal vliegtuigloze uren te verhogen?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q5')">Select</button>
             </mat-card-actions>
@@ -99,15 +91,14 @@ aantal vliegtuigloze uren te verhogen?
                   <li [class.selected]="selectedQuestion === 'q6'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 6</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">6. Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn in de
+                nacht nog geen driekwart van de tijd bedraagt? Zo nee, hoe zit het dan? Zo ja,
+                wat is uw inzet om het aantal vliegtuigloze uren te verhogen?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>Klopt het dat het percentage uren waarop geen vliegtuigen te horen zijn in de
-nacht nog geen driekwart van de tijd bedraagt? Zo nee, hoe zit het dan? Zo ja,
-wat is uw inzet om het aantal vliegtuigloze uren te verhogen?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q6')">Select</button>
             </mat-card-actions>
@@ -116,15 +107,14 @@ wat is uw inzet om het aantal vliegtuigloze uren te verhogen?
                   <li [class.selected]="selectedQuestion === 'q7'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 7</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">7. Klopt het dat alle gemeten waarden 1 tot ruim 2 dB hoger liggen dan de door het
+                Nederlands Lucht- en Ruimtevaartcentrum (in opdracht van Schiphol) berekende
+                waarden? Zo nee, hoe zit het dan?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>Klopt het dat alle gemeten waarden 1 tot ruim 2 dB hoger liggen dan de door het
-Nederlands Lucht- en Ruimtevaartcentrum (in opdracht van Schiphol) berekende
-waarden? Zo nee, hoe zit het dan?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q7')">Select</button>
             </mat-card-actions>
@@ -133,14 +123,13 @@ waarden? Zo nee, hoe zit het dan?
                   <li [class.selected]="selectedQuestion === 'q8'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 8</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">8. Kunt u, naar aanleiding van deze berichtgeving, reflecteren op de ontwikkelingen
+                op de woningmarkt in de regio rond Schiphol?</mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>Kunt u, naar aanleiding van deze berichtgeving, reflecteren op de ontwikkelingen
-op de woningmarkt in de regio rond Schiphol?
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q8')">Select</button>
             </mat-card-actions>
@@ -149,15 +138,14 @@ op de woningmarkt in de regio rond Schiphol?
                   <li [class.selected]="selectedQuestion === 'q9'">
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>Question 9</mat-card-title>
+              <mat-card-title style="font-weight: 400;font-size: 14px;">9. Hoeveel woningen zijn er sinds 1990 jaarlijks gebouwd op plaatsen waar je
+                vliegtuigen die gebruikmaken van de Buitenveldertbaan kan horen? Kunt u eenzelfde overzicht verschaffen van alle andere landingsbanen? Zo nee, waarom
+                niet? </mat-card-title>
               <mat-card-subtitle>Fact Based Question</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-              <p>Hoeveel woningen zijn er sinds 1990 jaarlijks gebouwd op plaatsen waar je
-vliegtuigen die gebruikmaken van de Buitenveldertbaan kan horen? Kunt u eenzelfde overzicht verschaffen van alle andere landingsbanen? Zo nee, waarom
-niet? 
-              </p>
-            </mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Answer"></textarea>
+            </mat-form-field>
             <mat-card-actions>
               <button mat-raised-button (click)="questionSelected('q9')">Select</button>
             </mat-card-actions>
