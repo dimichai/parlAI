@@ -20,6 +20,7 @@ import { QuestionComposeComponent } from './question-compose/question-compose.co
 import { QuestionSubmittedComponent } from './question-submitted/question-submitted.component';
 import { StartComponent } from './start/start.component';
 import { EndPageComponent } from './end-page/end-page.component';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EndPageComponent } from './end-page/end-page.component';
     QuestionSubmittedComponent,
     StartComponent,
     EndPageComponent,
+    ScrollTopComponent,
   ],
   imports: [
     BrowserModule,
