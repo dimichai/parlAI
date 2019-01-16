@@ -4,10 +4,10 @@
     <h1 style="margin-top:50px;"> Please enter your parliamentary questions </h1>
 
     <div class="form-wrapper">
-        
+
         <div class="spinner-container" *ngIf="isShowSpinner"></div>
         <mat-spinner class="spinner-loading" *ngIf="isShowSpinner"></mat-spinner>
-        
+
         <form [formGroup]="uploadForm" action="#" class="submit-form">
 
             <div formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;">
@@ -24,3 +24,5 @@
         </form>
     </div>
 </div>
+
+<app-scroll-top></app-scroll-top>

@@ -1,10 +1,9 @@
 <div class="top-margin"></div>
 <div class="fixed-button">
-<div class="mat-typography">
-    <button mat-raised-button (click)="backClicked()">back</button>
-</div>
+    <div class="mat-typography">
+        <button mat-raised-button (click)="backClicked()">back</button>
     </div>
-<pdf-viewer [src]="pdfSrc" 
-            [render-text]="true"
-            style="display: block;"
-></pdf-viewer>
+</div>
+<pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+
+<app-scroll-top></app-scroll-top>
