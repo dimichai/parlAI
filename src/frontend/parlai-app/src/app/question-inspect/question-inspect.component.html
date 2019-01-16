@@ -156,16 +156,37 @@
     </div>
     <div class="scrolling-column">
       <h2>Relevant Information</h2>
-
+      
       <div class="q1" *ngIf="selectedQuestion === 'q1'">
-        <p>
-          The following entities have been indentified in question 1:
-        </p>
+       <mat-card class="example-card"style="height:200px; margin-bottom:7px;">
+          <mat-card-title style="font-weight: 500;font-size: 14px;">Entities Recognized </mat-card-title>
         <ul>
           <li> <a href="https://schipholwatch.nl/2018/11/12/schokkende-toename-vliegverkeer-buitenveldertbaan/" target="_blank">Schokkende toename vliegverkeer Buitenveldertbaan</a> </li>
           <li>Buitenveldertbaan</li>
             <li><a href="/document-view">Rapport namens Schiphol</a></li>
         </ul>
+        <p align="right">Was it helpful?</p>
+        <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
+        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
+        </mat-card>
+        <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
+          <mat-card-title style="font-weight: 500;font-size: 14px;">Extracted Keywords </mat-card-title>
+          <p align="right">Was it helpful?</p>
+        <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
+        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
+        </mat-card>
+        <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
+          <mat-card-title style="font-weight: 500;font-size: 14px;">Topics</mat-card-title>
+          <p align="right">Was it helpful?</p>
+        <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
+        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
+        </mat-card>
+        <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
+          <mat-card-title style="font-weight: 500;font-size: 14px;">Documents</mat-card-title>
+          <p align="right">Was it helpful?</p>
+        <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
+        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
+        </mat-card>
       </div>
 
       <div class="q2" *ngIf="selectedQuestion === 'q2'">
@@ -263,5 +284,3 @@ Handhavingsstelsel</a></li>
   </div>
 
 </body>
-
-<app-scroll-top></app-scroll-top>
