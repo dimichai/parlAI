@@ -1,20 +1,21 @@
 <div class="top-margin"></div>
 
 <div style="text-align:center" class="mat-typography">
-    <h1 style="margin-top:50px;">
-        Please enter your parliamentary questions
-    </h1>
+    <h1 style="margin-top:50px;"> Please enter your parliamentary questions </h1>
 
     <div class="form-wrapper">
-        <form [formGroup]="uploadForm">
+        
+        <div class="spinner-container" *ngIf="isShowSpinner"></div>
+        <mat-spinner class="spinner-loading" *ngIf="isShowSpinner"></mat-spinner>
+        
+        <form [formGroup]="uploadForm" action="#" class="submit-form">
 
-            <div formArrayName="items" 
-                 *ngFor="let item of uploadForm.get('items').controls; let i = index;"> 
-                    <div [formGroupName]="i">
-                        <mat-form-field class="submit-form-full-width">
-                            <textarea matInput formControlName="question" placeholder="Paste your question here"></textarea>
-                        </mat-form-field>
-                    </div>
+            <div formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;">
+                <div [formGroupName]="i">
+                    <mat-form-field class="submit-form-full-width">
+                        <textarea matInput formControlName="question" placeholder="Paste your question here"></textarea>
+                    </mat-form-field>
+                </div>
             </div>
 
             <button mat-raised-button color="primary" (click)="addItem()" class="uploadButton">Add new question</button>

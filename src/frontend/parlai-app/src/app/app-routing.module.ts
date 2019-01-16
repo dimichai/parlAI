@@ -6,6 +6,7 @@ import { QuestionComposeComponent } from './question-compose/question-compose.co
 import { QuestionSubmittedComponent } from './question-submitted/question-submitted.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { StartComponent } from './start/start.component';
+import { EndPageComponent } from './end-page/end-page.component';
 
 const routes: Routes = [
   { path: 'start', component: StartComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'question-compose', component: QuestionComposeComponent },
   { path: 'question-submitted', component: QuestionSubmittedComponent },
   { path: 'document-view', component: DocumentViewComponent },
+  { path: 'endpage', component: EndPageComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: '**', redirectTo: 'start', pathMatch: 'prefix' },
 ];

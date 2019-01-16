@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-upload',
@@ -11,8 +11,12 @@ export class UploadComponent implements OnInit {
 
 uploadForm: FormGroup;
 items: FormArray;
-
-  constructor(private formBuilder: FormBuilder) {}
+  isShowSpinner: Boolean = false;
+  private router: Router
+  
+  constructor(router: Router, private formBuilder: FormBuilder) {
+   this.router = router;
+  }
 
   ngOnInit() {
   this.uploadForm = this.formBuilder.group({
@@ -32,4 +36,12 @@ addItem(): void {
   this.items.push(this.createItem());
 }
 
+  submitQuestion () {
+    const that = this;
+    this.isShowSpinner = true;
+    window.setTimeout(function () {
+      that.isShowSpinner = false;
+      that.router.navigateByUrl('/question-inspect');
+    }, 1000);
+  }
 }
