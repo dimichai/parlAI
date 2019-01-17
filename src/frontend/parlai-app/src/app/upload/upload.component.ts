@@ -25,7 +25,13 @@ export class UploadComponent implements OnInit {
       'S.C. Kröger - GL - Lid Tweede Kamer',
       // tslint:disable-next-line:max-line-length
       'KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN',
-      []));
+      []),
+      new QuestionDocument(2,
+        'Illegale praktijken rondom recycling van kunstgras',
+        'F.P. Wassenberg - PVDD - Lid Tweede Kamer',
+        // tslint:disable-next-line:max-line-length
+        'RECYCLING,KUNSTSTOFFEN,GEMEENTEN,MILIEUVERGUNNINGEN,PROVINCIES,HANDHAVING,MILIEUDELICTEN,CHANTAGE,FAILLISSEMENTEN,CRIMINALITEIT',
+        []));
   }
 
   ngOnInit() {
