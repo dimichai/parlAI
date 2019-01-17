@@ -607,17 +607,17 @@ MIT
 
 @angular/material/button
 
+@angular/material/card
+
 @angular/forms
 MIT
 
 @angular/material/form-field
 
-@angular/material/card
+@angular/material/chips
 
 ng2-pdf-viewer
 MIT
-
-@angular/material/menu
 
 zone.js
 MIT
