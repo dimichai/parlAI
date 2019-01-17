@@ -16,6 +16,7 @@ title_next = 0
 questions_next = 0
 keyword_next = 0
 function_next = 0
+first_question = 0
 
 # create empty arrays to gather the contents of our elements
 title_filler = []
@@ -29,7 +30,7 @@ questions_header = []
 count = 0
 
 # create an array of numbers to tag seperate questions
-number_array = list(range(2,100,1))
+number_array = list(range(3,100,1))
 
 # convert the items in the range to strings
 string_array = []
@@ -50,26 +51,47 @@ for e in root.findall('.//w:t', namespaces):
         continue
     elif e.text == 'Antwoord':
         questions_next = 0
-        questions_filler.append('</question>')
+        questions_filler.append('</question></questions>')
         questions_concat = ''.join(questions_filler)
         question.append(questions_concat)
+        if '#' not in question[0] and \
+            'Indiener' not in question[0] and \
+            '</question>' not in question[0] and \
+            '<question>' not in question[0] and \
+            question[0] != '' and \
+            '#' not in question[1] and \
+            'Documentsoorten' not in question[1] and \
+            '</question>' not in question[1] and \
+            '<question>' not in question[1] and \
+            question[1] != '' and \
+            'Infrastructuur en Waterstaat' in question[1] and \
+            '</question>' not in question[2] and \
+            '<question>' not in question[2]  and \
+            question[3].startswith( '<questions><question>1'):
+            print(questions_concat)
+            csvwriter.writerow(question)
         questions_filler = []
-        print(questions_concat)
-        csvwriter.writerow(question)
         question = []
     elif e.text == 'Tekst vraag':
         keyword_next = 0
+        first_question = 1
         keyword_concat = ''.join(keyword_filler)
         question.append(keyword_concat)
         keyword_filler = []
         print(keyword_concat)
         questions_next = 1
     elif questions_next == 1:
-        if e.text == '1':
-            questions_filler.append('<question>')
+        if e.text == '1'  and first_question == 1:
+            questions_filler.append('<questions><question>')
             questions_field = e.text
             questions_filler.append(questions_field)
             questions_filler.append(' ')
+        elif e.text == '2':
+            questions_filler.append('</question><question>')
+            questions_field = e.text
+            questions_filler.append(questions_field)
+            questions_filler.append(' ')
+            first_question = 0
         elif e.text in string_array:
             questions_filler.append('</question><question>')
             questions_field = e.text
