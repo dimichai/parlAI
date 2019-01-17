@@ -1,43 +1,45 @@
 <div class="top-margin"></div>
 
-<div style="text-align:center" class="mat-typography">
-    <h1 style="margin-top:75px;"> Hello User, </h1>
-    <h2 style="margin-top:20px;"> Here's an overview of the questions assigned to you: </h2>
+<div class="container">
+    <div style="text-align:center" class="mat-typography">
+        <h1 style="margin-top:75px;"> Hello User, </h1>
+        <h2 style="margin-top:20px;"> Here's an overview of the questions assigned to you: </h2>
 
-    <ul class="card">
-        <li *ngFor="let doc of questionDocuments">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title style="font-weight: 400;font-size: 14px;">{{doc.title}}</mat-card-title>
-                    <mat-card-subtitle>{{doc.author}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="answerClicked(doc)">Answer</button>
-                </mat-card-actions>
-            </mat-card>
-        </li>
-    </ul>
+        <ul class="card">
+            <li *ngFor="let doc of questionDocuments">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title style="font-weight: 400;font-size: 14px;">{{doc.title}}</mat-card-title>
+                        <mat-card-subtitle>{{doc.author}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="answerClicked(doc)">Answer</button>
+                    </mat-card-actions>
+                </mat-card>
+            </li>
+        </ul>
 
-    <!-- <div class="form-wrapper">
+        <!-- <div class="form-wrapper">
+            
+                    <div class="spinner-container" *ngIf="isShowSpinner"></div>
+                    <mat-spinner class="spinner-loading" *ngIf="isShowSpinner"></mat-spinner>
+            
+                    <form [formGroup]="uploadForm" action="#" class="submit-form">
+            
+                        <div formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;">
+                            <div [formGroupName]="i">
+                                <mat-form-field class="submit-form-full-width">
+                                    <textarea matInput formControlName="question" placeholder="Paste your question here"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+            
+                        <button mat-raised-button color="primary" (click)="addItem()" class="uploadButton">Add new question</button>
+                        <button mat-raised-button color="primary" class="uploadButton" (click)="submitQuestion()">Submit all questions</button>
+            
+                    </form>
+                </div> -->
+    </div>
 
-        <div class="spinner-container" *ngIf="isShowSpinner"></div>
-        <mat-spinner class="spinner-loading" *ngIf="isShowSpinner"></mat-spinner>
-
-        <form [formGroup]="uploadForm" action="#" class="submit-form">
-
-            <div formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;">
-                <div [formGroupName]="i">
-                    <mat-form-field class="submit-form-full-width">
-                        <textarea matInput formControlName="question" placeholder="Paste your question here"></textarea>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <button mat-raised-button color="primary" (click)="addItem()" class="uploadButton">Add new question</button>
-            <button mat-raised-button color="primary" class="uploadButton" (click)="submitQuestion()">Submit all questions</button>
-
-        </form>
-    </div> -->
+    <app-scroll-top></app-scroll-top>
 </div>
-
-<app-scroll-top></app-scroll-top>

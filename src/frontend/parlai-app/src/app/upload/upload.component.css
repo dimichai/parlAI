@@ -14,7 +14,7 @@
     margin:10px;
 }
 
-.spinner-container {
+/* .spinner-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -22,15 +22,15 @@
   right: 0;
   background: #000;
   opacity: 0.3;
-}
+} */
 
-.spinner-loading{
+/* .spinner-loading{
   text-align: center;
   display: inline-block;
   top: 40%;
   position: absolute;
   z-index: 999;
-}
+} */
 
 .card {
   list-style-type: none;
@@ -41,6 +41,7 @@
   margin-bottom: 15px;
 }
 
-/* .card mat-card {
-  width: 70%
-} */
+.container {
+  display: flex;
+  justify-content: center;
+}

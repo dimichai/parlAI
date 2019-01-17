@@ -22,12 +22,10 @@ export class UploadComponent implements OnInit {
 
     this.questionDocuments.push(new QuestionDocument(1,
       'De uitzending van Zembla ‘De Kunstgrasberg’',
-      'S.C. Kröger',
+      'S.C. Kröger - GL - Lid Tweede Kamer',
       // tslint:disable-next-line:max-line-length
       'KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN',
       []));
-
-    console.log(this.questionDocuments[0]);
   }
 
   ngOnInit() {

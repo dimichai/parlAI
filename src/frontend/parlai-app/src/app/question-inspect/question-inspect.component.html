@@ -35,35 +35,59 @@
         </div>
         <div class="scrolling-column">
             <div class="fixed-text">
-                <h2>Relevant Information</h2>
+                <h2>Relevant Information - Question {{selectedQuestion.id}}</h2>
             </div>
             <div class="empty-space-2"></div>
 
             <div class="information">
-                <div class="row">
+                <div class="row" *ngIf="selectedQuestion.keywords">
                     <h2>Keywords</h2>
                     <mat-chip-list>
                         <mat-chip *ngFor="let kw of selectedQuestion.getKeywordsAsArray()">{{kw}}</mat-chip>
                     </mat-chip-list>
                 </div>
-                
-                <div class="row">
+
+                <div class="row" *ngIf="selectedQuestion.entities">
                     <h2>Recognized Entities</h2>
                     <mat-chip-list>
                         <mat-chip *ngFor="let ent of selectedQuestion.getEntitiesAsArray()">{{ent}}</mat-chip>
                     </mat-chip-list>
                 </div>
-                
+
+                <div class="row" *ngIf="selectedQuestion.references.length">
+                    <h2>Extracted References</h2>
+                    <ul>
+                        <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
+                    </ul>
+                </div>
+
+                <div class="row" *ngIf="selectedQuestion.documents.length">
+                    <h2>Retrieved Relevant Documents</h2>
+                    <ul class="card">
+                        <li *ngFor="let document of selectedQuestion.documents">
+                            <mat-card class="example-card">
+                                <mat-card-header>
+                                    <mat-card-title style="font-weight: 400;font-size: 14px;"><strong>{{document.title}}</strong></mat-card-title>
+                                    <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-actions>
+                                    <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </li>
+                    </ul>
+                </div>
+
                 <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
                     <mat-card-title style="font-weight: 500;font-size: 14px;">Keywords </mat-card-title>
                     <mat-chip-list>
                         <mat-chip *ngFor="let kw of selectedQuestion.getKeywordsAsArray()">{{kw}}</mat-chip>
                     </mat-chip-list> -->
-                    <!-- <p align="right">Was it helpful?</p>
+                <!-- <p align="right">Was it helpful?</p>
                     <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
                     <button class="btn" style="float:right" mat-raised-button color="alert">No</button> -->
                 <!-- </mat-card> -->
-                <mat-card class="example-card" style="height:200px; margin-bottom:7px;">
+                <!-- <mat-card class="example-card" style="height:200px; margin-bottom:7px;">
                     <mat-card-title style="font-weight: 500;font-size: 14px;">Entities Recognized </mat-card-title>
                     <ul>
                         <li> <a href="https://schipholwatch.nl/2018/11/12/schokkende-toename-vliegverkeer-buitenveldertbaan/"
@@ -75,19 +99,19 @@
                     <p align="right">Was it helpful?</p>
                     <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
                     <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card>
-                <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
+                </mat-card> -->
+                <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
                     <mat-card-title style="font-weight: 500;font-size: 14px;">Topics</mat-card-title>
                     <p align="right">Was it helpful?</p>
                     <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
                     <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card>
-                <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
-                    <mat-card-title style="font-weight: 500;font-size: 14px;">Documents</mat-card-title>
+                </mat-card> -->
+                <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
+                    <mat-card-title style="font-weight: 500;font-size: 14px;">Retrieved Relevant Documents</mat-card-title>
                     <p align="right">Was it helpful?</p>
                     <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
                     <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card>
+                </mat-card> -->
             </div>
 
             <button mat-raised-button color="primary" [routerLink]="['/question-compose']">Compose Answer</button>
