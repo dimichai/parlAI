@@ -16,14 +16,14 @@
     top:8%;
     background:#124175;
     z-index: 1;
-    border-style:outset;
-    border-color:white;
+    /* border-style:outset; */
+    /* border-color:white; */
     width:48%;
     height:4%;
     color:white;
     text-align: center;
 }
-
+/* 
 .fixed-white-space{
     position: fixed;
     background: white;
@@ -32,7 +32,7 @@
     height: 5%;
     left:0px;
     top: 6.4%
-}
+} */
 
 .empty-space{
     height:11%;

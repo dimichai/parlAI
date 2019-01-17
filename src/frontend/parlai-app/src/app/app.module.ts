@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
-import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 // 3rd Party Components
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -44,6 +44,7 @@ import { ScrollTopComponent } from './scroll-top/scroll-top.component';
     MatCardModule,
     MatInputModule,
     MatMenuModule,
+    MatChipsModule,
     FormsModule,
     ReactiveFormsModule
   ],

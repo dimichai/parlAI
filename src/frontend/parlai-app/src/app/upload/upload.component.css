@@ -31,3 +31,16 @@
   position: absolute;
   z-index: 999;
 }
+
+.card {
+  list-style-type: none;
+  padding-left: 0;
+}  
+
+.card li {
+  margin-bottom: 15px;
+}
+
+/* .card mat-card {
+  width: 70%
+} */
