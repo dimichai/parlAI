@@ -6,15 +6,18 @@ export class Question {
     content: string;
     keywords: string;
     entities: string;
+    questionClass: string;
     references: Reference[];
     documents: MinistryDocument[];
+    answer: string;
 
-    constructor(id: number, content: string, keywords: string, entities: string, references: Reference[],
+    constructor(id: number, content: string, keywords: string, entities: string, questionClass: string, references: Reference[],
         documents: MinistryDocument[]) {
         this.id = id;
         this.content = content;
         this.keywords = keywords;
         this.entities = entities;
+        this.questionClass = questionClass;
         this.references = references;
         this.documents = documents;
     }

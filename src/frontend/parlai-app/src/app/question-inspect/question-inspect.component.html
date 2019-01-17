@@ -20,10 +20,10 @@
                     <mat-card class="example-card">
                         <mat-card-header>
                             <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
-                            <mat-card-subtitle>Question Class</mat-card-subtitle>
+                            <mat-card-subtitle>{{question.questionClass}}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-form-field>
-                            <textarea matInput placeholder="Answer"></textarea>
+                            <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
                         </mat-form-field>
                         <mat-card-actions>
                             <button mat-raised-button color="primary" (click)="questionSelected(question)">Get
@@ -114,7 +114,7 @@
                 </mat-card> -->
             </div>
 
-            <button mat-raised-button color="primary" [routerLink]="['/question-compose']">Compose Answer</button>
+            <button mat-raised-button color="primary" (click)="composeClicked()">Compose Answer</button>
         </div>
     </div>
 

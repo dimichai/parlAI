@@ -1,3 +1,4 @@
+import { Question } from 'src/app/models/question';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'start', component: StartComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'question-inspect', component: QuestionInspectComponent },
-  { path: 'question-compose', component: QuestionComposeComponent },
+  { path: 'question-compose', component: QuestionComposeComponent, data: {} },
   { path: 'question-submitted', component: QuestionSubmittedComponent },
   { path: 'document-view', component: DocumentViewComponent },
   { path: 'endpage', component: EndPageComponent },

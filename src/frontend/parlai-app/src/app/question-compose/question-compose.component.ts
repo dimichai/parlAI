@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionAnsweringService } from '../services/question-answering.service';
+import { Question } from '../models/question';
 
 @Component({
   selector: 'app-question-compose',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-compose.component.css']
 })
 export class QuestionComposeComponent implements OnInit {
-
-  constructor() { }
+  questions: Question[];
+  constructor(public qaService: QuestionAnsweringService) { }
 
   ngOnInit() {
+    this.questions = this.qaService.questions;
+    // console.log(this.qaService.questions);
   }
 
 }
