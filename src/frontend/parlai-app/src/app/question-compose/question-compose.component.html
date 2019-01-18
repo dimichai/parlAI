@@ -8,10 +8,9 @@
 
     <div class="row">
         <div class="column">
-            <div class="fixed-white-space"> </div>
-            <div class="fixed-text">
-                <h2>Overview of your Answers</h2>
-            </div>
+            <mat-toolbar class="mat-elevation-z6" color="primary">
+                <span>Overview of your Answers</span>
+            </mat-toolbar>
             <div class="empty-space"></div>
 
             <ul class="card">
@@ -29,11 +28,11 @@
             </ul>
 
         </div>
-        <div class="scrolling-column">
-            <div class="fixed-text">
-                <h2>Final Document</h2>
-            </div>
-            <div class="empty-space-2"></div>
+        <div class="column">
+            <mat-toolbar class="mat-elevation-z6" color="primary">
+                <span>Final Document</span>
+            </mat-toolbar>
+            <div class="empty-space" style="margin-top:20px"></div>
             <p align="center">
                 <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
             </p>
