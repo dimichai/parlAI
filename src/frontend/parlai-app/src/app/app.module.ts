@@ -21,6 +21,7 @@ import { QuestionSubmittedComponent } from './question-submitted/question-submit
 import { StartComponent } from './start/start.component';
 import { EndPageComponent } from './end-page/end-page.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ScrollTopComponent } from './scroll-top/scroll-top.component';
     MatChipsModule,
     MatToolbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

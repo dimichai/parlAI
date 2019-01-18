@@ -6,7 +6,17 @@
     </h1>
 
     <h2>Answering parliamentary questions with AI</h2>
-    <button mat-raised-button color="accent" [routerLink]="['/upload']">Login</button>
+    <p>
+      <mat-form-field>
+        <mat-select placeholder="Please select your name">
+          <mat-option *ngFor="let user of users;" value="user.username">{{user.real_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="userSelected(user)">Login</button>
+      </mat-card-actions>
+    </p>
+
 </div>
 
 <app-scroll-top></app-scroll-top>
