@@ -616,6 +616,8 @@ MIT
 
 @angular/material/chips
 
+@angular/material/toolbar
+
 ng2-pdf-viewer
 MIT
 
