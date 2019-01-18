@@ -10,14 +10,10 @@
     padding: 10px; // height: 300px; /* Should be removed. Only for demonstration */
 }
 
-.scrolling-column {
-    position: fixed;
-    top: 8%;
-    left: 50%;
-    width: 50%;
-    padding: 10px;
-    height: 300px;
-    /* Should be removed. Only for demonstration */
+.scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 83.5vh;
 }
 
 /* Clear floats after the columns */
