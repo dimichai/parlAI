@@ -37,6 +37,18 @@
     width: 100%;
 }
 
+.mat-toolbar {
+    height: 8%;
+    position: relative;
+    min-height: 32px;
+}
+
+span {
+    margin: auto;
+    display: table;
+
+}
+
 .card {
     list-style-type: none;
     padding-left: 0;
