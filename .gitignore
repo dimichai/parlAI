@@ -121,7 +121,6 @@ src/backend/libs/mallet-2\.0\.8/
 \.idea/workspace\.xml
 
 src/extras/document_dummy.xml
-src/extras/question_data.csv
 
 src/backend/libs/spacy_ner\.py
 
