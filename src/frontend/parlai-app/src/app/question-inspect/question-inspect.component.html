@@ -13,6 +13,8 @@
             </mat-toolbar>
 
             <div class="empty-space"></div>
+            <div class="scrollable">
+            
             <ul class="card">
                 <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question" (click)="questionSelected(question)">
                     <mat-card class="example-card">
@@ -31,6 +33,7 @@
                 </li>
             </ul>
         </div>
+            </div>
         
         <div class="column">
             
@@ -39,6 +42,7 @@
             </mat-toolbar>
             
             <div class="empty-space"></div>
+            <div class="scrollable">
 
             <div class="information">
                 <div class="row" *ngIf="selectedQuestion.keywords">
@@ -113,6 +117,7 @@
                     <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
                     <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
                 </mat-card> -->
+            </div>
             </div>
 
             <button mat-raised-button color="accent" (click)="composeClicked()">Compose Answer</button>
