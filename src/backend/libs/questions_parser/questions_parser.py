@@ -1,6 +1,8 @@
 import pandas as pd
+from xml.dom import minidom
+from mysql_connector import MySqlConnector
 
-if __name__ == "__main__":
+def clean_questions():
     questions = pd.read_csv('./data/question_data.csv', delimiter=';')
 
     # Keep only the questions that reference the ministry of infrastructure
@@ -21,3 +23,45 @@ if __name__ == "__main__":
     # Save to new file
     ministry_questions.to_csv('./data/question_data_cleaned.csv', sep=';', index=False)
 
+def save_documents_to_database():
+    # Load the cleaned questions
+    questions = pd.read_csv('./data/question_data_cleaned.csv', delimiter=';')
+    connector = MySqlConnector('parlai')
+
+    for index, row in questions.iterrows():
+        title = row['title']
+        answeredby = row['function']
+        keywords = row['keywords']
+        questionContent = row['questions']
+
+        docId = connector.insert_question_document((title, answeredby, keywords, questionContent))
+
+        # Parse questions xml
+        xml = row['questions']
+        questions = parse_questions_from_xml(xml)
+        for q in questions:
+            q = q.lstrip('0123456789 ') # strip the leading numbers and spaces from the question.
+            q = q.strip()
+
+            connector.insert_question((docId, q))
+        
+
+    return
+
+def parse_questions_from_xml(xml):
+    xmldoc = minidom.parseString(xml)
+    document = xmldoc.getElementsByTagName('questions')[0]
+    questions = []
+    for question in document.childNodes:
+        try:
+            questions.append(question.childNodes[0].nodeValue)
+        except:
+            print(question.nodeValue)
+        
+    
+    return questions
+
+if __name__ == "__main__":
+    print('Question Parsing Started')
+    clean_questions()
+    save_documents_to_database()
