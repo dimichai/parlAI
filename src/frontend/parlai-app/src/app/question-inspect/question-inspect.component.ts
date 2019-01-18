@@ -13,6 +13,7 @@ import { QuestionAnsweringService } from '../services/question-answering.service
 export class QuestionInspectComponent implements OnInit {
 
   selectedQuestion: Question;
+  selectedIndex: number = -1;
   questions: Question[] = [];
 
   constructor(private router: Router,
@@ -47,7 +48,7 @@ export class QuestionInspectComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     new MinistryDocument('Besluit op Wob-verzoek over inspecties ILT vanaf 1 januari 2015', '2017-06-12', 'https://www.rijksoverheid.nl/documenten/wob-verzoeken/2017/06/12/besluit-op-het-wob-verzoek-over-inspecties-van-ilt-vanaf-1-januari-2015')]));
 
-    this.selectedQuestion = this.questions[0];
+    // this.selectedQuestion = this.questions[0];
   }
 
   ngOnInit() {
@@ -60,9 +61,6 @@ export class QuestionInspectComponent implements OnInit {
   viewDocumentClicked(document: MinistryDocument) {
 
     window.open(document.url, '_blank');
-
-    // console.log(document.url);
-    // this.router.navigateByUrl(document.url);
   }
 
   composeClicked() {
