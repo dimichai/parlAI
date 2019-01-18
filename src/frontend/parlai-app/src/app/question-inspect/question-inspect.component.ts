@@ -13,7 +13,6 @@ import { QuestionAnsweringService } from '../services/question-answering.service
 export class QuestionInspectComponent implements OnInit {
 
   selectedQuestion: Question;
-  selectedIndex: number = -1;
   questions: Question[] = [];
 
   constructor(private router: Router,
