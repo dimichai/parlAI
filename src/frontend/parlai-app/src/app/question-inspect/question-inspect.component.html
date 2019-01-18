@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<button mat-raised-button color="accent" (click)="composeClicked()">Compose Answer</button>
+
 <body class="mat-typography">
 
     <div class="row">
@@ -35,8 +37,7 @@
         </div>
             </div>
         
-        <div class="column">
-            
+        <div class="column">    
             <mat-toolbar class="mat-elevation-z6" color="primary">
                 <span>Relevant Information - Question {{selectedQuestion.id}}</span>
             </mat-toolbar>
@@ -119,8 +120,6 @@
                 </mat-card> -->
             </div>
             </div>
-
-            <button mat-raised-button color="accent" (click)="composeClicked()">Compose Answer</button>
         </div>
     </div>
 

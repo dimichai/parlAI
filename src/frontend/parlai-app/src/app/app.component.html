@@ -1,11 +1,9 @@
 <nav class="sticky" color="primary" id="systemNav">
     <div>
-        <img class="system-logo"
-             src="assets/logo.png"
-             alt="">
+        <img class="system-logo" src="assets/logo.png" alt="">
     </div>
-    <button mat-button
-            [routerLink]="['/start']">parlAI</button>
+    <button mat-button [routerLink]="['/start']">parlAI</button>
+    
     <!-- <button mat-button
             [matMenuTriggerFor]="menu">navigate</button>
     <mat-menu #menu="matMenu"
@@ -23,6 +21,10 @@
         <button mat-menu-item
                 [routerLink]="['/document-view']">document view</button>
     </mat-menu> -->
+    <!--
+    <ng-container *ngIf="show">-->
+        <button mat-raised-button color="accent" (click)="composeClicked()" style="float:right; margin: 1%;">Compose Answer</button>
+   <!-- </ng-container>-->
 </nav>
 
 <router-outlet></router-outlet>
