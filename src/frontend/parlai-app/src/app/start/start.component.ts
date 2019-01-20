@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class StartComponent implements OnInit {
   title = 'parlAI';
-
-  selectedUser = User;
   users: User[] = [];
 
   constructor(private router: Router) {
@@ -19,16 +17,12 @@ export class StartComponent implements OnInit {
     this.users.push(new User(3,	'sspijker', 'Sien Spijker', 'sien.spijker@minienm.nl', '06-88465860', 'spoorwegen,verkeersveiligheid,verkeer,openbaarvervoer, taxi,bussen'));
     this.users.push(new User(4,	'hdijksterhuis', 'Hong Dijksterhuis', 'hong.dijksterhuis@mineinm.nl', '06-80456658', 'goederenvervoer,vrachtwagenchauffeurs,verkeersveiligheid'));
     this.users.push(new User(5, 'ykorenhof', 'Yassir Korenhof', 'yassir.korenhof@minienm.nl', '06-56678058', 'visserij,rijn,rivieren,waterkwaliteit,sluizen'));
-
-    // this.selectedUser = this.users[0];
   }
 
   ngOnInit() {
-
   }
 
   userSelected(selected) {
-    // this.selectedUser = selected;
-    this.router.navigate(['upload'], {queryParams: { user: selected.real_name } });
+    this.router.navigate(['upload'], {queryParams: { user: selected.id } });
   }
 }
