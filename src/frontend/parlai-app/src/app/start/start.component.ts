@@ -23,6 +23,6 @@ export class StartComponent implements OnInit {
   }
 
   userSelected(selected) {
-    this.router.navigate(['upload'], {queryParams: { user: selected.id } });
+    this.router.navigate(['upload'], {queryParams: { userid: selected.id } });
   }
 }

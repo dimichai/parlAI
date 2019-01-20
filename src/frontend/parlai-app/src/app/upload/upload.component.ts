@@ -17,9 +17,9 @@ export class UploadComponent implements OnInit {
   // isShowSpinner: Boolean = false;
   // userid: string;
   userid: string = this.route.snapshot.queryParamMap.get('userid');
+  user_id = Number(this.userid);
   users: User[] = [];
   selectedUser: User;
-
 
   private router: Router;
   questionDocuments: QuestionDocument[] = [];
@@ -46,7 +46,7 @@ export class UploadComponent implements OnInit {
         'RECYCLING,KUNSTSTOFFEN,GEMEENTEN,MILIEUVERGUNNINGEN,PROVINCIES,HANDHAVING,MILIEUDELICTEN,CHANTAGE,FAILLISSEMENTEN,CRIMINALITEIT',
         []));
 
-    this.selectedUser = this.users.find(x => x.id === Number(this.userid));
+    this.selectedUser = this.users.find(x => x.id === this.user_id);
     // this.username = this.selectedUser.real_name;
   }
 
