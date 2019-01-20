@@ -5,7 +5,7 @@ import re
 rake_object = Rake(language='dutch')
 
 rake_object.extract_keywords_from_text("""
-Kent u het bericht «Schokkende toename vliegverkeer Buitenveldertbaan»?
+Klopt het dat gemeentes recyclebedrijven tienduizend tot twintigduizend euro betalen om kunstgras te verwerken? Klopt het ook dat deze recyclebedrijven zich vaak niet houden aan deze afspraken en het kunstgras illegaal opslaan en/of illegaal doorverkopen? Deelt u de mening dat het zeer zorgelijk is dat deze bedrijven moedwillig vervuilen voor winst en dat deze winst betaald wordt door de Nederlandse burger?
 """)
 
 keywords = ''

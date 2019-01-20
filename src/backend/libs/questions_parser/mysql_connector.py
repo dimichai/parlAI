@@ -38,3 +38,19 @@ class MySqlConnector:
 
         self.connector.commit()
         cursor.close()
+
+    def get_all_questions_cursor(self):
+        cursor = self.connector.cursor(buffered=True)
+        select_script = ("SELECT * FROM question")
+
+        cursor.execute(select_script)
+
+        return cursor
+
+    def get_all_question_documents_cursor(self):
+        cursor = self.connector.cursor(buffered=True)
+        select_script = ("SELECT * FROM questionDocument")
+
+        cursor.execute(select_script)
+
+        return cursor
