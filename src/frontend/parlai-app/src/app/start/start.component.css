@@ -1,0 +1,29 @@
+.form-wrapper {
+  display: inline-block;
+}
+
+.submit-form {
+  width: 500px;
+}
+
+.submit-form-full-width {
+  width: 100%;
+}
+
+.uploadButton {
+    margin:10px;
+}
+
+.card {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.card li {
+  margin-bottom: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,22 +1,28 @@
 <div class="top-margin"></div>
 
-<div style="text-align:center" class="mat-typography">
+<div class="container">
+  <div style="text-align:center" class="mat-typography">
     <h1 style="margin-top:50px;">
         {{ title }}
     </h1>
 
     <h2>Answering parliamentary questions with AI</h2>
-    <p>
-      <mat-form-field>
-        <mat-select placeholder="Please select your name">
-          <mat-option *ngFor="let user of users;" value="user.username">{{user.real_name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="userSelected(user)">Login</button>
-      </mat-card-actions>
-    </p>
-
+    <ul class="card">
+      <li *ngFor="let user of users">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title style="font-weight: 400; font-size 14px;">{{user.real_name}}</mat-card-title>
+            <mat-card-subtitle>Email: {{user.email}}</mat-card-subtitle>
+            <mat-card-subtitle>Phone: {{user.phone}}</mat-card-subtitle>
+            <mat-card-subtitle>Expertise: {{user.spec_keywords}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="userSelected(user)">Login</button>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <app-scroll-top></app-scroll-top>

@@ -28,7 +28,7 @@ export class StartComponent implements OnInit {
   }
 
   userSelected(selected) {
-    this.selectedUser = selected;
-    this.router.navigate(['upload']);
+    // this.selectedUser = selected;
+    this.router.navigate(['upload'], {queryParams: { user: selected.real_name } });
   }
 }

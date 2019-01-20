@@ -1,8 +1,10 @@
 import { QuestionDocument } from './../models/question-document';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
+import { User } from '../models/user';
+// import { Filter } from 'rxjs'
 
 @Component({
   selector: 'app-upload',
@@ -10,14 +12,16 @@ import { Question } from '../models/question';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-
   // uploadForm: FormGroup;
   // items: FormArray;
   // isShowSpinner: Boolean = false;
+  // userid: string;
+  user_name: string = this.route.snapshot.queryParamMap.get('user');
+
   private router: Router;
   questionDocuments: QuestionDocument[] = [];
 
-  constructor(router: Router, private formBuilder: FormBuilder) {
+  constructor(router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
     this.router = router;
 
     this.questionDocuments.push(new QuestionDocument(1,
@@ -35,11 +39,23 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
+    // const param1 = 'test';
+
+    // this.param1  = this.route.snapshot.paramMap.get('userid');
+    // this.route.queryParams.pipe(
+    //   filter(params => params.user),
+    //   subscribe(params => {
+    //     console.log(params);
+    //
+    //     this.user = params.user;
+    //     console.log(this.user);
+    //   })
+    // )
+  }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',
     //   items: this.formBuilder.array([this.createItem()])
     // });
-  }
 
   // createItem(): FormGroup {
   //   return this.formBuilder.group({
