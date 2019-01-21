@@ -127,3 +127,5 @@ src/backend/libs/spacy_ner\.py
 resources/topic-modelling-with-spacy-and-scikit-learn\.ipynb
 
 \.idea/
+
+src/backend/data/

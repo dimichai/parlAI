@@ -2,6 +2,7 @@ import pandas as pd
 from xml.dom import minidom
 from libs.questions_parser.mysql_connector import MySqlConnector
 
+
 def clean_questions():
     questions = pd.read_csv('./data/question_data.csv', delimiter=';')
 
@@ -23,6 +24,7 @@ def clean_questions():
     # Save to new file
     ministry_questions.to_csv('./data/question_data_cleaned.csv', sep=';', index=False)
 
+
 def save_documents_to_database():
     # Load the cleaned questions
     questions = pd.read_csv('./data/question_data_cleaned.csv', delimiter=';')
@@ -40,13 +42,13 @@ def save_documents_to_database():
         xml = row['questions']
         questions = parse_questions_from_xml(xml)
         for q in questions:
-            q = q.lstrip('0123456789 ') # strip the leading numbers and spaces from the question.
+            q = q.lstrip('0123456789 ')  # strip the leading numbers and spaces from the question.
             q = q.strip()
 
             connector.insert_question((docId, q))
-        
 
     return
+
 
 def parse_questions_from_xml(xml):
     xmldoc = minidom.parseString(xml)
@@ -57,10 +59,11 @@ def parse_questions_from_xml(xml):
             questions.append(question.childNodes[0].nodeValue)
         except:
             print(question.nodeValue)
-        
+
     return questions
+
 
 if __name__ == "__main__":
     print('Question Parsing Started')
-    clean_questions()
+    # clean_questions()
     save_documents_to_database()

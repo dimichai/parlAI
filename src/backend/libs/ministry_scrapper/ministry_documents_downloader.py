@@ -1,6 +1,6 @@
-from mysql_connector import MySqlConnector
+from libs.ministry_scrapper.mysql_connector import MySqlConnector
 from datetime import datetime
-from json_helper import get_json_from_url
+from libs.ministry_scrapper.json_helper import get_json_from_url
 
 doc_url = "https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/documents?output=json&organisationalunit=ministerie-van-infrastructuur-en-waterstaat"
 doctype_url = "https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/documents/infotypes?rows=200&output=json"

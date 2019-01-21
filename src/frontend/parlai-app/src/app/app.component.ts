@@ -22,9 +22,8 @@ export class AppComponent implements OnInit {
             if (!(evt instanceof NavigationEnd)) {
                 return;
             }
-            window.scrollTo(0, 0)
+            window.scrollTo(0, 0);
         });
-
         this.showBtn = false;
     }
 
@@ -33,16 +32,16 @@ export class AppComponent implements OnInit {
     }
 
     ngAfterViewInit() {
-        this.boolService.getBool().subscribe(value => this.showBtn=value);
+        this.boolService.getBool().subscribe(value => this.showBtn = value);
         console.log(this.showBtn);
     }
 
-    homeClicked(){
+    homeClicked() {
         this.boolService.setBool(false);
         this.router.navigate(['start']);
     }
 
-    composeClicked(){
+    composeClicked() {
         this.boolService.setBool(false);
         this.router.navigate(['question-compose']);
     }

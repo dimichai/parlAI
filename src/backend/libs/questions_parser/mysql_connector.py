@@ -6,10 +6,16 @@ import mysql.connector
 class MySqlConnector:
     def __init__(self, databaseName):
         # todo: change password to get it from environmental variables.
+        # self.connector = mysql.connector.connect(
+        #     host='localhost',
+        #     user='root',
+        #     passwd='dspparlai',
+        #     database=databaseName
+        # )
         self.connector = mysql.connector.connect(
-            host='localhost',
+            host='parlai.cemkwtbxqpqj.eu-west-2.rds.amazonaws.com',
             user='root',
-            passwd='dspparlai',
+            passwd='rcbzY%vL#AXuf&4%1h^d',
             database=databaseName
         )
 
