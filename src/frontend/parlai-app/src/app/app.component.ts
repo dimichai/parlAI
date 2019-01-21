@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BooleanService } from './services/boolean.service';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { ContactPeersComponent } from './contact-peers/contact-peers.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,8 @@ export class AppComponent implements OnInit {
     showBtn: boolean;
 
     constructor(private router: Router,
-    public boolService: BooleanService) { }
+    public boolService: BooleanService,
+    private bottomSheet: MatBottomSheet) { }
 
     ngOnInit() {
         this.router.events.subscribe((evt) => {
@@ -21,20 +24,24 @@ export class AppComponent implements OnInit {
             }
             window.scrollTo(0, 0)
         });
-        
+
         this.showBtn = false;
     }
-    
+
+    openBottomSheet(): void {
+      this.bottomSheet.open(ContactPeersComponent);
+    }
+
     ngAfterViewInit() {
         this.boolService.getBool().subscribe(value => this.showBtn=value);
         console.log(this.showBtn);
     }
-    
+
     homeClicked(){
         this.boolService.setBool(false);
         this.router.navigate(['start']);
     }
-    
+
     composeClicked(){
         this.boolService.setBool(false);
         this.router.navigate(['question-compose']);
