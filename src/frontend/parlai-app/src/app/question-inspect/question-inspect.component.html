@@ -15,7 +15,7 @@
             <div class="empty-space"></div>
             <div class="scrollable">
 
-                <ul class="card">
+                <ul class="card question-card">
                     <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question" (click)="questionSelected(question)">
                         <mat-card class="example-card">
                             <mat-card-header>
@@ -63,7 +63,7 @@
 
                     <div class="row" *ngIf="selectedQuestion.documents.length">
                         <h2>Retrieved Relevant Documents</h2>
-                        <ul class="card" style="cursor:default;">
+                        <ul class="card">
                             <li *ngFor="let document of selectedQuestion.documents">
                                 <mat-card *ngIf="document.helpful" class="example-card">
                                     <mat-card-header>
