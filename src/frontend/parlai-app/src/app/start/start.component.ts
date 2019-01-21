@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
-import { UsersService } from '../services/users.service'
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-start',
@@ -13,10 +13,19 @@ export class StartComponent implements OnInit {
   users: User[];
 
   constructor(private router: Router,
-    public uService: UsersService) { }
+    public _userService: UsersService) { }
 
   ngOnInit() {
-    this.users = this.uService.users;
+    this.loadData();
+    // this.users = this._userService.users;
+  }
+
+  loadData() {
+    this._userService.getUsers()
+      .subscribe(
+        data =>  { this.users = data; console.log(data); },
+        error => console.log(error)
+      );
   }
 
   userSelected(selected) {

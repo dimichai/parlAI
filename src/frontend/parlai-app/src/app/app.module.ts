@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { APP_CONFIG, AppConfig } from './app.config';
+
+// Angular Components
+import { HttpClientModule } from '@angular/common/http';
 
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,6 +47,7 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     PdfViewerModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
@@ -58,7 +63,9 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
     MatBottomSheetModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {provide: APP_CONFIG, useValue: AppConfig},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
