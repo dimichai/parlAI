@@ -1,8 +1,8 @@
 # Connects to the database and downloads the ministry documents, parses them to find keywords.
 
-from mysql_connector import MySqlConnector
+from libs.ministry_scrapper.mysql_connector import MySqlConnector
 import requests
-from json_helper import get_json_from_url
+from libs.ministry_scrapper.json_helper import get_json_from_url
 
 connector = MySqlConnector('parlai')
 docs_cursor = connector.get_empty_fileurls_documents_cursor()
@@ -25,4 +25,3 @@ for row in docs_cursor:
         fileurls += file['fileurl'] + ';'
 
     connector.update_document_set_file_url((fileurls, id))
-    

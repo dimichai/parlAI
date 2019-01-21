@@ -8,29 +8,46 @@ import pandas as pd
 import spacy
 from gensim import corpora
 from gensim.models import CoherenceModel
-from libs.questions_parser.mysql_connector import MySqlConnector
+# from libs.questions_parser.mysql_connector import MySqlConnector
 from nltk.corpus import stopwords
 from nltk.stem.snowball import DutchStemmer
-from nltk.stem.wordnet import WordNetLemmatizer
+# from nltk.stem.wordnet import WordNetLemmatizer
+import pickle
 
-class MalletTopicModeller:
+
+class TopicModeller:
     num_topics = 10
-    mallet_path = ''
+    mallet_path: string = ''
     corpus = None
     dictionary = None
     model = None
+    documents = None
+    cleanedDocuments = None
+    modelpath: string = None
+    corpuspath: string = None
 
-    # exclude = set(string.punctuation)
-
-    def __init__(self, mallet_path, num_topics):
+    def __init__(self, mallet_path, num_topics, documents, corpuspath, modelpath):
         self.num_topics = num_topics
         self.mallet_path = mallet_path
+        self.documents = documents
+        self.corpuspath = corpuspath
+        self.modelpath = modelpath
 
         self.stopwords = set(stopwords.words('dutch'))
         self.stemmer = DutchStemmer()
-        self.lemmatizer = WordNetLemmatizer()
+        # self.lemmatizer = WordNetLemmatizer()
 
-        self.model = gensim.models.ldamodel.LdaModel.load('ldaModel')
+        # If the corpus and the model exist in the disk, load them.
+        try:
+            self.model = gensim.models.ldamodel.LdaModel.load(modelpath)
+        except FileNotFoundError:
+            pass
+
+        try:
+            with open(corpuspath, 'rb') as file:
+                self.corpus = pickle.load(file)
+        except FileNotFoundError:
+            pass
 
     def clean_doc(self, doc):
         cleaned = " ".join(
@@ -50,28 +67,36 @@ class MalletTopicModeller:
         lemmatized_doc = [token.lemma_ for token in text if token.pos_ in allowed_postags]
         return lemmatized_doc
 
-    def fit_model(self, questions):
+    def create_corpus(self, dictionary):
+        self.corpus = [dictionary.doc2bow(text) for text in self.cleanedDocuments]
+        with open(self.corpuspath, 'wb') as f:
+            pickle.dump(self.corpus, f)
+
+    def fit_model(self):
         # Clean questions
-        cleaned = [self.clean_doc(q).split() for q in questions]
+        cleaned = [self.clean_doc(q).split() for q in self.documents]
+        self.cleanedDocuments = cleaned
 
         # Build a Dictionary - association word to numeric id
         dictionary = corpora.Dictionary(cleaned)
 
         # Transform the collection of texts to a numerical form
-        self.corpus = [dictionary.doc2bow(text) for text in cleaned]
+        self.create_corpus(dictionary)
 
         # model = gensim.models.wrappers.LdaMallet(self.mallet_path, corpus=corpus, num_topics=self.num_topics,
         #                                              id2word=dictionary, optimize_interval=5)
-        self.model = gensim.models.ldamodel.LdaModel(corpus=self.corpus,
-                                                     id2word=dictionary,
-                                                     num_topics=self.num_topics,
-                                                     random_state=123,
-                                                     chunksize=100,
-                                                     passes=10,
-                                                     alpha='auto',
-                                                     per_word_topics=True)
+        if not self.model:
+            self.model = gensim.models.ldamodel.LdaModel(corpus=self.corpus,
+                                                         id2word=dictionary,
+                                                         num_topics=self.num_topics,
+                                                         random_state=123,
+                                                         chunksize=100,
+                                                         passes=10,
+                                                         alpha='auto',
+                                                         per_word_topics=True)
 
-        self.model.save('ldaModel')
+        if self.modelpath:
+            self.model.save(self.modelpath)
 
     def print_topics_simple(self):
         x = self.model.show_topics(num_topics=self.num_topics,
@@ -85,12 +110,13 @@ class MalletTopicModeller:
     def print_topics_scores(self):
         pprint(self.model.print_topics())
 
-    def get_coherence_score(self, questions):
+    def get_coherence_score(self):
         # Clean questions
-        cleaned = [self.clean_doc(q).split() for q in questions]
+        if not self.cleanedDocuments:
+            self.cleanedDocuments = [self.clean_doc(q).split() for q in self.documents]
 
         coherence_model = CoherenceModel(
-            model=self.model, texts=cleaned, dictionary=self.dictionary, coherence='c_v')
+            model=self.model, texts=self.cleanedDocuments, dictionary=self.dictionary, coherence='c_v')
         coherence = coherence_model.get_coherence()
         print('\nCoherence Score: ', coherence)
 
@@ -99,13 +125,14 @@ class MalletTopicModeller:
     #     pyLDAvis.show(vis)
     #     return
 
-    def format_topics_sentences(self, questions):
+    def get_topics_per_document(self):
         # Init output
         sent_topics_df = pd.DataFrame()
 
         # Get main topic in each document
         for i, row in enumerate(self.model[self.corpus]):
-            row = sorted(row, key=lambda x: (x[1]), reverse=True)
+            row = sorted(row[0], key=lambda x: (x[1]), reverse=True)
+            # row = sorted(row, key=lambda x: (x[1]), reverse=True)
             # Get the Dominant topic, Perc Contribution and Keywords for each document
             for j, (topic_num, prop_topic) in enumerate(row):
                 if j == 0:  # => dominant topic
@@ -118,30 +145,6 @@ class MalletTopicModeller:
         sent_topics_df.columns = ['Dominant_Topic', 'Perc_Contribution', 'Topic_Keywords']
 
         # Add original text to the end of the output
-        contents = pd.Series(questions)
+        contents = pd.Series(self.documents)
         sent_topics_df = pd.concat([sent_topics_df, contents], axis=1)
         return sent_topics_df
-
-
-if __name__ == "__main__":
-    NUM_TOPICS = 10
-    MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
-    # Initialize topic modeller
-    topicModeller = MalletTopicModeller(MALLET_PATH, NUM_TOPICS)
-    # Connect to the database
-    connector = MySqlConnector('parlai')
-    questions_cursor = connector.get_all_questions_cursor()
-
-    # Get questions from the databse
-    questions = pd.read_sql("SELECT * FROM question", connector.connector)
-    # topicModeller.fit_model(questions['content'])
-
-    topicModeller.print_topics_scores()
-    topicModeller.print_topics_simple()
-
-    # topicModeller.get_coherence_score(questions['content'])
-
-    sent_topics_df = topicModeller.format_topics_sentences(questions['content'])
-    print(sent_topics_df.head())
-
-    # topicModeller.create_visualization(model)
