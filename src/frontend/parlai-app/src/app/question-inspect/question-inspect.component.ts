@@ -67,20 +67,20 @@ export class QuestionInspectComponent implements OnInit {
 
     window.open(document.url, '_blank');
   }
-  
-  yesBtnClicked(document: MinistryDocument){
+
+  yesBtnClicked(document: MinistryDocument) {
     document.visible = false;
     this.openSnackBar();
   }
-  
-  noBtnClicked(document: MinistryDocument){
+
+  noBtnClicked(document: MinistryDocument) {
     document.visible = false;
     document.helpful = false;
     this.openSnackBar();
   }
-  
+
     openSnackBar() {
-    this.snackBar.open("Thank you for providing feedback!", "Close", {
+    this.snackBar.open('Thank you for providing feedback!', 'Close', {
       duration: 3000,
     });
     }
