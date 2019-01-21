@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { BooleanService } from 'services/boolean.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,11 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    constructor(private router: Router) { }
+
+    showBtn: boolean = false;
+
+    constructor(private router: Router,
+    public boolService: BooleanService) { }
 
     ngOnInit() {
         this.router.events.subscribe((evt) => {
@@ -17,5 +22,6 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 0)
         });
         
+        this.showBtn = this.boolService.showBtnBool;
     }
 }
