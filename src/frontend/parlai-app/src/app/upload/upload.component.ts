@@ -15,7 +15,6 @@ export class UploadComponent implements OnInit {
   // uploadForm: FormGroup;
   // items: FormArray;
   // isShowSpinner: Boolean = false;
-  // userid: string;
   userid: string = this.route.snapshot.queryParamMap.get('userid');
   user_id = Number(this.userid);
   users: User[] = [];

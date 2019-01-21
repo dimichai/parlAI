@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
-import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // 3rd Party Components
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // ParlAI Components
@@ -22,6 +22,7 @@ import { StartComponent } from './start/start.component';
 import { EndPageComponent } from './end-page/end-page.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { MatListModule } from '@angular/material/list';
+import { ContactPeersComponent } from './contact-peers/contact-peers.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,10 @@ import { MatListModule } from '@angular/material/list';
     StartComponent,
     EndPageComponent,
     ScrollTopComponent,
+    ContactPeersComponent,
+  ],
+  entryComponents: [
+    ContactPeersComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-    MatListModule
+    MatListModule,
+    MatBottomSheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]
