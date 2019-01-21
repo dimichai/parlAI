@@ -1,6 +1,6 @@
 import pandas as pd
 from xml.dom import minidom
-from mysql_connector import MySqlConnector
+from libs.questions_parser.mysql_connector import MySqlConnector
 
 def clean_questions():
     questions = pd.read_csv('./data/question_data.csv', delimiter=';')
@@ -58,7 +58,6 @@ def parse_questions_from_xml(xml):
         except:
             print(question.nodeValue)
         
-    
     return questions
 
 if __name__ == "__main__":
