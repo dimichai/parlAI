@@ -12,6 +12,10 @@
     /* Should be removed. Only for demonstration */
 }
 
+.text-right{
+  text-align: right;
+}
+
 .scrollable {
     overflow-y: auto;
     overflow-x: hidden;
@@ -34,6 +38,23 @@
     content: "";
     display: table;
     clear: both;
+}
+
+.answer-card .content-title{
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.answer-card .author{
+  float: left;
+  margin-left: 15px;
+  line-height: 1.6;
+}
+
+.answer-card .date{
+  float: right;
+  margin-right: 15px;
+  line-height: 1.6;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
