@@ -53,8 +53,8 @@ export class QuestionInspectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.boolService.showBtnBool = true;
-    console.log(this.boolService.showBtnBool);
+    this.boolService.setBool(true);
+    this.qaService.questions = this.questions;
   }
 
   questionSelected(selected) {
@@ -67,12 +67,6 @@ export class QuestionInspectComponent implements OnInit {
 
     // console.log(document.url);
     // this.router.navigateByUrl(document.url);
-  }
-
-  composeClicked() {
-    this.qaService.questions = this.questions;
-
-    this.router.navigate(['question-compose']);
   }
 
 }

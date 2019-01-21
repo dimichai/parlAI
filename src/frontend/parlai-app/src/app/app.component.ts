@@ -22,8 +22,21 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 0)
         });
         
-        this.showBtn = this.boolService.showBtnBool;
-        
-        console.log(this.boolService.showBtnBool);
+        this.showBtn = false;
+    }
+    
+    ngAfterViewInit() {
+        this.boolService.getBool().subscribe(value => this.showBtn=value);
+        console.log(this.showBtn);
+    }
+    
+    homeClicked(){
+        this.boolService.setBool(false);
+        this.router.navigate(['start']);
+    }
+    
+    composeClicked(){
+        this.boolService.setBool(false);
+        this.router.navigate(['question-compose']);
     }
 }
