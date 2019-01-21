@@ -76,8 +76,8 @@
                                     <mat-card-actions>
                                         <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
 
-                                        <button class="btn" style="float:right" (click)="openSnackBar()" mat-raised-button color="alert">No</button>
-                                        <button class="btn" style="float:right" (click)="openSnackBar()" mat-raised-button color="accent">Yes</button>
+                                        <button class="btn" *ngIf="showFeedback" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="alert">No</button>
+                                        <button class="btn" *ngIf="showFeedback" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="accent">Yes</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </li>

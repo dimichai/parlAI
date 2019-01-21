@@ -10,5 +10,7 @@ export class MinistryDocument {
         this.date = date;
         this.url = url;
         this.visible = visible;
+        
+        this.visible = true;
     }
 }

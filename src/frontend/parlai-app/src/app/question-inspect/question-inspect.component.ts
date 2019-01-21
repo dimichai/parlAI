@@ -16,7 +16,6 @@ export class QuestionInspectComponent implements OnInit {
 
   selectedQuestion: Question;
   questions: Question[] = [];
-  feedbackText : string;
 
   constructor(private router: Router,
     public qaService: QuestionAnsweringService,
@@ -69,9 +68,18 @@ export class QuestionInspectComponent implements OnInit {
     window.open(document.url, '_blank');
   }
   
+  yesBtnClicked(document: MinistryDocument){
+    this.hideFeedbackText(document);
+    this.openSnackBar();
+  }
+  
+  hideFeedbackText(document: MinistryDocument){
+    document.visible = false;
+  }
+  
     openSnackBar() {
-    this.snackBar.open("Thank you for giving feedback", "Close", {
-      duration: 2000,
+    this.snackBar.open("Thank you for providing feedback!", "Close", {
+      duration: 3000,
     });
     }
 
