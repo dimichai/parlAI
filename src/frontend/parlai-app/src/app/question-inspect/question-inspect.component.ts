@@ -4,6 +4,7 @@ import { Question } from '../models/question';
 import { MinistryDocument } from '../models/ministry-document';
 import { Router } from '@angular/router';
 import { QuestionAnsweringService } from '../services/question-answering.service';
+import { BooleanService } from '../services/boolean.service';
 
 @Component({
   selector: 'app-question-inspect',
@@ -16,7 +17,8 @@ export class QuestionInspectComponent implements OnInit {
   questions: Question[] = [];
 
   constructor(private router: Router,
-    public qaService: QuestionAnsweringService) {
+    public qaService: QuestionAnsweringService,
+    public boolService: BooleanService) {
     // tslint:disable-next-line:max-line-length
     // keywords: KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN
     // tslint:disable-next-line:max-line-length
@@ -51,6 +53,8 @@ export class QuestionInspectComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.boolService.setBool(true);
+    this.qaService.questions = this.questions;
   }
 
   questionSelected(selected) {
@@ -60,12 +64,6 @@ export class QuestionInspectComponent implements OnInit {
   viewDocumentClicked(document: MinistryDocument) {
 
     window.open(document.url, '_blank');
-  }
-
-  composeClicked() {
-    this.qaService.questions = this.questions;
-
-    this.router.navigate(['question-compose']);
   }
 
 }

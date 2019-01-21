@@ -2,7 +2,7 @@
     <div>
         <img class="system-logo" src="assets/logo.png" alt="">
     </div>
-    <button mat-button [routerLink]="['/start']">parlAI</button>
+    <button mat-button (click)="homeClicked()">parlAI</button>
 
     <!-- <button mat-button
             [matMenuTriggerFor]="menu">navigate</button>
@@ -22,7 +22,7 @@
                 [routerLink]="['/document-view']">document view</button>
     </mat-menu> -->
 
-    <button mat-raised-button color="accent" (click)="composeClicked()" style="float:right; margin: 1%;">Compose Answer</button>
+    <button mat-raised-button *ngIf="this.showBtn" color="accent" (click)="composeClicked()" style="float:right; margin: 1%;">Compose Answer</button>
 </nav>
 
 <router-outlet></router-outlet>

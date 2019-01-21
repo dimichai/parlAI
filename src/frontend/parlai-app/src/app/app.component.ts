@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { BooleanService } from './services/boolean.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,11 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    constructor(private router: Router) { }
+
+    showBtn: boolean;
+
+    constructor(private router: Router,
+    public boolService: BooleanService) { }
 
     ngOnInit() {
         this.router.events.subscribe((evt) => {
@@ -17,5 +22,21 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 0)
         });
         
+        this.showBtn = false;
+    }
+    
+    ngAfterViewInit() {
+        this.boolService.getBool().subscribe(value => this.showBtn=value);
+        console.log(this.showBtn);
+    }
+    
+    homeClicked(){
+        this.boolService.setBool(false);
+        this.router.navigate(['start']);
+    }
+    
+    composeClicked(){
+        this.boolService.setBool(false);
+        this.router.navigate(['question-compose']);
     }
 }
