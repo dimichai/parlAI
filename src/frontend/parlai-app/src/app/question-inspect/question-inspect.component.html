@@ -14,109 +14,80 @@
 
             <div class="empty-space"></div>
             <div class="scrollable">
-            
-            <ul class="card">
-                <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question" (click)="questionSelected(question)">
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
-                            <mat-card-subtitle>{{question.questionClass}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-form-field>
-                            <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
-                        </mat-form-field>
-                    </mat-card>
-                </li>
-            </ul>
-        </div>
+
+                <ul class="card">
+                    <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question" (click)="questionSelected(question)">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
+                                <mat-card-subtitle>{{question.questionClass}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-form-field>
+                                <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
+                            </mat-form-field>
+                        </mat-card>
+                    </li>
+                </ul>
             </div>
-        
-        <div class="column" *ngIf="selectedQuestion">    
+        </div>
+
+        <div class="column" *ngIf="selectedQuestion">
             <mat-toolbar class="mat-elevation-z6" color="primary">
                 <span>Relevant Information - Question {{selectedQuestion.id}}</span>
             </mat-toolbar>
-            
+
             <div class="empty-space"></div>
             <div class="scrollable">
 
-            <div class="information">
-                <div class="row" *ngIf="selectedQuestion.keywords">
-                    <h2>Keywords</h2>
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let kw of selectedQuestion.getKeywordsAsArray()">{{kw}}</mat-chip>
-                    </mat-chip-list>
-                </div>
+                <div class="information">
+                    <div class="row" *ngIf="selectedQuestion.keywords">
+                        <h2>Keywords</h2>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let kw of selectedQuestion.getKeywordsAsArray()">{{kw}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
 
-                <div class="row" *ngIf="selectedQuestion.entities">
-                    <h2>Recognized Entities</h2>
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let ent of selectedQuestion.getEntitiesAsArray()">{{ent}}</mat-chip>
-                    </mat-chip-list>
-                </div>
+                    <div class="row" *ngIf="selectedQuestion.entities">
+                        <h2>Recognized Entities</h2>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let ent of selectedQuestion.getEntitiesAsArray()">{{ent}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
 
-                <div class="row" *ngIf="selectedQuestion.references.length">
-                    <h2>Extracted References</h2>
-                    <ul>
-                        <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
-                    </ul>
-                </div>
+                    <div class="row" *ngIf="selectedQuestion.references.length">
+                        <h2>Extracted References</h2>
+                        <ul>
+                            <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
+                        </ul>
+                    </div>
 
-                <div class="row" *ngIf="selectedQuestion.documents.length">
-                    <h2>Retrieved Relevant Documents</h2>
-                    <ul class="card">
-                        <li *ngFor="let document of selectedQuestion.documents">
-                            <mat-card class="example-card">
-                                <mat-card-header>
-                                    <mat-card-title style="font-weight: 400;font-size: 14px;"><strong>{{document.title}}</strong></mat-card-title>
-                                    <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
-                                </mat-card-header>
-                                <mat-card-actions>
-                                    <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
-                                </mat-card-actions>
-                            </mat-card>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="row" *ngIf="selectedQuestion.documents.length">
+                        <h2>Retrieved Relevant Documents</h2>
+                        <ul class="card">
+                            <li *ngFor="let document of selectedQuestion.documents">
+                                <mat-card class="example-card">
+                                    <mat-card-header>
+                                        <mat-card-title style="font-weight: 400;font-size: 14px;"><strong>{{document.title}}</strong></mat-card-title>
+                                        <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <p align="right">Was it helpful?</p>
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
 
-                <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
-                    <mat-card-title style="font-weight: 500;font-size: 14px;">Keywords </mat-card-title>
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let kw of selectedQuestion.getKeywordsAsArray()">{{kw}}</mat-chip>
-                    </mat-chip-list> -->
-                <!-- <p align="right">Was it helpful?</p>
-                    <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
-                    <button class="btn" style="float:right" mat-raised-button color="alert">No</button> -->
-                <!-- </mat-card> -->
-                <!-- <mat-card class="example-card" style="height:200px; margin-bottom:7px;">
-                    <mat-card-title style="font-weight: 500;font-size: 14px;">Entities Recognized </mat-card-title>
-                    <ul>
-                        <li> <a href="https://schipholwatch.nl/2018/11/12/schokkende-toename-vliegverkeer-buitenveldertbaan/"
-                                target="_blank">Schokkende
-                                toename vliegverkeer Buitenveldertbaan</a> </li>
-                        <li>Buitenveldertbaan</li>
-                        <li><a href="/document-view">Rapport namens Schiphol</a></li>
-                    </ul>
-                    <p align="right">Was it helpful?</p>
-                    <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
-                    <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card> -->
-                <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
-                    <mat-card-title style="font-weight: 500;font-size: 14px;">Topics</mat-card-title>
-                    <p align="right">Was it helpful?</p>
-                    <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
-                    <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card> -->
-                <!-- <mat-card class="example-card" style="height:120px; margin-bottom:7px;">
-                    <mat-card-title style="font-weight: 500;font-size: 14px;">Retrieved Relevant Documents</mat-card-title>
-                    <p align="right">Was it helpful?</p>
-                    <button class="btn" style="float:right" mat-raised-button color="primary">Yes</button>
-                    <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                </mat-card> -->
-            </div>
+                                        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
+                                        <button class="btn" style="float:right" mat-raised-button color="accent">Yes</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="scrolling-column" *ngIf="!selectedQuestion" [ngStyle]="{fontSize: '25px'}">
-          <div>Please Select One of the Questions to View Information</div>
+            <div>Please Select One of the Questions to View Information</div>
         </div>
     </div>
 
