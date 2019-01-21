@@ -33,7 +33,12 @@ class TopicModeller:
         self.corpuspath = corpuspath
         self.modelpath = modelpath
 
-        self.stopwords = set(stopwords.words('dutch'))
+        self.stopwords = stopwords.words('dutch')
+        extra = ['mening', 'gevolgen', 'vragen', 'stelling', 'bericht', 'bekend', 'bereid', 'voornemens']
+        self.stopwords.extend(extra)
+        self.stopwords = set(self.stopwords)
+
+        # self.stopwords = set(stopwords.words('dutch').extend([]))
         self.stemmer = DutchStemmer()
         # self.lemmatizer = WordNetLemmatizer()
 
@@ -85,15 +90,15 @@ class TopicModeller:
 
         # model = gensim.models.wrappers.LdaMallet(self.mallet_path, corpus=corpus, num_topics=self.num_topics,
         #                                              id2word=dictionary, optimize_interval=5)
-        if not self.model:
-            self.model = gensim.models.ldamodel.LdaModel(corpus=self.corpus,
-                                                         id2word=dictionary,
-                                                         num_topics=self.num_topics,
-                                                         random_state=123,
-                                                         chunksize=100,
-                                                         passes=10,
-                                                         alpha='auto',
-                                                         per_word_topics=True)
+
+        self.model = gensim.models.ldamodel.LdaModel(corpus=self.corpus,
+                                                     id2word=dictionary,
+                                                     num_topics=self.num_topics,
+                                                     random_state=123,
+                                                     chunksize=100,
+                                                     passes=10,
+                                                     alpha='auto',
+                                                     per_word_topics=True)
 
         if self.modelpath:
             self.model.save(self.modelpath)

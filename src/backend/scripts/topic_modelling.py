@@ -3,7 +3,7 @@ from models.topic_modeller import TopicModeller
 import pandas as pd
 
 if __name__ == "__main__":
-    NUM_TOPICS = 10
+    NUM_TOPICS = 5
     MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
     CORPUS_PATH = './models/data/corpus.pkl'
     MODEL_PATH = './models/data/ldaModel'
@@ -18,12 +18,12 @@ if __name__ == "__main__":
     questions_cursor = connector.get_all_questions_cursor()
 
     # Get questions from the databse
-    # topicModeller.fit_model()
+    topicModeller.fit_model()
 
     topicModeller.print_topics_scores()
     topicModeller.print_topics_simple()
 
-    # topicModeller.get_coherence_score()
+    topicModeller.get_coherence_score()
 
     sent_topics_df = topicModeller.get_topics_per_document()
     print(sent_topics_df.head())

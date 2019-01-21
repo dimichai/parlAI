@@ -47,7 +47,7 @@ class MySqlConnector:
 
     def get_all_questions_cursor(self):
         cursor = self.connector.cursor(buffered=True)
-        select_script = ("SELECT * FROM question")
+        select_script = "SELECT * FROM question"
 
         cursor.execute(select_script)
 

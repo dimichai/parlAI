@@ -20,7 +20,7 @@ export class QuestionInspectComponent implements OnInit {
   constructor(private router: Router,
     public qaService: QuestionAnsweringService,
     public boolService: BooleanService,
-    public snackBar: MatSnackBar){
+    public snackBar: MatSnackBar) {
     // tslint:disable-next-line:max-line-length
     // keywords: KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN
     // tslint:disable-next-line:max-line-length
