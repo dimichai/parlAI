@@ -69,12 +69,14 @@ export class QuestionInspectComponent implements OnInit {
   }
   
   yesBtnClicked(document: MinistryDocument){
-    this.hideFeedbackText(document);
+    document.visible = false;
     this.openSnackBar();
   }
   
-  hideFeedbackText(document: MinistryDocument){
+  noBtnClicked(document: MinistryDocument){
     document.visible = false;
+    document.helpful = false;
+    this.openSnackBar();
   }
   
     openSnackBar() {
