@@ -63,7 +63,7 @@
 
                     <div class="row" *ngIf="selectedQuestion.documents.length">
                         <h2>Retrieved Relevant Documents</h2>
-                        <ul class="card">
+                        <ul class="card" style="cursor:default;">
                             <li *ngFor="let document of selectedQuestion.documents">
                                 <mat-card class="example-card">
                                     <mat-card-header>
@@ -71,13 +71,13 @@
                                         <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
-                                        <p align="right">Was it helpful?</p>
+                                        <p *ngIf="document.visible" align="right">Was it helpful?</p>
                                     </mat-card-content>
                                     <mat-card-actions>
                                         <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
 
-                                        <button class="btn" *ngIf="showFeedback" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="alert">No</button>
-                                        <button class="btn" *ngIf="showFeedback" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="accent">Yes</button>
+                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="alert">No</button>
+                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="accent">Yes</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </li>
