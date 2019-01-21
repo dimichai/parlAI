@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular
 import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
 import { User } from '../models/user';
+import { UsersService } from '../services/users.service'
 
 
 @Component({
@@ -17,20 +18,17 @@ export class UploadComponent implements OnInit {
   // isShowSpinner: Boolean = false;
   userid: string = this.route.snapshot.queryParamMap.get('userid');
   user_id = Number(this.userid);
-  users: User[] = [];
+  users: User[];
   selectedUser: User;
 
   private router: Router;
   questionDocuments: QuestionDocument[] = [];
 
-  constructor(router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
+  constructor(router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    public uService: UsersService) {
     this.router = router;
-
-    this.users.push(new User(1, 'abraamhaar', 'Arjuna Braamhaar',	'arjuna.braamhaar@minienm.nl', '06-14645024', 'motorrijtuigen,zonne-energie,innovatie,waterstof'));
-    this.users.push(new User(2, 'yhildebrand', 'Yamilla Hildebrand', 'yamilla.hildebrand@minienm.nl', '06-82288782', 'kleine luchtvaart,luchtvaart,schiphol,regionale luchthavens'));
-    this.users.push(new User(3,	'sspijker', 'Sien Spijker', 'sien.spijker@minienm.nl', '06-88465860', 'spoorwegen,verkeersveiligheid,verkeer,openbaarvervoer, taxi,bussen'));
-    this.users.push(new User(4,	'hdijksterhuis', 'Hong Dijksterhuis', 'hong.dijksterhuis@mineinm.nl', '06-80456658', 'goederenvervoer,vrachtwagenchauffeurs,verkeersveiligheid'));
-    this.users.push(new User(5, 'ykorenhof', 'Yassir Korenhof', 'yassir.korenhof@minienm.nl', '06-56678058', 'visserij,rijn,rivieren,waterkwaliteit,sluizen'));
 
     this.questionDocuments.push(new QuestionDocument(1,
       'De uitzending van Zembla ‘De Kunstgrasberg’',
@@ -44,12 +42,11 @@ export class UploadComponent implements OnInit {
         // tslint:disable-next-line:max-line-length
         'RECYCLING,KUNSTSTOFFEN,GEMEENTEN,MILIEUVERGUNNINGEN,PROVINCIES,HANDHAVING,MILIEUDELICTEN,CHANTAGE,FAILLISSEMENTEN,CRIMINALITEIT',
         []));
-
-    this.selectedUser = this.users.find(x => x.id === this.user_id);
-    // this.username = this.selectedUser.real_name;
   }
 
   ngOnInit() {
+    this.users = this.uService.users;
+    this.selectedUser = this.users.find(x => x.id === this.user_id);
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',
