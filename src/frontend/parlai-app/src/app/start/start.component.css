@@ -17,6 +17,7 @@
 .card {
   list-style-type: none;
   padding-left: 0;
+  text-align: left;
 }
 
 .card li {
@@ -26,4 +27,10 @@
 .container {
   display: flex;
   justify-content: center;
+}
+
+.login-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
 }
