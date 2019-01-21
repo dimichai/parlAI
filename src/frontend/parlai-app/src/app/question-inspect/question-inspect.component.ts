@@ -54,6 +54,7 @@ export class QuestionInspectComponent implements OnInit {
 
   ngOnInit() {
     this.boolService.showBtnBool = true;
+    console.log(this.boolService.showBtnBool);
   }
 
   questionSelected(selected) {

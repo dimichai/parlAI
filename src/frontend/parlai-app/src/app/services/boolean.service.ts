@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class BooleanService {
 
-    showBtnBool: boolean = false;
+    showBtnBool: boolean;
 
   constructor() { }
 }

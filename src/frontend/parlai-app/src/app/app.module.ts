@@ -21,7 +21,6 @@ import { QuestionSubmittedComponent } from './question-submitted/question-submit
 import { StartComponent } from './start/start.component';
 import { EndPageComponent } from './end-page/end-page.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
-import { BooleanService } from './services/boolean.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,7 @@ import { BooleanService } from './services/boolean.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BooleanService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

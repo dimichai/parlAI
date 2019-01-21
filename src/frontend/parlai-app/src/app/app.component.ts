@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { BooleanService } from 'services/boolean.service';
+import { BooleanService } from './services/boolean.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { BooleanService } from 'services/boolean.service';
 })
 export class AppComponent implements OnInit {
 
-    showBtn: boolean = false;
+    showBtn: boolean;
 
     constructor(private router: Router,
     public boolService: BooleanService) { }
@@ -23,5 +23,7 @@ export class AppComponent implements OnInit {
         });
         
         this.showBtn = this.boolService.showBtnBool;
+        
+        console.log(this.boolService.showBtnBool);
     }
 }
