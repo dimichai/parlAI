@@ -71,13 +71,13 @@
                                         <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
-                                        <p align="right">Was it helpful?</p>
+                                        <p align="right">{{document.feedbackText}}</p>
                                     </mat-card-content>
                                     <mat-card-actions>
                                         <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
 
-                                        <button class="btn" style="float:right" mat-raised-button color="alert">No</button>
-                                        <button class="btn" style="float:right" mat-raised-button color="accent">Yes</button>
+                                        <button class="btn" style="float:right" (click)="changeFeedbackText(document)" mat-raised-button color="alert">No</button>
+                                        <button class="btn" style="float:right" (click)="changeFeedbackText(document)" mat-raised-button color="accent">Yes</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </li>
