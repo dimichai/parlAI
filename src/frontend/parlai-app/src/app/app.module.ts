@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
-import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // 3rd Party Components
@@ -55,7 +55,8 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { MinistryDocument } from '../models/ministry-document';
 import { Router } from '@angular/router';
 import { QuestionAnsweringService } from '../services/question-answering.service';
 import { BooleanService } from '../services/boolean.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-question-inspect',
@@ -19,7 +20,8 @@ export class QuestionInspectComponent implements OnInit {
 
   constructor(private router: Router,
     public qaService: QuestionAnsweringService,
-    public boolService: BooleanService) {
+    public boolService: BooleanService,
+    public snackBar: MatSnackBar){
     // tslint:disable-next-line:max-line-length
     // keywords: KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN
     // tslint:disable-next-line:max-line-length
@@ -67,8 +69,10 @@ export class QuestionInspectComponent implements OnInit {
     window.open(document.url, '_blank');
   }
   
-  changeFeedbackText(document: MinistryDocument) {
-    document.feedbackText = "Thank you for giving feedback!";
-  }
+    openSnackBar() {
+    this.snackBar.open("Thank you for giving feedback", "Close", {
+      duration: 2000,
+    });
+    }
 
 }
