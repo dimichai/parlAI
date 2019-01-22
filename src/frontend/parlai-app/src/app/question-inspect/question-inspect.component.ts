@@ -41,7 +41,7 @@ export class QuestionInspectComponent implements OnInit {
     if (this.currentDocument) {
       this._questionService.getQuestionsByDocId(this.currentDocument.id.toString())
         .subscribe(
-          data =>  this.questions = data,
+          data => { this.questions = data; console.log(data); },
           error => console.log(error)
         );
     }

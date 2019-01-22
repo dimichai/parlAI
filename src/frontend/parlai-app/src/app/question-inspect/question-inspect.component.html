@@ -50,7 +50,7 @@
                     <div class="row" *ngIf="selectedQuestion.entities">
                         <h2>Recognized Entities</h2>
                         <mat-chip-list>
-                            <mat-chip *ngFor="let ent of selectedQuestion.getEntitiesAsArray()">{{ent}}</mat-chip>
+                            <mat-chip *ngFor="let ent of selectedQuestion.entities">{{ent.text}} - {{ent.label}}</mat-chip>
                         </mat-chip-list>
                     </div>
 

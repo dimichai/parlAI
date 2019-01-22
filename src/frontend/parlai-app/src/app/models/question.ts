@@ -1,12 +1,13 @@
 import { MinistryDocument } from './ministry-document';
 import { Reference } from './reference';
 import { Serializable } from './serializable';
+import { Entity } from './entity';
 
 export class Question extends Serializable {
     id: number;
     content: string;
     keywords: string;
-    entities: string;
+    entities: Entity[];
     questionClass: string;
     references: Reference[];
     documents: MinistryDocument[];
@@ -28,7 +29,7 @@ export class Question extends Serializable {
         return this.keywords.split('#');
     }
 
-    getEntitiesAsArray(): string[] {
-        return this.entities.split(',');
-    }
+    // getEntitiesAsArray(): string[] {
+    //     return this.entities.split(',');
+    // }
 }
