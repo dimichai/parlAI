@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class QuestionDocumentService {
 
   baseUrl = this._config.baseUrl + '/questionDocuments';
+  currentDocument: QuestionDocument;
 
   constructor(
     private _http: HttpClient,

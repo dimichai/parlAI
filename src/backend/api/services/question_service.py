@@ -25,7 +25,11 @@ class QuestionService(BaseService):
     def get_questions_by_doc_id(self, docid):
         cursor = self.connector.cursor(buffered=True)
 
-        select_script = "select * from question where docId = %s"
+        select_script = """
+            select question.*, qD.keywords from question
+            inner join questionDocument qD on question.docId = qD.id
+            where docId = %s
+        """
 
         cursor.execute(select_script, (docid,))
         data = cursor.fetchall()

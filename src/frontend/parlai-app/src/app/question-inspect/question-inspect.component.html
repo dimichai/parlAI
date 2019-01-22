@@ -54,14 +54,14 @@
                         </mat-chip-list>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.references.length">
+                    <div class="row" *ngIf="selectedQuestion.references?.length">
                         <h2>Extracted References</h2>
                         <ul>
                             <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
                         </ul>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.documents.length">
+                    <div class="row" *ngIf="selectedQuestion.documents?.length">
                         <h2>Retrieved Relevant Documents</h2>
                         <ul class="card">
                             <li *ngFor="let document of selectedQuestion.documents">

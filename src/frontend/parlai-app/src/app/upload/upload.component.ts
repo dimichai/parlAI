@@ -70,6 +70,7 @@ export class UploadComponent implements OnInit {
 
   answerClicked(question) {
     this._boolService.setHelpBool(true);
+    this._qDocService.currentDocument = question;
     this.router.navigate(['question-inspect']);
   }
 

@@ -9,7 +9,7 @@ class QuestionDocumentService(BaseService):
         cursor = self.connector.cursor(buffered=True)
 
         select_script = """
-            select qD.title, qD.keywords from questionAssignment qa
+            select qD.id, qD.title, qD.keywords from questionAssignment qa
             inner join questionDocument qD on qa.docId = qD.id
             where qa.userId = %s
         """
