@@ -1,4 +1,3 @@
-import mysql.connector
 from api.services.base_service import BaseService
 
 
@@ -7,12 +6,6 @@ class UserService(BaseService):
 
     def __init__(self):
         super().__init__()
-        self.connector = mysql.connector.connect(
-            host='parlai.cemkwtbxqpqj.eu-west-2.rds.amazonaws.com',
-            user='root',
-            passwd='rcbzY%vL#AXuf&4%1h^d',
-            database='parlai'
-        )
 
     def get_all_users(self):
         cursor = self.connector.cursor(buffered=True)

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular
 import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
 import { User } from '../models/user';
-import { UsersService } from '../services/users.service'
+import { UsersService } from '../services/users.service';
 
 
 @Component({
@@ -45,8 +45,6 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.users = this.uService.users;
-    // this.selectedUser = this.users.find(x => x.id === this.user_id);
     this.loadData();
   }
 

@@ -1,7 +1,15 @@
+import mysql.connector
+
+
 class BaseService:
 
     def __init__(self):
-        pass
+        self.connector = mysql.connector.connect(
+            host='parlai.cemkwtbxqpqj.eu-west-2.rds.amazonaws.com',
+            user='root',
+            passwd='rcbzY%vL#AXuf&4%1h^d',
+            database='parlai'
+        )
 
     def to_json_multiple(self, cursor, data):
         """
