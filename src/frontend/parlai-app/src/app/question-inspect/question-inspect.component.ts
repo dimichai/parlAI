@@ -55,7 +55,6 @@ export class QuestionInspectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.boolService.setBool(true);
     this.qaService.questions = this.questions;
   }
 
