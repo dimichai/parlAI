@@ -12,6 +12,7 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
 export class AppComponent implements OnInit {
 
     showBtn: boolean;
+    showHlp: boolean;
 
     constructor(private router: Router,
     public boolService: BooleanService,
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 0);
         });
         this.showBtn = false;
+        this.showHlp = false;
     }
 
     openBottomSheet(): void {
@@ -34,10 +36,13 @@ export class AppComponent implements OnInit {
     ngAfterViewInit() {
         this.boolService.getBool().subscribe(value => this.showBtn = value);
         console.log(this.showBtn);
+        this.boolService.getHelpBool().subscribe(value => this.showHlp = value);
+        console.log(this.showHlp);
     }
 
     homeClicked() {
         this.boolService.setBool(false);
+        this.boolService.setHelpBool(false);
         this.router.navigate(['start']);
     }
 

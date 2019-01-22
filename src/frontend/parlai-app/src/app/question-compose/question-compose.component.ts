@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionAnsweringService } from '../services/question-answering.service';
 import { Question } from '../models/question';
+import { BooleanService } from '../services/boolean.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-compose',
@@ -10,7 +12,9 @@ import { Question } from '../models/question';
 export class QuestionComposeComponent implements OnInit {
   questions: Question[];
   answers: any[] = [];
-  constructor(public qaService: QuestionAnsweringService) { }
+  constructor(private router: Router,
+    public qaService: QuestionAnsweringService,
+    public boolService: BooleanService) { }
 
   ngOnInit() {
     this.questions = this.qaService.questions;
@@ -27,6 +31,11 @@ export class QuestionComposeComponent implements OnInit {
 
   resetAnswer () {
     this.answers = [];
+  }
+
+  submitAnswer () {
+    this.boolService.setHelpBool(false);
+    this.router.navigate(['question-submitted']);
   }
 
 }

@@ -46,7 +46,7 @@
 
               <p align="center">
                 <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Back to Questions</button>
-                <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
+                <button mat-raised-button color="accent" (click)="submitAnswer()">Submit Answer</button>
               </p>
 
               <ul class="card">

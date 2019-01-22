@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
 import { User } from '../models/user';
 import { UsersService } from '../services/users.service'
+import { BooleanService } from '../services/boolean.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class UploadComponent implements OnInit {
   constructor(router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    public boolService: BooleanService,
     public uService: UsersService) {
     this.router = router;
 
@@ -65,10 +67,12 @@ export class UploadComponent implements OnInit {
   // }
 
   answerClicked(question) {
+    this.boolService.setHelpBool(true);
     this.router.navigate(['question-inspect']);
   }
 
   goQuestionCompose (question) {
+    this.boolService.setHelpBool(true);
     this.router.navigate(['question-compose']);
   }
 
