@@ -68,11 +68,13 @@ export class UploadComponent implements OnInit {
 
   answerClicked(question) {
     this.boolService.setHelpBool(true);
+    this.boolService.setBool(true);
     this.router.navigate(['question-inspect']);
   }
 
   goQuestionCompose (question) {
     this.boolService.setHelpBool(true);
+    this.boolService.setBool(true);
     this.router.navigate(['question-compose']);
   }
 
