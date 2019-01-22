@@ -77,6 +77,10 @@ export class UploadComponent implements OnInit {
     this.router.navigate(['question-inspect']);
   }
 
+  goQuestionCompose (question) {
+    this.router.navigate(['question-compose']);
+  }
+
   // submitQuestion(): void {
   //   // const that = this;
   //   // this.isShowSpinner = true;
