@@ -68,7 +68,8 @@
                                 <mat-card *ngIf="document.helpful" class="example-card">
                                     <mat-card-header>
                                         <mat-card-title style="font-weight: 400;font-size: 14px;"><strong>{{document.title}}</strong></mat-card-title>
-                                        <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
+                                        <mat-card-subtitle>{{document.type}}</mat-card-subtitle>
+                                        <mat-card-subtitle>{{document.frontenddate}}</mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
                                         <p *ngIf="document.visible" align="right">Was it helpful?</p>

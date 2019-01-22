@@ -11,6 +11,7 @@ export class Question extends Serializable {
     questionClass: string;
     references: Reference[];
     documents: MinistryDocument[];
+
     answer: string;
 
     constructor() {
@@ -22,7 +23,7 @@ export class Question extends Serializable {
         this.entities = undefined;
         this.questionClass = undefined;
         this.references = undefined;
-        this.documents = undefined;
+        this.documents = [];
     }
 
     getKeywordsAsArray(): string[] {

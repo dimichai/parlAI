@@ -1,5 +1,6 @@
-export class MinistryDocument {
-    // id: number;
+import { Serializable } from './serializable';
+
+export class MinistryDocument extends Serializable {
     title: string;
     frontenddate: string;
     url: string;
@@ -8,6 +9,8 @@ export class MinistryDocument {
     helpful: boolean;
 
     constructor() {
+        super();
+
         this.title = undefined;
         this.frontenddate = undefined;
         this.url = undefined;

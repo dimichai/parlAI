@@ -17,8 +17,10 @@ class DocumentService(BaseService):
             where title_keywords like ' ' or intro_keywords like ' '
         """
 
-        for kw in keywords.split(','):
-            select_script += "or title_keywords like '%{}%' or intro_keywords like '%{}%' ".format(kw, kw)
+        for kw in keywords.split('#'):
+            select_script += "or title_keywords like '%{}%' or intro_keywords like '%{}%' ".format(kw.strip(), kw.strip())
+
+        select_script += "limit 10"
 
         cursor.execute(select_script)
         data = cursor.fetchall()

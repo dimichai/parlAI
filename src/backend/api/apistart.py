@@ -42,6 +42,10 @@ def get_questions():
     for question in questions:
         question['references'] = extract_url(question['content'])
 
+    # Extract relevant documents
+    for question in questions:
+        question['documents'] = documentService.get_document_by_question(question['id'], question['keywords'])
+
     return jsonify(questions)
 
 
@@ -71,9 +75,11 @@ def user_by_id(userid):
     return jsonify(user)
 
 
-@app.route('/documents')
+@app.route('/documents', methods=['POST'])
 def documents_by_question():
-    keywords = request.args.get('keywords')
-    documents = documentService.get_document_by_question(1, keywords)
+    data = request.get_json()
+    qid = data['id']
+    keywords = data['keywords']
+    documents = documentService.get_document_by_question(qid, keywords)
 
     return jsonify(documents)

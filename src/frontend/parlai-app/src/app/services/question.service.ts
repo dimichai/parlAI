@@ -1,9 +1,11 @@
+import { MinistryDocument } from './../models/ministry-document';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { APP_CONFIG } from '../app.config';
 import { Question } from '../models/question';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Entity } from '../models/entity';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +26,16 @@ export class QuestionService {
       .get(this.baseUrl, { params: params })
       .pipe(
         map((response: any) =>
-          response.map(entity => new Question().fromJson(entity))
+          response.map(question => {
+            const entity = new Question().fromJson(question);
+            entity.documents = [];
+            question.documents.forEach(doc => {
+              entity.documents.push(new MinistryDocument().fromJson(doc));
+            });
+
+            return entity;
+          })
         )
       );
-
   }
 }
