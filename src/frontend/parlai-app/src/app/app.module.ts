@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatBadgeModule} from '@angular/material/badge';
 // 3rd Party Components
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -59,6 +60,7 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
     MatChipsModule,
     MatToolbarModule,
     MatBadgeModule,
+    MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
