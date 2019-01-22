@@ -29,8 +29,6 @@ export class QuestionInspectComponent implements OnInit {
     public snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.boolService.setBool(true);
-
     this.qaService.questions = this.questions;
     if (this._qDocService.currentDocument) {
       this.currentDocument = this._qDocService.currentDocument;

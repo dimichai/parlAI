@@ -30,7 +30,7 @@ export class UploadComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private _userService: UsersService,
-    private _boolService: BooleanService,
+    private boolService: BooleanService,
     private _qDocService: QuestionDocumentService) {
     this.router = router;
   }
@@ -69,13 +69,15 @@ export class UploadComponent implements OnInit {
   // }
 
   answerClicked(question) {
-    this._boolService.setHelpBool(true);
+    this.boolService.setHelpBool(true);
+    this.boolService.setBool(true);
     this._qDocService.currentDocument = question;
     this.router.navigate(['question-inspect']);
   }
 
   goQuestionCompose (question) {
-    this._boolService.setHelpBool(true);
+    this.boolService.setHelpBool(true);
+    this.boolService.setBool(true);
     this.router.navigate(['question-compose']);
   }
 
