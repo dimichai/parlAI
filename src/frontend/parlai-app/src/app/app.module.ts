@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatBadgeModule} from '@angular/material/badge';
 // 3rd Party Components
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // ParlAI Components
@@ -52,6 +53,7 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
     MatMenuModule,
     MatChipsModule,
     MatToolbarModule,
+    MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
