@@ -6,7 +6,7 @@
         <h2 style="margin-top:20px;"> Here's an overview of the questions assigned to you: </h2>
 
         <ul class="card">
-            <li *ngFor="let doc of questionDocuments">
+            <li *ngFor="let doc of questionDocuments;let i = index;">
                 <mat-card class="example-card">
                     <mat-card-header>
                         <mat-card-title style="font-weight: 400;font-size: 14px;">{{doc.title}}</mat-card-title>
@@ -14,6 +14,12 @@
                     </mat-card-header>
                     <mat-card-actions>
                         <button mat-raised-button color="accent" (click)="answerClicked(doc)">Answer</button>
+                      <button mat-raised-button color="accent" disabled="true" (click)="goQuestionCompose(doc)" *ngIf="i===0"
+                             style="margin-left: 15px;"
+                      >View Feedback</button>
+                        <button mat-raised-button color="accent" (click)="goQuestionCompose(doc)" *ngIf="i===1"
+                                matBadge="3" matBadgePosition="after" style="margin-left: 15px;"
+                        >View Feedback</button>
                     </mat-card-actions>
                 </mat-card>
             </li>
