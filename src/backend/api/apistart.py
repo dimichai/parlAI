@@ -19,11 +19,17 @@ def index():
 
 
 @app.route('/questions')
-def questions_by_userid():
-    userid = request.args.get('userid')
+def get_questions():
     questions = []
+
+    userid = request.args.get('userid')
+    docid = request.args.get('docid')
+
     if userid:
         questions = questionService.get_questions_by_userid(userid)
+    elif docid:
+        questions = questionService.get_questions_by_doc_id(docid)
+
     return jsonify(questions)
 
 
@@ -39,15 +45,6 @@ def question_documents_by_userid():
         doc['keywords'] = split_by_delimeter(doc['keywords'], '#')
 
     return jsonify(documents)
-
-
-@app.route('/questionDocuments/<int:docid>/questions')
-def questions_by_doc_id(docid: int):
-    # userid = request.args.get('userid')
-    questions = []
-    if docid:
-        questions = questionService.get_questions_by_doc_id(docid)
-    return jsonify(questions)
 
 
 @app.route('/users')
