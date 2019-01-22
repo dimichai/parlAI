@@ -24,6 +24,12 @@ def users():
     return jsonify(allusers)
 
 
+@app.route('/users/<int:userid>')
+def user_by_id(userid):
+    user = userService.get_user_by_id(userid)
+    return jsonify(user)
+
+
 @app.route('/post/<int:post_id>')
 def show_post(post_id):
     return 'This is post %d ' % post_id

@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
 
     ngAfterViewInit() {
         this.boolService.getBool().subscribe(value => this.showBtn = value);
-        console.log(this.showBtn);
     }
 
     homeClicked() {

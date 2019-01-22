@@ -31,7 +31,19 @@ export class UsersService {
         map(
           (response: any) =>
             response.map(entity => new User().fromJson(entity)
-          )
+            )
+        )
+      );
+  }
+
+  getUserById(id: string): Observable<User> {
+    const url = this.baseUrl + '/' + id;
+
+    return this._http
+      .get(url)
+      .pipe(
+        map(
+          (response: any) => new User().fromJson(response)
         )
       );
   }

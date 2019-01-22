@@ -1,10 +1,12 @@
 import mysql.connector
+from api.services.base_service import BaseService
 
 
-class UserService:
+class UserService(BaseService):
     connector = None
 
     def __init__(self):
+        super().__init__()
         self.connector = mysql.connector.connect(
             host='parlai.cemkwtbxqpqj.eu-west-2.rds.amazonaws.com',
             user='root',
@@ -18,11 +20,17 @@ class UserService:
         select_script = "SELECT * FROM users"
 
         cursor.execute(select_script)
-
-        row_headers = [x[0] for x in cursor.description]
         data = cursor.fetchall()
-        json_data = []
-        for result in data:
-            json_data.append(dict(zip(row_headers, result)))
+        json_data = self.to_json_multiple(cursor, data)
+
+        return json_data
+
+    def get_user_by_id(self, userid):
+        cursor = self.connector.cursor(buffered=True)
+        select_script = "SELECT * FROM users WHERE id = %s"
+
+        cursor.execute(select_script, (userid,))
+        data = cursor.fetchone()
+        json_data = self.to_json_single(cursor, data)
 
         return json_data

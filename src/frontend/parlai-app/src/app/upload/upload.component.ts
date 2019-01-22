@@ -19,7 +19,7 @@ export class UploadComponent implements OnInit {
   userid: string = this.route.snapshot.queryParamMap.get('userid');
   user_id = Number(this.userid);
   users: User[];
-  selectedUser: User;
+  selectedUser: User = <User>{};
 
   private router: Router;
   questionDocuments: QuestionDocument[] = [];
@@ -27,7 +27,7 @@ export class UploadComponent implements OnInit {
   constructor(router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    public uService: UsersService) {
+    private _userService: UsersService) {
     this.router = router;
 
     this.questionDocuments.push(new QuestionDocument(1,
@@ -45,8 +45,17 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.uService.users;
-    this.selectedUser = this.users.find(x => x.id === this.user_id);
+    // this.users = this.uService.users;
+    // this.selectedUser = this.users.find(x => x.id === this.user_id);
+    this.loadData();
+  }
+
+  loadData() {
+    this._userService.getUserById(this.user_id.toString())
+      .subscribe(
+        data =>  this.selectedUser = data,
+        error => console.log(error)
+      );
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',

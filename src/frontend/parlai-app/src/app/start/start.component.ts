@@ -17,13 +17,12 @@ export class StartComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    // this.users = this._userService.users;
   }
 
   loadData() {
     this._userService.getUsers()
       .subscribe(
-        data =>  { this.users = data; console.log(data); },
+        data =>  this.users = data,
         error => console.log(error)
       );
   }
