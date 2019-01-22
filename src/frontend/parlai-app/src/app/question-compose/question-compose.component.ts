@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionAnsweringService } from '../services/question-answering.service';
 import { Question } from '../models/question';
-import { BooleanService } from '../services/boolean.service';
-import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-question-compose',
@@ -12,13 +11,21 @@ import { Router } from '@angular/router';
 export class QuestionComposeComponent implements OnInit {
   questions: Question[];
   answers: any[] = [];
-  constructor(private router: Router,
-    public qaService: QuestionAnsweringService,
-    public boolService: BooleanService) { }
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  constructor(public qaService: QuestionAnsweringService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.questions = this.qaService.questions;
     // console.log(this.qaService.questions);
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   viewFeedbacked (indexNum) {
@@ -31,11 +38,6 @@ export class QuestionComposeComponent implements OnInit {
 
   resetAnswer () {
     this.answers = [];
-  }
-
-  submitAnswer () {
-    this.boolService.setHelpBool(false);
-    this.router.navigate(['question-submitted']);
   }
 
 }
