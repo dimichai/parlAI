@@ -23,6 +23,8 @@ class UserService(BaseService):
         data = cursor.fetchall()
         json_data = self.to_json_multiple(cursor, data)
 
+        self.connector.commit()
+
         return json_data
 
     def get_user_by_id(self, userid):
@@ -32,5 +34,7 @@ class UserService(BaseService):
         cursor.execute(select_script, (userid,))
         data = cursor.fetchone()
         json_data = self.to_json_single(cursor, data)
+
+        self.connector.commit()
 
         return json_data
