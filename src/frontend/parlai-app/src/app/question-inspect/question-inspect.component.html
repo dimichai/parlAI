@@ -47,7 +47,7 @@
                         </mat-chip-list>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.entities">
+                    <div class="row" *ngIf="selectedQuestion.entities?.length">
                         <h2>Recognized Entities</h2>
                         <mat-chip-list>
                             <mat-chip *ngFor="let ent of selectedQuestion.entities">{{ent.text}} - {{ent.label}}</mat-chip>

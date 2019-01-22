@@ -5,6 +5,7 @@ from api.services.question_service import QuestionService
 from api.services.user_service import UserService
 from api.libs.string_helper import split_by_delimeter
 from api.libs.entity_extractor import EntityExtractor
+from api.libs.reference_extractor import extract_url
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ CORS(app)
 userService: UserService = UserService()
 questionService: QuestionService = QuestionService()
 qDocumentService: QuestionDocumentService = QuestionDocumentService()
-entityExtracto: EntityExtractor = EntityExtractor()
+entityExtractor: EntityExtractor = EntityExtractor()
 
 
 @app.route('/')
@@ -34,7 +35,10 @@ def get_questions():
 
     # Extract named entities
     for question in questions:
-        question['entities'] = entityExtracto.extract_keywords(question['content'])
+        question['entities'] = entityExtractor.extract_keywords(question['content'])
+    # Extract references
+    for question in questions:
+        question['references'] = extract_url(question['content'])
 
     return jsonify(questions)
 
