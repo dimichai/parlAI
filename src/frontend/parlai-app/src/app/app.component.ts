@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { BooleanService } from './services/boolean.service';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { ContactPeersComponent } from './contact-peers/contact-peers.component';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
     showHlp: boolean;
 
     constructor(private router: Router,
+    public usersService: UsersService,
     public boolService: BooleanService,
     private bottomSheet: MatBottomSheet) { }
 

@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class BooleanService {
 
     private showBool: BehaviorSubject<boolean>;
-    private showHelpBool: BehaviorSubject<boolean>
+    private showHelpBool: BehaviorSubject<boolean>;
 
     constructor() {
         this.showBool = new BehaviorSubject<boolean>(false);
