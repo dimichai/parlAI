@@ -1,3 +1,4 @@
+import { QuestionDocumentService } from './../services/question-document.service';
 import { QuestionDocument } from './../models/question-document';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
@@ -29,21 +30,9 @@ export class UploadComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private _userService: UsersService,
-    private _boolService: BooleanService) {
+    private _boolService: BooleanService,
+    private _qDocService: QuestionDocumentService) {
     this.router = router;
-
-    this.questionDocuments.push(new QuestionDocument(1,
-      'De uitzending van Zembla ‘De Kunstgrasberg’',
-      'S.C. Kröger - GL - Lid Tweede Kamer',
-      // tslint:disable-next-line:max-line-length
-      'KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN',
-      []),
-      new QuestionDocument(2,
-        'Illegale praktijken rondom recycling van kunstgras',
-        'F.P. Wassenberg - PVDD - Lid Tweede Kamer',
-        // tslint:disable-next-line:max-line-length
-        'RECYCLING,KUNSTSTOFFEN,GEMEENTEN,MILIEUVERGUNNINGEN,PROVINCIES,HANDHAVING,MILIEUDELICTEN,CHANTAGE,FAILLISSEMENTEN,CRIMINALITEIT',
-        []));
   }
 
   ngOnInit() {
@@ -56,6 +45,12 @@ export class UploadComponent implements OnInit {
         data =>  this.selectedUser = data,
         error => console.log(error)
       );
+
+    this._qDocService.getDocumentsByUserId(this.user_id.toString())
+        .subscribe(
+          data => this.questionDocuments = data,
+          error => console.log(error)
+        );
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',

@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from api.services.question_document_service import QuestionDocumentService
 from api.services.question_service import QuestionService
 from api.services.user_service import UserService
+from api.libs.string_helper import split_by_delimeter
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -32,6 +33,11 @@ def question_documents_by_userid():
     documents = []
     if userid:
         documents = qDocumentService.get_question_document_by_userid(userid)
+
+    # split keywords by comma instead of #
+    for doc in documents:
+        doc['keywords'] = split_by_delimeter(doc['keywords'], '#')
+
     return jsonify(documents)
 
 
