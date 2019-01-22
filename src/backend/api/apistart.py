@@ -41,6 +41,15 @@ def question_documents_by_userid():
     return jsonify(documents)
 
 
+@app.route('/questionDocuments/<int:docid>/questions')
+def questions_by_doc_id(docid: int):
+    # userid = request.args.get('userid')
+    questions = []
+    if docid:
+        questions = questionService.get_questions_by_doc_id(docid)
+    return jsonify(questions)
+
+
 @app.route('/users')
 def users():
     allusers = userService.get_all_users()

@@ -21,3 +21,16 @@ class QuestionService(BaseService):
         self.connector.commit()
 
         return json_data
+
+    def get_questions_by_doc_id(self, docid):
+        cursor = self.connector.cursor(buffered=True)
+
+        select_script = "select * from question where docId = %s"
+
+        cursor.execute(select_script, (docid,))
+        data = cursor.fetchall()
+        json_data = self.to_json_multiple(cursor, data)
+
+        self.connector.commit()
+
+        return json_data
