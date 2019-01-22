@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
 import { User } from '../models/user';
 import { UsersService } from '../services/users.service';
+import { BooleanService } from '../services/boolean.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class UploadComponent implements OnInit {
   constructor(router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private _userService: UsersService) {
+    private _userService: UsersService,
+    private _boolService: BooleanService) {
     this.router = router;
 
     this.questionDocuments.push(new QuestionDocument(1,
@@ -72,10 +74,12 @@ export class UploadComponent implements OnInit {
   // }
 
   answerClicked(question) {
+    this._boolService.setHelpBool(true);
     this.router.navigate(['question-inspect']);
   }
 
   goQuestionCompose (question) {
+    this._boolService.setHelpBool(true);
     this.router.navigate(['question-compose']);
   }
 

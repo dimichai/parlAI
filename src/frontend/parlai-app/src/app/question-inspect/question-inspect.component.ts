@@ -5,7 +5,7 @@ import { MinistryDocument } from '../models/ministry-document';
 import { Router } from '@angular/router';
 import { QuestionAnsweringService } from '../services/question-answering.service';
 import { BooleanService } from '../services/boolean.service';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-question-inspect',
