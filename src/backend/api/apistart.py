@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from api.services.question_document_service import QuestionDocumentService
 from api.services.question_service import QuestionService
 from api.services.user_service import UserService
+from api.services.document_service import DocumentService
 from api.libs.string_helper import split_by_delimeter
 from api.libs.entity_extractor import EntityExtractor
 from api.libs.reference_extractor import extract_url
@@ -14,6 +15,7 @@ userService: UserService = UserService()
 questionService: QuestionService = QuestionService()
 qDocumentService: QuestionDocumentService = QuestionDocumentService()
 entityExtractor: EntityExtractor = EntityExtractor()
+documentService: DocumentService = DocumentService()
 
 
 @app.route('/')
@@ -67,3 +69,11 @@ def users():
 def user_by_id(userid):
     user = userService.get_user_by_id(userid)
     return jsonify(user)
+
+
+@app.route('/documents')
+def documents_by_question():
+    keywords = request.args.get('keywords')
+    documents = documentService.get_document_by_question(1, keywords)
+
+    return jsonify(documents)
