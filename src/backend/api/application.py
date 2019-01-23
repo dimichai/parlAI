@@ -7,7 +7,10 @@ from services.document_service import DocumentService
 from libs.string_helper import split_by_delimeter
 from libs.entity_extractor import EntityExtractor
 from libs.reference_extractor import extract_url
+from models.topic_modeller import TopicModeller
 from flask_cors import CORS
+import mysql.connector
+import pandas as pd
 
 application = Flask(__name__)
 CORS(application)
@@ -16,6 +19,12 @@ questionService: QuestionService = QuestionService()
 qDocumentService: QuestionDocumentService = QuestionDocumentService()
 entityExtractor: EntityExtractor = EntityExtractor()
 documentService: DocumentService = DocumentService()
+NUM_TOPICS = 5
+MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
+DICT_PATH = './models/data/dictionary.pkl'
+CORPUS_PATH = './models/data/corpus.pkl'
+MODEL_PATH = './models/data/ldaModel'
+topicModeller: TopicModeller = TopicModeller(MALLET_PATH, NUM_TOPICS, CORPUS_PATH, DICT_PATH, MODEL_PATH)
 
 
 @application.route('/')
@@ -41,10 +50,13 @@ def get_questions():
     # Extract references
     for question in questions:
         question['references'] = extract_url(question['content'])
-
     # Extract relevant documents
     for question in questions:
         question['documents'] = documentService.get_document_by_question(question['id'], question['keywords'])
+
+    if topicModeller.model:
+        for question in questions:
+            question['topic'] = topicModeller.get_topic_of_document(question['content'])
 
     return jsonify(questions)
 
@@ -83,6 +95,13 @@ def documents_by_question():
     documents = documentService.get_document_by_question(qid, keywords)
 
     return jsonify(documents)
+
+
+@application.route('/topicmodeller/train')
+def train_topic_modeller():
+    questions = pd.read_sql("SELECT * FROM question", questionService.connector)
+    topicModeller.fit_model(questions['content'])
+    return 'Topic Modeller is fit and saved.'
 
 
 if __name__ == '__main__':

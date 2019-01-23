@@ -11,6 +11,7 @@ export class Question extends Serializable {
     questionClass: string;
     references: Reference[];
     documents: MinistryDocument[];
+    topic: string;
 
     answer: string;
 
@@ -23,6 +24,7 @@ export class Question extends Serializable {
         this.entities = undefined;
         this.questionClass = undefined;
         this.references = undefined;
+        this.topic = undefined;
         this.documents = [];
     }
 
