@@ -7,7 +7,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class UsersService {
 
-  private loggedInUser: BehaviorSubject<number>;
+  private user_id: BehaviorSubject<number>;
+  private loggedInUser: User;
 
   users: User[] = [];
 
@@ -19,11 +20,19 @@ export class UsersService {
     this.users.push(new User(5, 'ykorenhof', 'Yassir Korenhof', 'yassir.korenhof@minienm.nl', '06-56678058', 'visserij,rijn,rivieren,waterkwaliteit,sluizen'));
   }
 
-  public getUser(): Observable<number> {
-    return this.loggedInUser.asObservable();
+  // public getUser(): Observable<number> {
+  //   return this.user_id.asObservable();
+  // }
+
+  public getUser() {
+    return this.loggedInUser;
   }
 
   public setUser(userid: number): void {
-    this.loggedInUser.next(userid);
+    // this.loggedInUser.next(userid);
+    this.loggedInUser = this.users.find(x => x.id === userid);
+    console.log(this.loggedInUser.real_name)
+
+    // this.loggedInUser.next(userid);
   }
 }

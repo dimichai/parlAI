@@ -17,8 +17,8 @@ export class UploadComponent implements OnInit {
   // uploadForm: FormGroup;
   // items: FormArray;
   // isShowSpinner: Boolean = false;
-  userid: string = this.route.snapshot.queryParamMap.get('userid');
-  user_id = Number(this.userid);
+  // userid: string = this.route.snapshot.queryParamMap.get('userid');
+  // user_id = Number(this.userid);
   users: User[];
   selectedUser: User;
 
@@ -47,8 +47,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.uService.users;
-    this.selectedUser = this.users.find(x => x.id === this.user_id);
+    this.selectedUser = this.uService.getUser();
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',
