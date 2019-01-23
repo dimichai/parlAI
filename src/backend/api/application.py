@@ -9,7 +9,6 @@ from libs.entity_extractor import EntityExtractor
 from libs.reference_extractor import extract_url
 from models.topic_modeller import TopicModeller
 from flask_cors import CORS
-import mysql.connector
 import pandas as pd
 
 application = Flask(__name__)
