@@ -40,13 +40,13 @@ export class UploadComponent implements OnInit {
   }
 
   loadData() {
-    this._userService.getUserById(this.user_id.toString())
+    this._userService.getUserById(this._userService.getUser().id.toString())
       .subscribe(
         data =>  this.selectedUser = data,
         error => console.log(error)
       );
 
-    this._qDocService.getDocumentsByUserId(this.user_id.toString())
+    this._qDocService.getDocumentsByUserId(this._userService.getUser().id.toString())
         .subscribe(
           data => this.questionDocuments = data,
           error => console.log(error)

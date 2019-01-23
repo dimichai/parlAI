@@ -30,7 +30,7 @@ export class StartComponent implements OnInit {
 
   userSelected(selected) {
     // this.router.navigate(['upload'], {queryParams: { userid: selected.id } });
-    this.uService.setUser(selected);
+    this._userService.setUser(selected);
     this.router.navigate(['upload']);
   }
 }

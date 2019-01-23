@@ -28,8 +28,10 @@ export class UsersService {
       .pipe(
         map(
           (response: any) =>
-            response.map(entity => new User().fromJson(entity)
-            )
+            response.map(entity => {
+              const user = new User().fromJson(entity);
+              return user;
+            })
         )
       );
   }
@@ -50,10 +52,11 @@ export class UsersService {
     return this.loggedInUser;
   }
 
-  public setUser(userid: number): void {
-    this.loggedInUser = this.users.find(x => x.id === userid);
+  public setUser(userid: User): void {
+    this.loggedInUser = userid;
+    // this.loggedInUser = this.users.find(x => x.id === userid);
     localStorage.setItem('savedUser', this.loggedInUser.id.toString());
-    console.log('Set userid to:',localStorage.getItem('savedUser'));
-    console.log(this.loggedInUser.real_name);
+    // console.log('Set userid to:', localStorage.getItem('savedUser'));
+    // console.log(this.loggedInUser.real_name);
   }
 }
