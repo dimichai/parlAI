@@ -17,9 +17,12 @@ export class StartComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.uService.users;
+    localStorage.removeItem('savedUser');
   }
 
   userSelected(selected) {
-    this.router.navigate(['upload'], {queryParams: { userid: selected.id } });
+    // this.router.navigate(['upload'], {queryParams: { userid: selected.id } });
+    this.uService.setUser(selected);
+    this.router.navigate(['upload']);
   }
 }
