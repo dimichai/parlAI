@@ -1,10 +1,11 @@
+import { QuestionDocumentService } from './../services/question-document.service';
 import { QuestionDocument } from './../models/question-document';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question';
 import { User } from '../models/user';
-import { UsersService } from '../services/users.service'
+import { UsersService } from '../services/users.service';
 import { BooleanService } from '../services/boolean.service';
 
 
@@ -20,7 +21,7 @@ export class UploadComponent implements OnInit {
   // userid: string = this.route.snapshot.queryParamMap.get('userid');
   // user_id = Number(this.userid);
   users: User[];
-  selectedUser: User;
+  selectedUser: User = <User>{};
 
   private router: Router;
   questionDocuments: QuestionDocument[] = [];
@@ -28,26 +29,28 @@ export class UploadComponent implements OnInit {
   constructor(router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    public boolService: BooleanService,
-    public uService: UsersService) {
+    private _userService: UsersService,
+    private boolService: BooleanService,
+    private _qDocService: QuestionDocumentService) {
     this.router = router;
-
-    this.questionDocuments.push(new QuestionDocument(1,
-      'De uitzending van Zembla ‘De Kunstgrasberg’',
-      'S.C. Kröger - GL - Lid Tweede Kamer',
-      // tslint:disable-next-line:max-line-length
-      'KUNSTSTOFFEN,ZWARE METALEN,GEMEENTEN,RECYCLING,AFVALVERWERKING,BEDROGSDELICTEN,SPORTORGANISATIES,HANDHAVING,SPEELTUINEN,MILIE,UDELICTEN',
-      []),
-      new QuestionDocument(2,
-        'Illegale praktijken rondom recycling van kunstgras',
-        'F.P. Wassenberg - PVDD - Lid Tweede Kamer',
-        // tslint:disable-next-line:max-line-length
-        'RECYCLING,KUNSTSTOFFEN,GEMEENTEN,MILIEUVERGUNNINGEN,PROVINCIES,HANDHAVING,MILIEUDELICTEN,CHANTAGE,FAILLISSEMENTEN,CRIMINALITEIT',
-        []));
   }
 
   ngOnInit() {
-    this.selectedUser = this.uService.getUser();
+    this.loadData();
+  }
+
+  loadData() {
+    this._userService.getUserById(this.user_id.toString())
+      .subscribe(
+        data =>  this.selectedUser = data,
+        error => console.log(error)
+      );
+
+    this._qDocService.getDocumentsByUserId(this.user_id.toString())
+        .subscribe(
+          data => this.questionDocuments = data,
+          error => console.log(error)
+        );
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',
@@ -68,6 +71,7 @@ export class UploadComponent implements OnInit {
   answerClicked(question) {
     this.boolService.setHelpBool(true);
     this.boolService.setBool(true);
+    this._qDocService.currentDocument = question;
     this.router.navigate(['question-inspect']);
   }
 

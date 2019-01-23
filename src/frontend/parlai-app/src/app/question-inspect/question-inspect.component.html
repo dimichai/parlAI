@@ -20,7 +20,7 @@
                         <mat-card class="example-card">
                             <mat-card-header>
                                 <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
-                                <mat-card-subtitle>{{question.questionClass}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{question.topic}}</mat-card-subtitle>
                             </mat-card-header>
                             <mat-form-field>
                                 <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
@@ -47,28 +47,29 @@
                         </mat-chip-list>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.entities">
+                    <div class="row" *ngIf="selectedQuestion.entities?.length">
                         <h2>Recognized Entities</h2>
                         <mat-chip-list>
-                            <mat-chip *ngFor="let ent of selectedQuestion.getEntitiesAsArray()">{{ent}}</mat-chip>
+                            <mat-chip *ngFor="let ent of selectedQuestion.entities">{{ent.text}} - {{ent.label}}</mat-chip>
                         </mat-chip-list>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.references.length">
+                    <div class="row" *ngIf="selectedQuestion.references?.length">
                         <h2>Extracted References</h2>
                         <ul>
                             <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
                         </ul>
                     </div>
 
-                    <div class="row" *ngIf="selectedQuestion.documents.length">
+                    <div class="row" *ngIf="selectedQuestion.documents?.length">
                         <h2>Retrieved Relevant Documents</h2>
                         <ul class="card">
                             <li *ngFor="let document of selectedQuestion.documents">
                                 <mat-card *ngIf="document.helpful" class="example-card">
                                     <mat-card-header>
                                         <mat-card-title style="font-weight: 400;font-size: 14px;"><strong>{{document.title}}</strong></mat-card-title>
-                                        <mat-card-subtitle>{{document.date}}</mat-card-subtitle>
+                                        <mat-card-subtitle>{{document.type}}</mat-card-subtitle>
+                                        <mat-card-subtitle>{{document.frontenddate}}</mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
                                         <p *ngIf="document.visible" align="right">Was it helpful?</p>

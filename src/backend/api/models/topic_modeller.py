@@ -1,5 +1,4 @@
 import re
-# from gensim.utils import simple_preprocess
 import string
 from pprint import pprint
 
@@ -8,10 +7,8 @@ import pandas as pd
 import spacy
 from gensim import corpora
 from gensim.models import CoherenceModel
-# from libs.questions_parser.mysql_connector import MySqlConnector
 from nltk.corpus import stopwords
 from nltk.stem.snowball import DutchStemmer
-# from nltk.stem.wordnet import WordNetLemmatizer
 import pickle
 
 
@@ -19,32 +16,38 @@ class TopicModeller:
     num_topics = 10
     mallet_path: string = ''
     corpus = None
-    dictionary = None
-    model = None
+    dictionary: corpora.Dictionary = None
+    model: gensim.models.ldamodel.LdaModel = None
     documents = None
     cleanedDocuments = None
     modelpath: string = None
     corpuspath: string = None
+    dictpath: string = None
 
-    def __init__(self, mallet_path, num_topics, documents, corpuspath, modelpath):
+    def __init__(self, mallet_path, num_topics, corpuspath, dictpath, modelpath):
         self.num_topics = num_topics
         self.mallet_path = mallet_path
-        self.documents = documents
         self.corpuspath = corpuspath
         self.modelpath = modelpath
+        self.dictpath = dictpath
 
         self.stopwords = stopwords.words('dutch')
         extra = ['mening', 'gevolgen', 'vragen', 'stelling', 'bericht', 'bekend', 'bereid', 'voornemens']
         self.stopwords.extend(extra)
         self.stopwords = set(self.stopwords)
 
-        # self.stopwords = set(stopwords.words('dutch').extend([]))
         self.stemmer = DutchStemmer()
-        # self.lemmatizer = WordNetLemmatizer()
 
         # If the corpus and the model exist in the disk, load them.
         try:
             self.model = gensim.models.ldamodel.LdaModel.load(modelpath)
+        except FileNotFoundError:
+            pass
+
+        try:
+            self.dictionary = corpora.Dictionary.load(dictpath)
+            # with open(dictpath, 'rb') as file:
+            #     self.dictionary = pickle.load(file)
         except FileNotFoundError:
             pass
 
@@ -72,27 +75,27 @@ class TopicModeller:
         lemmatized_doc = [token.lemma_ for token in text if token.pos_ in allowed_postags]
         return lemmatized_doc
 
-    def create_corpus(self, dictionary):
-        self.corpus = [dictionary.doc2bow(text) for text in self.cleanedDocuments]
+    def create_corpus(self):
+        self.corpus = [self.dictionary.doc2bow(text) for text in self.cleanedDocuments]
         with open(self.corpuspath, 'wb') as f:
             pickle.dump(self.corpus, f)
 
-    def fit_model(self):
+    def create_dictionary(self, documents):
+        self.dictionary = corpora.Dictionary(documents)
+        self.dictionary.save(self.dictpath)
+
+    def fit_model(self, documents):
         # Clean questions
-        cleaned = [self.clean_doc(q).split() for q in self.documents]
+        cleaned = [self.clean_doc(q).split() for q in documents]
         self.cleanedDocuments = cleaned
 
         # Build a Dictionary - association word to numeric id
-        dictionary = corpora.Dictionary(cleaned)
-
+        self.create_dictionary(cleaned)
         # Transform the collection of texts to a numerical form
-        self.create_corpus(dictionary)
-
-        # model = gensim.models.wrappers.LdaMallet(self.mallet_path, corpus=corpus, num_topics=self.num_topics,
-        #                                              id2word=dictionary, optimize_interval=5)
+        self.create_corpus()
 
         self.model = gensim.models.ldamodel.LdaModel(corpus=self.corpus,
-                                                     id2word=dictionary,
+                                                     id2word=self.dictionary,
                                                      num_topics=self.num_topics,
                                                      random_state=123,
                                                      chunksize=100,
@@ -125,10 +128,19 @@ class TopicModeller:
         coherence = coherence_model.get_coherence()
         print('\nCoherence Score: ', coherence)
 
-    # def create_visualization(self, model):
-    #     vis = pyLDAvis.gensim.prepare(model, self.corpus, self.dictionary)
-    #     pyLDAvis.show(vis)
-    #     return
+    def get_topic_of_document(self, document):
+        cleaned = self.clean_doc(document).split()
+        bow = self.dictionary.doc2bow(cleaned)
+
+        topic_dist = self.model.get_document_topics(bow)
+        sorted_topics = sorted(topic_dist, key=lambda x: (x[1]), reverse=True)
+        topic_keywords = ''
+        for j, (topic_num, prop_topic) in enumerate(sorted_topics):
+            if j == 0:  # => dominant topic
+                wp = self.model.show_topic(topic_num)
+                topic_keywords = ", ".join([word for word, prop in wp])
+
+        return topic_keywords
 
     def get_topics_per_document(self):
         # Init output
@@ -137,7 +149,6 @@ class TopicModeller:
         # Get main topic in each document
         for i, row in enumerate(self.model[self.corpus]):
             row = sorted(row[0], key=lambda x: (x[1]), reverse=True)
-            # row = sorted(row, key=lambda x: (x[1]), reverse=True)
             # Get the Dominant topic, Perc Contribution and Keywords for each document
             for j, (topic_num, prop_topic) in enumerate(row):
                 if j == 0:  # => dominant topic

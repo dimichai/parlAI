@@ -13,11 +13,19 @@ export class StartComponent implements OnInit {
   users: User[];
 
   constructor(private router: Router,
-    public uService: UsersService) { }
+    public _userService: UsersService) { }
 
   ngOnInit() {
-    this.users = this.uService.users;
+    this.loadData();
     localStorage.removeItem('savedUser');
+  }
+
+  loadData() {
+    this._userService.getUsers()
+      .subscribe(
+        data =>  this.users = data,
+        error => console.log(error)
+      );
   }
 
   userSelected(selected) {
