@@ -11,8 +11,8 @@ from models.topic_modeller import TopicModeller
 from flask_cors import CORS
 import pandas as pd
 
-application = Flask(__name__)
-CORS(application)
+app = Flask(__name__)
+CORS(app)
 userService: UserService = UserService()
 questionService: QuestionService = QuestionService()
 qDocumentService: QuestionDocumentService = QuestionDocumentService()
@@ -26,12 +26,12 @@ MODEL_PATH = './models/data/ldaModel'
 topicModeller: TopicModeller = TopicModeller(MALLET_PATH, NUM_TOPICS, CORPUS_PATH, DICT_PATH, MODEL_PATH)
 
 
-@application.route('/')
+@app.route('/')
 def index():
     return 'Index Page.'
 
 
-@application.route('/questions')
+@app.route('/questions')
 def get_questions():
     questions = []
 
@@ -60,7 +60,7 @@ def get_questions():
     return jsonify(questions)
 
 
-@application.route('/questionDocuments')
+@app.route('/questionDocuments')
 def question_documents_by_userid():
     userid = request.args.get('userid')
     documents = []
@@ -74,19 +74,19 @@ def question_documents_by_userid():
     return jsonify(documents)
 
 
-@application.route('/users')
+@app.route('/users')
 def users():
     allusers = userService.get_all_users()
     return jsonify(allusers)
 
 
-@application.route('/users/<int:userid>')
+@app.route('/users/<int:userid>')
 def user_by_id(userid):
     user = userService.get_user_by_id(userid)
     return jsonify(user)
 
 
-@application.route('/documents', methods=['POST'])
+@app.route('/documents', methods=['POST'])
 def documents_by_question():
     data = request.get_json()
     qid = data['id']
@@ -96,7 +96,7 @@ def documents_by_question():
     return jsonify(documents)
 
 
-@application.route('/topicmodeller/train')
+@app.route('/topicmodeller/train')
 def train_topic_modeller():
     questions = pd.read_sql("SELECT * FROM question", questionService.connector)
     topicModeller.fit_model(questions['content'])
@@ -104,5 +104,5 @@ def train_topic_modeller():
 
 
 if __name__ == '__main__':
-    application.debug = True
-    application.run()
+    app.debug = True
+    app.run()
