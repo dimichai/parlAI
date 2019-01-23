@@ -21,21 +21,14 @@ export class UsersService {
     this.users.push(new User(5, 'ykorenhof', 'Yassir Korenhof', 'yassir.korenhof@minienm.nl', '06-56678058', 'visserij,rijn,rivieren,waterkwaliteit,sluizen'));
   }
 
-  // public getUser(): Observable<number> {
-  //   return this.user_id.asObservable();
-  // }
-
   public getUser() {
     return this.loggedInUser;
   }
 
   public setUser(userid: number): void {
-    // this.loggedInUser.next(userid);
     this.loggedInUser = this.users.find(x => x.id === userid);
     localStorage.setItem('savedUser', this.loggedInUser.id.toString());
     console.log('Set userid to:',localStorage.getItem('savedUser'));
     console.log(this.loggedInUser.real_name);
-
-    // this.loggedInUser.next(userid);
   }
 }
