@@ -28,6 +28,7 @@ Flask-Cors==3.0.7
 funcy==1.11
 future==0.17.1
 gensim==3.7.0
+gunicorn==19.9.0
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10
