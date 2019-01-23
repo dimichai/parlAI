@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./document-view.component.css']
 })
 export class DocumentViewComponent implements OnInit {
-  pdfSrc: string = '/assets/example-doc.pdf';
+  pdfSrc = '/assets/example-doc.pdf';
 
   constructor(
     private location: Location

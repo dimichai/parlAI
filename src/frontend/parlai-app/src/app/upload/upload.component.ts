@@ -18,8 +18,8 @@ export class UploadComponent implements OnInit {
   // uploadForm: FormGroup;
   // items: FormArray;
   // isShowSpinner: Boolean = false;
-  userid: string = this.route.snapshot.queryParamMap.get('userid');
-  user_id = Number(this.userid);
+  // userid: string = this.route.snapshot.queryParamMap.get('userid');
+  // user_id = Number(this.userid);
   users: User[];
   selectedUser: User = <User>{};
 
@@ -40,13 +40,13 @@ export class UploadComponent implements OnInit {
   }
 
   loadData() {
-    this._userService.getUserById(this.user_id.toString())
+    this._userService.getUserById(this._userService.getUser().id.toString())
       .subscribe(
         data =>  this.selectedUser = data,
         error => console.log(error)
       );
 
-    this._qDocService.getDocumentsByUserId(this.user_id.toString())
+    this._qDocService.getDocumentsByUserId(this._userService.getUser().id.toString())
         .subscribe(
           data => this.questionDocuments = data,
           error => console.log(error)
