@@ -1,3 +1,4 @@
+import { Keyword } from './keyword';
 import { MinistryDocument } from './ministry-document';
 import { Reference } from './reference';
 import { Serializable } from './serializable';
@@ -6,7 +7,7 @@ import { Entity } from './entity';
 export class Question extends Serializable {
     id: number;
     content: string;
-    keywords: string;
+    keywords: Keyword[];
     entities: Entity[];
     questionClass: string;
     references: Reference[];
@@ -20,7 +21,7 @@ export class Question extends Serializable {
 
         this.id = undefined;
         this.content = undefined;
-        this.keywords = undefined;
+        this.keywords = [];
         this.entities = undefined;
         this.questionClass = undefined;
         this.references = undefined;
@@ -28,9 +29,9 @@ export class Question extends Serializable {
         this.documents = [];
     }
 
-    getKeywordsAsArray(): string[] {
-        return this.keywords.split('#');
-    }
+    // getKeywordsAsArray(): string[] {
+    //     return this.keywords.split('#');
+    // }
 
     // getEntitiesAsArray(): string[] {
     //     return this.entities.split(',');

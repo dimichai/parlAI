@@ -4,6 +4,7 @@ from services.question_document_service import QuestionDocumentService
 from services.question_service import QuestionService
 from services.user_service import UserService
 from services.document_service import DocumentService
+from services.keyword_service import KeywordService
 from libs.string_helper import split_by_delimeter
 from libs.entity_extractor import EntityExtractor
 from libs.reference_extractor import extract_url
@@ -18,6 +19,7 @@ questionService: QuestionService = QuestionService()
 qDocumentService: QuestionDocumentService = QuestionDocumentService()
 entityExtractor: EntityExtractor = EntityExtractor()
 documentService: DocumentService = DocumentService()
+keywordService: KeywordService = KeywordService()
 NUM_TOPICS = 5
 MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
 DICT_PATH = './models/data/dictionary.pkl'
@@ -43,18 +45,17 @@ def get_questions():
     elif docid:
         questions = questionService.get_questions_by_doc_id(docid)
 
-    # Extract named entities
     for question in questions:
+        # Extract named entities
         question['entities'] = entityExtractor.extract_keywords(question['content'])
-    # Extract references
-    for question in questions:
+        # Extract references
         question['references'] = extract_url(question['content'])
-    # Extract relevant documents
-    for question in questions:
+        # Extract relevant documents
         question['documents'] = documentService.get_document_by_question(question['id'], question['keywords'])
+        # Get more information on keywords
+        question['keywords'] = keywordService.get_keywords_by_question(question['keywords'])
 
-    if topicModeller.model:
-        for question in questions:
+        if topicModeller.model:
             question['topic'] = topicModeller.get_topic_of_document(question['content'])
 
     return jsonify(questions)
