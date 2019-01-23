@@ -48,7 +48,7 @@ nltk==3.4
 numexpr==2.6.9
 numpy==1.16.0
 pandas==0.23.4
--e git+https://github.com/jimichailidis/parlAI.git@dc0e206ab7676342acb0345e1759c1299c3be926#egg=parlai&subdirectory=src/backend
+-e .
 pathspec==0.5.5
 plac==0.9.6
 pluggy==0.8.1

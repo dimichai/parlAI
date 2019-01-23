@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
 
-from api.services.question_document_service import QuestionDocumentService
-from api.services.question_service import QuestionService
-from api.services.user_service import UserService
-from api.services.document_service import DocumentService
-from api.libs.string_helper import split_by_delimeter
-from api.libs.entity_extractor import EntityExtractor
-from api.libs.reference_extractor import extract_url
+from services.question_document_service import QuestionDocumentService
+from services.question_service import QuestionService
+from services.user_service import UserService
+from services.document_service import DocumentService
+from libs.string_helper import split_by_delimeter
+from libs.entity_extractor import EntityExtractor
+from libs.reference_extractor import extract_url
 from flask_cors import CORS
 
 application = Flask(__name__)

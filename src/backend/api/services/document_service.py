@@ -1,5 +1,5 @@
-from api.services.base_service import BaseService
-from api.services.question_document_service import QuestionDocumentService
+from services.base_service import BaseService
+from services.question_document_service import QuestionDocumentService
 
 
 class DocumentService(BaseService):
