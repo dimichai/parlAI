@@ -9,6 +9,7 @@ export class UsersService {
 
   private user_id: BehaviorSubject<number>;
   private loggedInUser: User;
+  private savedUser: string;
 
   users: User[] = [];
 
@@ -31,7 +32,9 @@ export class UsersService {
   public setUser(userid: number): void {
     // this.loggedInUser.next(userid);
     this.loggedInUser = this.users.find(x => x.id === userid);
-    console.log(this.loggedInUser.real_name)
+    localStorage.setItem('savedUser', this.loggedInUser.id.toString());
+    console.log('Set userid to:',localStorage.getItem('savedUser'));
+    console.log(this.loggedInUser.real_name);
 
     // this.loggedInUser.next(userid);
   }

@@ -17,6 +17,7 @@ export class StartComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.uService.users;
+    localStorage.removeItem('savedUser');
   }
 
   userSelected(selected) {

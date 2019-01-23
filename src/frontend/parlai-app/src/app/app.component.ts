@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
 
     showBtn: boolean;
     showHlp: boolean;
+    savedUser: string;
+    savedUserNum: number;
 
     constructor(private router: Router,
     public usersService: UsersService,
@@ -21,14 +23,22 @@ export class AppComponent implements OnInit {
     private bottomSheet: MatBottomSheet) { }
 
     ngOnInit() {
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
-        this.showBtn = false;
-        this.showHlp = false;
+      this.router.events.subscribe((evt) => {
+          if (!(evt instanceof NavigationEnd)) {
+              return;
+          }
+          window.scrollTo(0, 0);
+      });
+      this.showBtn = false;
+      this.showHlp = false;
+
+      this.savedUser = localStorage.getItem('savedUser');
+      if (this.savedUser !== null) {
+        localStorage.removeItem('savedUser');
+        console.log('The savedUser is:',this.savedUser)
+        this.savedUserNum = parseInt(this.savedUser);
+        this.usersService.setUser(this.savedUserNum);
+      }
     }
 
     openBottomSheet(): void {
