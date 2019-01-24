@@ -1,3 +1,4 @@
+import { Keyword } from './../models/keyword';
 import { QuestionDocument } from './../models/question-document';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -21,6 +22,18 @@ export class QuestionDocumentService {
 
   getDocumentsByUserId(userId: string): Observable<QuestionDocument[]> {
     const params = new HttpParams().set('userid', userId);
+
+    return this._http
+      .get(this.baseUrl, { params: params })
+      .pipe(
+        map((response: any) =>
+          response.map(entity => new QuestionDocument().fromJson(entity))
+        )
+      );
+  }
+
+  getDocumentsByKeyword(keyword: Keyword): Observable<QuestionDocument[]> {
+    const params = new HttpParams().set('keyword', keyword.name);
 
     return this._http
       .get(this.baseUrl, { params: params })

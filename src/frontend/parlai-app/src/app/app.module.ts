@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Material Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
+// tslint:disable-next-line:max-line-length
 import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -29,6 +30,7 @@ import { EndPageComponent } from './end-page/end-page.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { MatListModule } from '@angular/material/list';
 import { ContactPeersComponent } from './contact-peers/contact-peers.component';
+import { QuestionDocumentLookupComponent } from './question-document-lookup/question-document-lookup.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,11 @@ import { ContactPeersComponent } from './contact-peers/contact-peers.component';
     EndPageComponent,
     ScrollTopComponent,
     ContactPeersComponent,
+    QuestionDocumentLookupComponent,
   ],
   entryComponents: [
     ContactPeersComponent,
+    QuestionDocumentLookupComponent
   ],
   imports: [
     BrowserModule,

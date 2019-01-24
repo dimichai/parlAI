@@ -1,3 +1,5 @@
+import { QuestionDocumentLookupComponent } from './../question-document-lookup/question-document-lookup.component';
+import { Keyword } from './../models/keyword';
 import { Reference } from './../models/reference';
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../models/question';
@@ -5,7 +7,7 @@ import { MinistryDocument } from '../models/ministry-document';
 import { Router } from '@angular/router';
 import { QuestionAnsweringService } from '../services/question-answering.service';
 import { BooleanService } from '../services/boolean.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatBottomSheet } from '@angular/material';
 import { QuestionDocumentService } from '../services/question-document.service';
 import { QuestionService } from '../services/question.service';
 import { QuestionDocument } from '../models/question-document';
@@ -26,7 +28,8 @@ export class QuestionInspectComponent implements OnInit {
     public boolService: BooleanService,
     private _qDocService: QuestionDocumentService,
     private _questionService: QuestionService,
-    public snackBar: MatSnackBar) {}
+    public snackBar: MatSnackBar,
+    private bottomSheet: MatBottomSheet) {}
 
   ngOnInit() {
     this.qaService.questions = this.questions;
@@ -71,6 +74,14 @@ export class QuestionInspectComponent implements OnInit {
     this.snackBar.open('Thank you for providing feedback!', 'Close', {
       duration: 3000,
     });
+    }
+
+    keywordClicked(keyword: Keyword) {
+      this.bottomSheet.open(
+        QuestionDocumentLookupComponent,
+        {
+          data: keyword
+        });
     }
 
 }

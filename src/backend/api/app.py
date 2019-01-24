@@ -64,9 +64,12 @@ def get_questions():
 @app.route('/questionDocuments')
 def question_documents_by_userid():
     userid = request.args.get('userid')
+    keyword = request.args.get('keyword')
     documents = []
     if userid:
         documents = qDocumentService.get_question_document_by_userid(userid)
+    elif keyword:
+        documents = qDocumentService.get_question_document_by_keyword(keyword)
 
     # split keywords by comma instead of #
     for doc in documents:
