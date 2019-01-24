@@ -20,7 +20,13 @@
                         <mat-card class="example-card">
                             <mat-card-header>
                                 <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
-                                <mat-card-subtitle>{{question.topic}}</mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    <!-- {{question.topic}} -->
+                                    <mat-chip color="accent" selected="true" *ngIf="question.topic.helpful">
+                                        {{question.topic.keywords}}
+                                        <mat-icon matChipRemove (click)="topicRemoveClicked(question.topic)">cancel</mat-icon>
+                                    </mat-chip>
+                                </mat-card-subtitle>
                             </mat-card-header>
                             <mat-form-field>
                                 <textarea matInput placeholder="Antwoord" [(ngModel)]='question.answer'></textarea>

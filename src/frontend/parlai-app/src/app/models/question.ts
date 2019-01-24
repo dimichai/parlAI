@@ -1,3 +1,4 @@
+import { QuestionTopic } from './topic';
 import { Keyword } from './keyword';
 import { MinistryDocument } from './ministry-document';
 import { Reference } from './reference';
@@ -12,7 +13,7 @@ export class Question extends Serializable {
     questionClass: string;
     references: Reference[];
     documents: MinistryDocument[];
-    topic: string;
+    topic: QuestionTopic;
 
     answer: string;
 

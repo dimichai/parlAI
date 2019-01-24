@@ -1,3 +1,4 @@
+import { QuestionTopic } from './../models/topic';
 import { KeywordService } from './../services/keyword.service';
 import { QuestionDocumentLookupComponent } from './../question-document-lookup/question-document-lookup.component';
 import { Keyword } from './../models/keyword';
@@ -34,7 +35,7 @@ export class QuestionInspectComponent implements OnInit {
     private _questionService: QuestionService,
     private _kwService: KeywordService,
     public snackBar: MatSnackBar,
-    private bottomSheet: MatBottomSheet) {}
+    private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
     if (this._qDocService.currentDocument) {
@@ -80,23 +81,30 @@ export class QuestionInspectComponent implements OnInit {
     this.openSnackBar();
   }
 
-    openSnackBar() {
+  openSnackBar() {
     this.snackBar.open('Bedankt voor uw terugkoppeling!', 'Sluiten', {
       duration: 3000,
     });
-    }
+  }
 
-    keywordClicked(keyword: Keyword) {
-      this.bottomSheet.open(
-        QuestionDocumentLookupComponent,
-        {
-          data: keyword
-        });
-    }
+  keywordClicked(keyword: Keyword) {
+    this.bottomSheet.open(
+      QuestionDocumentLookupComponent,
+      {
+        data: keyword
+      });
+  }
 
-    entityRemoveClicked(entity: Entity) {
-      entity.helpful = false;
-      entity.visible = false;
-    }
+  entityRemoveClicked(entity: Entity) {
+    entity.helpful = false;
+    entity.visible = false;
+    this.openSnackBar();
+  }
+
+  topicRemoveClicked(topic: QuestionTopic) {
+    topic.helpful = false;
+    topic.visible = false;
+    this.openSnackBar();
+  }
 
 }

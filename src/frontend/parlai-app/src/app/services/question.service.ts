@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Entity } from '../models/entity';
 import { Keyword } from '../models/keyword';
+import { QuestionTopic } from '../models/topic';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +45,52 @@ export class QuestionService {
               entity.entities.push(new Entity().fromJson(ent));
             });
 
+            entity.topic = this.convertTopicToTitle(question.topic);
+
             return entity;
           })
         )
       );
+  }
+
+  // todo: remove this
+  convertTopicToTitle(topic): QuestionTopic {
+    let keywords = '';
+    switch (topic.num) {
+      case 0:
+        keywords = 'Commercial Flying';
+        break;
+      case 1:
+        keywords = 'Road Regulations';
+        break;
+      case 2:
+        keywords = 'Waterways';
+        break;
+      case 3:
+        keywords = 'Transportation & Vehicles Issues';
+        break;
+      case 4:
+        keywords = 'Environmental Issues';
+        break;
+      case 5:
+        keywords = 'Waste Management and Environment';
+        break;
+      case 6:
+        keywords = 'Airport and Aviation Issues & Policies';
+        break;
+      case 7:
+        keywords = 'Information from the Government';
+        break;
+      case 8:
+        keywords = 'Solving Issues';
+        break;
+      case 9:
+        keywords = 'Other Matters';
+        break;
+    }
+
+    const topicEntity = new QuestionTopic(topic.num, keywords);
+
+    return topicEntity;
   }
 }

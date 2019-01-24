@@ -20,7 +20,7 @@ qDocumentService: QuestionDocumentService = QuestionDocumentService()
 entityExtractor: EntityExtractor = EntityExtractor()
 documentService: DocumentService = DocumentService()
 keywordService: KeywordService = KeywordService()
-NUM_TOPICS = 5
+NUM_TOPICS = 10
 MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
 DICT_PATH = './models/data/dictionary.pkl'
 CORPUS_PATH = './models/data/corpus.pkl'
@@ -113,6 +113,12 @@ def train_topic_modeller():
     questions = pd.read_sql("SELECT * FROM question", questionService.connector)
     topicModeller.fit_model(questions['content'])
     return 'Topic Modeller is fit and saved.'
+
+
+@app.route('/topicmodeller/topics')
+def get_topics():
+    topics = topicModeller.get_topics_scores()
+    return jsonify(topics)
 
 
 if __name__ == '__main__':

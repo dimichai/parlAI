@@ -1,5 +1,3 @@
-import { MinistryDocument } from './ministry-document';
-import { Reference } from './reference';
 import { Serializable } from './serializable';
 
 export class Entity extends Serializable {

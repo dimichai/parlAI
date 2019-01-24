@@ -115,8 +115,8 @@ class TopicModeller:
         for topic, words in topics_words:
             print(str(topic) + ":" + str(words))
 
-    def print_topics_scores(self):
-        pprint(self.model.print_topics())
+    def get_topics_scores(self):
+        return self.model.print_topics()
 
     def get_coherence_score(self):
         # Clean questions
@@ -134,13 +134,17 @@ class TopicModeller:
 
         topic_dist = self.model.get_document_topics(bow)
         sorted_topics = sorted(topic_dist, key=lambda x: (x[1]), reverse=True)
+        topic = {}
         topic_keywords = ''
         for j, (topic_num, prop_topic) in enumerate(sorted_topics):
             if j == 0:  # => dominant topic
                 wp = self.model.show_topic(topic_num)
+                topic['num'] = topic_num
                 topic_keywords = ", ".join([word for word, prop in wp])
 
-        return topic_keywords
+        topic['keywords'] = topic_keywords
+        return topic
+        # return topic_keywords
 
     def get_topics_per_document(self):
         # Init output
