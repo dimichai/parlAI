@@ -8,7 +8,7 @@
     <div class="row">
         <div class="column">
             <mat-toolbar class="mat-elevation-z6" color="primary">
-                <span>Assigned Questions</span>
+                <span>Toegewezen vragen</span>
             </mat-toolbar>
 
             <div class="empty-space"></div>
@@ -33,7 +33,7 @@
 
         <div class="column" *ngIf="selectedQuestion">
             <mat-toolbar class="mat-elevation-z6" color="primary">
-                <span>Relevant Information - Question {{selectedIndex ? selectedIndex+1 : ''}}</span>
+                <span>Relevante informatie - vraag {{selectedIndex ? selectedIndex+1 : ''}}</span>
             </mat-toolbar>
 
             <div class="empty-space"></div>
@@ -41,7 +41,7 @@
 
                 <div class="information">
                     <div class="row" *ngIf="selectedQuestion.keywords?.length">
-                        <h2>Keywords</h2>
+                        <h2>Trefwoorden</h2>
                         <mat-chip-list>
                             <mat-chip *ngFor="let kw of selectedQuestion.keywords" (click)="keywordClicked(kw)" color="accent"
                                 selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
@@ -49,21 +49,21 @@
                     </div>
 
                     <div class="row" *ngIf="selectedQuestion.entities?.length">
-                        <h2>Recognized Entities</h2>
+                        <h2>Entiteiten</h2>
                         <mat-chip-list>
                             <mat-chip *ngFor="let ent of selectedQuestion.entities">{{ent.text}} - {{ent.label}}</mat-chip>
                         </mat-chip-list>
                     </div>
 
                     <div class="row" *ngIf="selectedQuestion.references?.length">
-                        <h2>Extracted References</h2>
+                        <h2>Referenties</h2>
                         <ul>
                             <li *ngFor="let ref of selectedQuestion.references"><a href="{{ref.url}}" target="_blank">{{ref.title}}</a></li>
                         </ul>
                     </div>
 
                     <div class="row" *ngIf="selectedQuestion.documents?.length">
-                        <h2>Retrieved Relevant Documents</h2>
+                        <h2>Documenten</h2>
                         <ul class="card">
                             <li *ngFor="let document of selectedQuestion.documents">
                                 <mat-card *ngIf="document.helpful" class="example-card">
@@ -73,15 +73,15 @@
                                         <mat-card-subtitle>{{document.frontenddate}}</mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
-                                        <p *ngIf="document.visible" align="right">Was it helpful?</p>
+                                        <p *ngIf="document.visible" align="right">Was dit nuttig?</p>
                                     </mat-card-content>
                                     <mat-card-actions>
-                                        <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
+                                        <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">Bekijk</button>
 
                                         <button class="btn" *ngIf="document.visible" style="float:right" (click)="noBtnClicked(document)"
-                                            mat-raised-button color="alert">No</button>
+                                            mat-raised-button color="alert">Nee</button>
                                         <button class="btn" *ngIf="document.visible" style="float:right" (click)="yesBtnClicked(document)"
-                                            mat-raised-button color="accent">Yes</button>
+                                            mat-raised-button color="accent">Ja</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </li>
