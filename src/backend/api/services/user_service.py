@@ -42,8 +42,6 @@ class UserService(BaseService):
         for kw in keywords:
             select_script += "or spec_keywords like '%{}%'".format(kw.strip())
 
-        print(select_script)
-
         cursor.execute(select_script)
         data = cursor.fetchall()
         json_data = self.to_json_multiple(cursor, data)
