@@ -66,8 +66,7 @@ export class QuestionInspectComponent implements OnInit {
   }
 
   viewDocumentClicked(document: MinistryDocument) {
-
-    window.open(document.url, '_blank');
+    window.open(document.canonical, '_blank');
   }
 
   yesBtnClicked(document: MinistryDocument) {

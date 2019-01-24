@@ -12,7 +12,7 @@ class DocumentService(BaseService):
 
         # The where clauses here make sure that no document will be returned for no keywords
         select_script = """
-            select id, title, frontenddate, type
+            select id, title, frontenddate, type, canonical
             from document
             where title_keywords like ' ' or intro_keywords like ' '
         """

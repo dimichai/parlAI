@@ -3,7 +3,7 @@ import { Serializable } from './serializable';
 export class MinistryDocument extends Serializable {
     title: string;
     frontenddate: string;
-    url: string;
+    canonical: string;
     type: string;
     visible: boolean;
     helpful: boolean;
@@ -13,7 +13,7 @@ export class MinistryDocument extends Serializable {
 
         this.title = undefined;
         this.frontenddate = undefined;
-        this.url = undefined;
+        this.canonical = undefined;
         this.type = undefined;
 
         this.visible = true;
