@@ -37,7 +37,6 @@ export class QuestionInspectComponent implements OnInit {
     private bottomSheet: MatBottomSheet) {}
 
   ngOnInit() {
-    this.qaService.questions = this.questions;
     if (this._qDocService.currentDocument) {
       this.currentDocument = this._qDocService.currentDocument;
     }
@@ -53,6 +52,7 @@ export class QuestionInspectComponent implements OnInit {
           data => {
             this.questions = data;
             this._kwService.currentKeywords = this.questions[0].keywords;
+            this.qaService.questions = this.questions;
           },
           error => console.log(error),
           () => this.isLoading = false

@@ -21,15 +21,15 @@
                         <mat-card class="example-card">
                             <mat-card-header>
                                 <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
-                                <mat-card-subtitle>{{question.questionClass}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{question.topic}}</mat-card-subtitle>
                             </mat-card-header>
                             <mat-form-field>
                                 <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
                             </mat-form-field>
-                            <mat-card-actions class="text-right">
+                            <!-- <mat-card-actions class="text-right">
                               <button mat-raised-button color="primary" *ngIf="i !== 0" (click)="viewFeedbacked(i)" >View Feedback</button>
                               <button mat-raised-button color="primary" *ngIf="i === 0" disabled="true">Wait For Feedback</button>
-                            </mat-card-actions>
+                            </mat-card-actions> -->
                         </mat-card>
                     </li>
                 </ul>
@@ -44,38 +44,44 @@
             <div class="empty-space" style="margin-top:20px"></div>
             <div class="scrollable">
 
-              <p align="center">
-                <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Back to Questions</button>
-                <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
-              </p>
+                <p align="center">
+                    <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Back
+                        to Questions</button>
+                    <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
+                </p>
 
-              <ul class="card">
-
-                <li *ngFor="let answer of answers; index as i">
-                  <mat-card class="example-card answer-card">
-                    <mat-card-content>
-                      <div class="content-title">{{answer.content}}--{{answer.id}}</div>
-                    </mat-card-content>
-                    <mat-card-footer>
-                      <div class="author">{{answer.author}}</div>
-                      <div class="date">{{answer.date}}</div>
-                      <div style="clear: both"></div>
-                    </mat-card-footer>
-                  </mat-card>
-                </li>
-              </ul>
-
-              <mat-vertical-stepper [linear]="false" #stepper *ngIf="answers.length === 0" [selectedIndex]="0">
-                <mat-step [stepControl]="firstFormGroup">
-                  <ng-template matStepLabel>Question Answered</ng-template>
-                </mat-step>
-                <mat-step [stepControl]="secondFormGroup" >
-                  <ng-template matStepLabel>Peer Feedback Received</ng-template>
-                </mat-step>
-                <mat-step [completed]="false">
-                  <ng-template matStepLabel>Ready to Publish</ng-template>
-                </mat-step>
-              </mat-vertical-stepper>
+                <mat-vertical-stepper [linear]="false" #stepper>
+                    <mat-step [stepControl]="firstFormGroup" [completed]="true">
+                        <ng-template matStepLabel>Question Answered</ng-template>
+                        <div>
+                            <p>Your answers have been saved and transfered to your peers. Any feedback you receive will
+                                be shown here.</p>
+                        </div>
+                    </mat-step>
+                    <mat-step [completed]="true" [stepControl]="secondFormGroup">
+                        <ng-template matStepLabel>Peer Feedback Received</ng-template>
+                        <ul class="card">
+                            <li *ngFor="let answer of answers; index as i">
+                                <mat-card class="example-card answer-card">
+                                    <mat-card-content>
+                                        <div class="content-title">{{answer.content}}</div>
+                                    </mat-card-content>
+                                    <mat-card-footer>
+                                        <div class="author">{{answer.author}}</div>
+                                        <div class="date">{{answer.date}}</div>
+                                        <div style="clear: both"></div>
+                                    </mat-card-footer>
+                                </mat-card>
+                            </li>
+                        </ul>
+                    </mat-step>
+                    <mat-step [completed]="false">
+                        <ng-template matStepLabel>Ready to Publish</ng-template>
+                        <div>
+                            <p>The question answers are ready to be published.</p>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
 
 
                 <app-scroll-top></app-scroll-top>
