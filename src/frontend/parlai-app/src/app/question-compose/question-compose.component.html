@@ -45,21 +45,20 @@
             <div class="scrollable">
 
                 <p align="center">
-                    <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Back
-                        to Questions</button>
+                    <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Terug naar vragen</button>
                     <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
                 </p>
 
                 <mat-vertical-stepper [linear]="false" #stepper>
                     <mat-step [stepControl]="firstFormGroup" [completed]="true">
-                        <ng-template matStepLabel>Question Answered</ng-template>
+                        <ng-template matStepLabel>Vragen beantwoord</ng-template>
                         <div>
                             <p>Your answers have been saved and transfered to your peers. Any feedback you receive will
                                 be shown here.</p>
                         </div>
                     </mat-step>
                     <mat-step [completed]="true" [stepControl]="secondFormGroup">
-                        <ng-template matStepLabel>Peer Feedback Received</ng-template>
+                        <ng-template matStepLabel>Feedback ontvangen</ng-template>
                         <ul class="card">
                             <li *ngFor="let answer of answers; index as i">
                                 <mat-card class="example-card answer-card">
@@ -76,7 +75,7 @@
                         </ul>
                     </mat-step>
                     <mat-step [completed]="false">
-                        <ng-template matStepLabel>Ready to Publish</ng-template>
+                        <ng-template matStepLabel>Klaar om te publiceren</ng-template>
                         <div>
                             <p>The question answers are ready to be published.</p>
                         </div>
