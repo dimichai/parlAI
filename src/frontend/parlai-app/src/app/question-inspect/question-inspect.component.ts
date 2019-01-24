@@ -24,6 +24,7 @@ export class QuestionInspectComponent implements OnInit {
   selectedQuestion: Question = new Question();
   selectedIndex: number;
   questions: Question[] = [];
+  isLoading = false;
 
   constructor(private router: Router,
     public qaService: QuestionAnsweringService,
@@ -45,13 +46,15 @@ export class QuestionInspectComponent implements OnInit {
 
   loadData() {
     if (this.currentDocument) {
+      this.isLoading = true;
       this._questionService.getQuestionsByDocId(this.currentDocument.id.toString())
         .subscribe(
           data => {
             this.questions = data;
             this._kwService.currentKeywords = this.questions[0].keywords;
           },
-          error => console.log(error)
+          error => console.log(error),
+          () => this.isLoading = false
         );
     }
   }
