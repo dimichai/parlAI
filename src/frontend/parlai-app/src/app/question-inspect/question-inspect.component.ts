@@ -22,6 +22,7 @@ export class QuestionInspectComponent implements OnInit {
 
   currentDocument: QuestionDocument;
   selectedQuestion: Question = new Question();
+  selectedIndex: number;
   questions: Question[] = [];
 
   constructor(private router: Router,
@@ -55,8 +56,9 @@ export class QuestionInspectComponent implements OnInit {
     }
   }
 
-  questionSelected(selected) {
+  questionSelected(selected, index) {
     this.selectedQuestion = selected;
+    this.selectedIndex = index;
   }
 
   viewDocumentClicked(document: MinistryDocument) {

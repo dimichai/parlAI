@@ -1,5 +1,5 @@
 import { Keyword } from './../models/keyword';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { QuestionDocument } from '../models/question-document';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 import { QuestionDocumentService } from '../services/question-document.service';
@@ -14,7 +14,8 @@ export class QuestionDocumentLookupComponent implements OnInit {
   documents: QuestionDocument[];
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: Keyword,
-    private _qDocService: QuestionDocumentService
+    private _qDocService: QuestionDocumentService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -24,7 +25,10 @@ export class QuestionDocumentLookupComponent implements OnInit {
   loadData() {
     this._qDocService.getDocumentsByKeyword(this.data)
       .subscribe(
-        data => this.documents = data,
+        data => {
+          this.documents = data;
+          this.ref.markForCheck();
+        },
         error => console.log(error)
       );
   }
