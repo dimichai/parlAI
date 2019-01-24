@@ -1,3 +1,4 @@
+import { KeywordService } from './../services/keyword.service';
 import { QuestionDocumentLookupComponent } from './../question-document-lookup/question-document-lookup.component';
 import { Keyword } from './../models/keyword';
 import { Reference } from './../models/reference';
@@ -28,6 +29,7 @@ export class QuestionInspectComponent implements OnInit {
     public boolService: BooleanService,
     private _qDocService: QuestionDocumentService,
     private _questionService: QuestionService,
+    private _kwService: KeywordService,
     public snackBar: MatSnackBar,
     private bottomSheet: MatBottomSheet) {}
 
@@ -44,7 +46,10 @@ export class QuestionInspectComponent implements OnInit {
     if (this.currentDocument) {
       this._questionService.getQuestionsByDocId(this.currentDocument.id.toString())
         .subscribe(
-          data => this.questions = data,
+          data => {
+            this.questions = data;
+            this._kwService.currentKeywords = this.questions[0].keywords;
+          },
           error => console.log(error)
         );
     }

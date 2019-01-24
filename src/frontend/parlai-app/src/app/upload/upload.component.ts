@@ -3,7 +3,6 @@ import { QuestionDocument } from './../models/question-document';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Question } from '../models/question';
 import { User } from '../models/user';
 import { UsersService } from '../services/users.service';
 import { BooleanService } from '../services/boolean.service';

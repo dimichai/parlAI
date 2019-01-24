@@ -84,6 +84,14 @@ def users():
     return jsonify(allusers)
 
 
+@app.route('/usersByKeywords', methods=['POST'])
+def users_by_keywords():
+    data = request.get_json()
+    keywords = [kw['name'] for kw in data]
+    retrieved_users = userService.get_users_by_keywords(keywords)
+    return jsonify(retrieved_users)
+
+
 @app.route('/users/<int:userid>')
 def user_by_id(userid):
     user = userService.get_user_by_id(userid)
