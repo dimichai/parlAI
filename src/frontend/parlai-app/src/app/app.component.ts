@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BooleanService } from './services/boolean.service';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
@@ -10,7 +10,7 @@ import { UsersService } from './services/users.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
     showBtn: boolean;
     showHlp: boolean;
@@ -34,10 +34,10 @@ export class AppComponent implements OnInit {
 
       this.savedUser = localStorage.getItem('savedUser');
       if (this.savedUser !== null) {
-        localStorage.removeItem('savedUser');
-        console.log('The savedUser is:',this.savedUser)
-        this.savedUserNum = parseInt(this.savedUser);
-        this.usersService.setUser(this.savedUserNum);
+        // localStorage.removeItem('savedUser');
+        // console.log('The savedUser is:', this.savedUser);
+        this.savedUserNum = +this.savedUser;
+        this.usersService.setUserById(this.savedUserNum);
       }
     }
 
@@ -47,9 +47,7 @@ export class AppComponent implements OnInit {
 
     ngAfterViewInit() {
         this.boolService.getBool().subscribe(value => this.showBtn = value);
-        console.log(this.showBtn);
         this.boolService.getHelpBool().subscribe(value => this.showHlp = value);
-        console.log(this.showHlp);
     }
 
     homeClicked() {

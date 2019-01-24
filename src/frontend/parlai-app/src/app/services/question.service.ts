@@ -6,6 +6,7 @@ import { Question } from '../models/question';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Entity } from '../models/entity';
+import { Keyword } from '../models/keyword';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,11 @@ export class QuestionService {
             entity.documents = [];
             question.documents.forEach(doc => {
               entity.documents.push(new MinistryDocument().fromJson(doc));
+            });
+
+            entity.keywords = [];
+            question.keywords.forEach(kw => {
+              entity.keywords.push(new Keyword().fromJson(kw));
             });
 
             return entity;

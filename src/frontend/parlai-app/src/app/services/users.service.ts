@@ -52,11 +52,17 @@ export class UsersService {
     return this.loggedInUser;
   }
 
-  public setUser(userid: User): void {
-    this.loggedInUser = userid;
-    // this.loggedInUser = this.users.find(x => x.id === userid);
+  public setUser(user: User): void {
+    this.loggedInUser = user;
     localStorage.setItem('savedUser', this.loggedInUser.id.toString());
-    // console.log('Set userid to:', localStorage.getItem('savedUser'));
-    // console.log(this.loggedInUser.real_name);
+  }
+
+  public setUserById(userid: number) {
+    this.getUserById(userid.toString()).subscribe(
+        user => {
+          this.loggedInUser = user;
+          localStorage.setItem('savedUser', this.loggedInUser.id.toString());
+        }
+      );
   }
 }
