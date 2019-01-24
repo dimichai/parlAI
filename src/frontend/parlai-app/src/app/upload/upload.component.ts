@@ -40,17 +40,20 @@ export class UploadComponent implements OnInit {
   }
 
   loadData() {
-    this._userService.getUserById(this._userService.getUser().id.toString())
+    const currentUser = this._userService.getUser();
+    if (currentUser) {
+      this._userService.getUserById(currentUser.id.toString())
       .subscribe(
         data =>  this.selectedUser = data,
         error => console.log(error)
       );
 
-    this._qDocService.getDocumentsByUserId(this._userService.getUser().id.toString())
-        .subscribe(
-          data => this.questionDocuments = data,
-          error => console.log(error)
-        );
+      this._qDocService.getDocumentsByUserId(this._userService.getUser().id.toString())
+      .subscribe(
+        data => this.questionDocuments = data,
+        error => console.log(error)
+      );
+    }
   }
     // this.uploadForm = this.formBuilder.group({
     //   question: '',
