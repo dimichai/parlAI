@@ -10,7 +10,7 @@
         <div class="column">
 
             <mat-toolbar class="mat-elevation-z6" color="primary">
-                <span>Overview of your Answers</span>
+                <span>Overzicht van uw antwoorden</span>
             </mat-toolbar>
 
             <div class="empty-space"></div>
@@ -27,8 +27,8 @@
                                 <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
                             </mat-form-field>
                             <mat-card-actions class="text-right">
-                              <button mat-raised-button color="primary" *ngIf="i !== 0" (click)="viewFeedbacked(i)" >View Feedback</button>
-                              <button mat-raised-button color="primary" *ngIf="i === 0" disabled="true">Wait For Feedback</button>
+                              <button mat-raised-button color="primary" *ngIf="i !== 0" (click)="viewFeedbacked(i)" >Bekijk feedback</button>
+                              <button mat-raised-button color="primary" *ngIf="i === 0" disabled="true">Wacht op feedback</button>
                             </mat-card-actions>
                         </mat-card>
                     </li>
@@ -38,15 +38,15 @@
 
         <div class="column">
             <mat-toolbar class="mat-elevation-z6" color="primary">
-                <span>Peer Feedback</span>
+                <span>Feedback</span>
             </mat-toolbar>
 
             <div class="empty-space" style="margin-top:20px"></div>
             <div class="scrollable">
 
               <p align="center">
-                <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Back to Questions</button>
-                <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
+                <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Terug naar vragen</button>
+                <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Antwoorden verzenden</button>
               </p>
 
               <ul class="card">
@@ -67,13 +67,13 @@
 
               <mat-vertical-stepper [linear]="false" #stepper *ngIf="answers.length === 0" [selectedIndex]="0">
                 <mat-step [stepControl]="firstFormGroup">
-                  <ng-template matStepLabel>Question Answered</ng-template>
+                  <ng-template matStepLabel>Vragen beantwoord</ng-template>
                 </mat-step>
                 <mat-step [stepControl]="secondFormGroup" >
-                  <ng-template matStepLabel>Peer Feedback Received</ng-template>
+                  <ng-template matStepLabel>Feedback ontvangen</ng-template>
                 </mat-step>
                 <mat-step [completed]="false">
-                  <ng-template matStepLabel>Ready to Publish</ng-template>
+                  <ng-template matStepLabel>Klaar om te publiceren</ng-template>
                 </mat-step>
               </mat-vertical-stepper>
 

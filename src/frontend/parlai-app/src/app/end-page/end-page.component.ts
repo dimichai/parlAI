@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./end-page.component.scss']
 })
 export class EndPageComponent implements OnInit {
-  title: String = 'Thank You!';
+  title: String = 'Hartelijk dank!';
   constructor() { }
 
   ngOnInit() {

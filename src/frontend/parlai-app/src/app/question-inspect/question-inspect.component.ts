@@ -81,7 +81,7 @@ export class QuestionInspectComponent implements OnInit {
   }
 
     openSnackBar() {
-    this.snackBar.open('Thank you for providing feedback!', 'Close', {
+    this.snackBar.open('Bedankt voor uw terugkoppeling!', 'Sluiten', {
       duration: 3000,
     });
     }
