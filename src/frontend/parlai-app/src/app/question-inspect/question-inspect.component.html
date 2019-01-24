@@ -42,7 +42,7 @@
                 <div class="information">
                     <div class="row" *ngIf="selectedQuestion.keywords?.length">
                         <h2>Trefwoorden</h2>
-                        <mat-chip-list>
+                        <mat-chip-list class="keywords">
                             <mat-chip *ngFor="let kw of selectedQuestion.keywords" (click)="keywordClicked(kw)" color="accent"
                                 selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
                         </mat-chip-list>
@@ -50,7 +50,7 @@
 
                     <div class="row" *ngIf="selectedQuestion.entities?.length">
                         <h2>Entiteiten</h2>
-                        <mat-chip-list>
+                        <mat-chip-list class="entities">
                             <div *ngFor="let ent of selectedQuestion.entities">
                                 <mat-chip *ngIf="ent.helpful">
                                     {{ent.text}} - {{ent.label}}

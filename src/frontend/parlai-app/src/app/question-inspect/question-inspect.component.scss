@@ -72,7 +72,11 @@ span {
     margin-bottom: 15px;
 }
 
-.information .mat-chip {
+.entities .mat-chip {
+    cursor: default;
+}
+
+.keywords .mat-chip {
     cursor: pointer;
 }
 
