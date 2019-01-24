@@ -1,12 +1,12 @@
-<p *ngIf="!users?.length">No experts have been found on the current subject.</p>
+<p *ngIf="!users?.length">Geen experts gevonden voor dit onderwerp.</p>
 <ul class="card">
   <li *ngFor="let user of users">
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title style="font-weight: 400; font-size: 14px;">{{user.real_name}}</mat-card-title>
-        <mat-card-subtitle class="expertise">Expertise: {{user.spec_keywords}}</mat-card-subtitle>
-        <mat-card-subtitle>Email: {{user.email}}</mat-card-subtitle>
-        <mat-card-subtitle>Phone: {{user.phone}}</mat-card-subtitle>
+        <mat-card-subtitle class="expertise">Expertise: <br />{{user.spec_keywords}}</mat-card-subtitle>
+        <mat-card-subtitle>E-mail: <a href="mailto:{{user.email}}">{{user.email}}</a></mat-card-subtitle>
+        <mat-card-subtitle>Telefoon: <a href="tel:{{user.phone}}">{{user.phone}}</a></mat-card-subtitle>
 
       </mat-card-header>
       <!-- <mat-card-actions>
