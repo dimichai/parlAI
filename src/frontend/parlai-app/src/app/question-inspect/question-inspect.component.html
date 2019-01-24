@@ -5,7 +5,6 @@
 </head>
 
 <body class="mat-typography">
-
     <div class="row">
         <div class="column">
             <mat-toolbar class="mat-elevation-z6" color="primary">
@@ -16,7 +15,8 @@
             <div class="scrollable">
 
                 <ul class="card question-card">
-                    <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question" (click)="questionSelected(question, i)">
+                    <li *ngFor="let question of questions; index as i" [class.selected]="selectedQuestion === question"
+                        (click)="questionSelected(question, i)">
                         <mat-card class="example-card">
                             <mat-card-header>
                                 <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
@@ -43,7 +43,8 @@
                     <div class="row" *ngIf="selectedQuestion.keywords?.length">
                         <h2>Keywords</h2>
                         <mat-chip-list>
-                            <mat-chip *ngFor="let kw of selectedQuestion.keywords" (click)="keywordClicked(kw)" color="accent" selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
+                            <mat-chip *ngFor="let kw of selectedQuestion.keywords" (click)="keywordClicked(kw)" color="accent"
+                                selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
                         </mat-chip-list>
                     </div>
 
@@ -77,8 +78,10 @@
                                     <mat-card-actions>
                                         <button mat-raised-button color="primary" (click)="viewDocumentClicked(document)">View</button>
 
-                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="noBtnClicked(document)" mat-raised-button color="alert">No</button>
-                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="yesBtnClicked(document)" mat-raised-button color="accent">Yes</button>
+                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="noBtnClicked(document)"
+                                            mat-raised-button color="alert">No</button>
+                                        <button class="btn" *ngIf="document.visible" style="float:right" (click)="yesBtnClicked(document)"
+                                            mat-raised-button color="accent">Yes</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </li>
@@ -90,6 +93,10 @@
         <div class="scrolling-column" *ngIf="!selectedQuestion" [ngStyle]="{fontSize: '25px'}">
             <div>Please Select One of the Questions to View Information</div>
         </div>
+    </div>
+
+    <div class="row">
+        <mat-progress-spinner class="center" mode="indeterminate" color="accent" *ngIf="isLoading"> </mat-progress-spinner>
     </div>
 
 </body>
