@@ -18,6 +18,7 @@
   list-style-type: none;
   padding-left: 0;
   text-align: left;
+  max-width: 500px;
 }
 
 .card li {
