@@ -31,3 +31,21 @@ class UserService(BaseService):
         self.connector.commit()
 
         return json_data
+
+    def get_users_by_keywords(self, keywords):
+        cursor = self.connector.cursor(buffered=True)
+
+        select_script = """
+                    select * from users
+                    where spec_keywords like ' '
+                """
+        for kw in keywords:
+            select_script += "or spec_keywords like '%{}%'".format(kw.strip())
+
+        cursor.execute(select_script)
+        data = cursor.fetchall()
+        json_data = self.to_json_multiple(cursor, data)
+
+        self.connector.commit()
+
+        return json_data

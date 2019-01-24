@@ -21,3 +21,19 @@ class QuestionDocumentService(BaseService):
         self.connector.commit()
 
         return json_data
+
+    def get_question_document_by_keyword(self, keyword):
+        cursor = self.connector.cursor(buffered=True)
+
+        select_script = """
+            select id, title, keywords from questionDocument
+            where keywords like '%{}%'
+        """.format(keyword)
+
+        cursor.execute(select_script)
+        data = cursor.fetchall()
+        json_data = self.to_json_multiple(cursor, data)
+
+        self.connector.commit()
+
+        return json_data

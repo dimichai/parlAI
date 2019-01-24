@@ -64,9 +64,12 @@ def get_questions():
 @app.route('/questionDocuments')
 def question_documents_by_userid():
     userid = request.args.get('userid')
+    keyword = request.args.get('keyword')
     documents = []
     if userid:
         documents = qDocumentService.get_question_document_by_userid(userid)
+    elif keyword:
+        documents = qDocumentService.get_question_document_by_keyword(keyword)
 
     # split keywords by comma instead of #
     for doc in documents:
@@ -79,6 +82,14 @@ def question_documents_by_userid():
 def users():
     allusers = userService.get_all_users()
     return jsonify(allusers)
+
+
+@app.route('/usersByKeywords', methods=['POST'])
+def users_by_keywords():
+    data = request.get_json()
+    keywords = [kw['name'] for kw in data]
+    retrieved_users = userService.get_users_by_keywords(keywords)
+    return jsonify(retrieved_users)
 
 
 @app.route('/users/<int:userid>')

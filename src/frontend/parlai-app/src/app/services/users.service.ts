@@ -1,3 +1,4 @@
+import { Keyword } from './../models/keyword';
 import { Injectable, Inject } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
@@ -25,6 +26,21 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return this._http
       .get(this.baseUrl)
+      .pipe(
+        map(
+          (response: any) =>
+            response.map(entity => {
+              const user = new User().fromJson(entity);
+              return user;
+            })
+        )
+      );
+  }
+
+  getUsersByKeywords(keywords: Keyword[]): Observable<User[]> {
+    const url = this._config.baseUrl + '/usersByKeywords';
+    return this._http
+      .post(url, keywords)
       .pipe(
         map(
           (response: any) =>

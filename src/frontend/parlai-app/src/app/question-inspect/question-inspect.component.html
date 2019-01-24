@@ -43,7 +43,7 @@
                     <div class="row" *ngIf="selectedQuestion.keywords?.length">
                         <h2>Keywords</h2>
                         <mat-chip-list>
-                            <mat-chip *ngFor="let kw of selectedQuestion.keywords" color="accent" selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
+                            <mat-chip *ngFor="let kw of selectedQuestion.keywords" (click)="keywordClicked(kw)" color="accent" selected="true">{{kw.name}} ({{kw.docCount}})</mat-chip>
                         </mat-chip-list>
                     </div>
 
