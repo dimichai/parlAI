@@ -20,8 +20,9 @@
         <button mat-menu-item
                 [routerLink]="['/document-view']">document view</button>
     </mat-menu> -->
-    <button mat-raised-button *ngIf="this.showHlp" color="accent" (click)="openBottomSheet()" style="float:right; margin: 1%;">Get help</button>
     <button mat-raised-button *ngIf="this.showBtn" color="accent" (click)="composeClicked()" style="float:right; margin: 1%;">Compose Answer</button>
+    <button mat-raised-button *ngIf="this.showHlp" color="accent" (click)="openBottomSheet()" style="float:right; margin: 1%;">Get help</button>
+    
 </nav>
 
 <router-outlet></router-outlet>
