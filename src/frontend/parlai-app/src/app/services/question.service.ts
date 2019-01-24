@@ -39,6 +39,11 @@ export class QuestionService {
               entity.keywords.push(new Keyword().fromJson(kw));
             });
 
+            entity.entities = [];
+            question.entities.forEach(ent => {
+              entity.entities.push(new Entity().fromJson(ent));
+            });
+
             return entity;
           })
         )

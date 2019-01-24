@@ -22,7 +22,7 @@ export class Question extends Serializable {
         this.id = undefined;
         this.content = undefined;
         this.keywords = [];
-        this.entities = undefined;
+        this.entities = [];
         this.questionClass = undefined;
         this.references = undefined;
         this.topic = undefined;

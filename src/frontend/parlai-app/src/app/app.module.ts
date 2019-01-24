@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Components
 // tslint:disable-next-line:max-line-length
-import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatChipsModule, MatToolbarModule, MatBottomSheetModule, MatSnackBarModule, MatIconModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -69,7 +69,8 @@ import { QuestionDocumentLookupComponent } from './question-document-lookup/ques
     ReactiveFormsModule,
     MatListModule,
     MatBottomSheetModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},

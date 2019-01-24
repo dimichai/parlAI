@@ -12,6 +12,7 @@ import { MatSnackBar, MatBottomSheet } from '@angular/material';
 import { QuestionDocumentService } from '../services/question-document.service';
 import { QuestionService } from '../services/question.service';
 import { QuestionDocument } from '../models/question-document';
+import { Entity } from '../models/entity';
 
 @Component({
   selector: 'app-question-inspect',
@@ -92,6 +93,11 @@ export class QuestionInspectComponent implements OnInit {
         {
           data: keyword
         });
+    }
+
+    entityRemoveClicked(entity: Entity) {
+      entity.helpful = false;
+      entity.visible = false;
     }
 
 }

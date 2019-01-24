@@ -51,7 +51,13 @@
                     <div class="row" *ngIf="selectedQuestion.entities?.length">
                         <h2>Entiteiten</h2>
                         <mat-chip-list>
-                            <mat-chip *ngFor="let ent of selectedQuestion.entities">{{ent.text}} - {{ent.label}}</mat-chip>
+                            <div *ngFor="let ent of selectedQuestion.entities">
+                                <mat-chip *ngIf="ent.helpful">
+                                    {{ent.text}} - {{ent.label}}
+                                    <mat-icon matChipRemove (click)="entityRemoveClicked(ent)">cancel</mat-icon>
+                                </mat-chip>
+                            </div>
+                            
                         </mat-chip-list>
                     </div>
 
