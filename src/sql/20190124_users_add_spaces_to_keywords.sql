@@ -1,0 +1,15 @@
+UPDATE `parlai`.`users` SET `spec_keywords` = 'motorrijtuigen, zonne-energie, innovatie, waterstof, subsidies, bomen, wegen, verkeersveiligheid' WHERE (`id` = '1');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'kleine luchtvaart, luchtvaart, schiphol, regionale luchthavens, afvalstortplaatsen, afvalverwerking, afvalverbranding, recycling' WHERE (`id` = '2');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'spoorwegen, verkeersveiligheid, verkeer, openbaarvervoer, taxi, bussen, nederlandse spoorwegen, prorail, amsterdam, treinen' WHERE (`id` = '3');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'goederenvervoer, vrachtwagenchauffeurs, olierampen, olieverontreiniging, rotterdam, havens, schadevergoeding, milieudelicten' WHERE (`id` = '4');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'visserij, rijn, rivieren, waterkwaliteit, sluizen, elektrische auto\'s, waterbodem, verontreiniging, zuid-holland, natuur, kanker, vergunningen' WHERE (`id` = '5');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'multinationals, subsidies, waterstof, milieuheffingen, milieumaatregelen, milieuverguningen' WHERE (`id` = '6');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'luchtvaart, kooldioxide, luchtkwaliteit, cijfers, scheepvaart, luchthavens, geluidhinder, mer, schiphol' WHERE (`id` = '7');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'havens, innovatie, economische ontwikkeling, gevaarlijke stoffen, kanker, lozingen, recreatiegebieden, toezicht, gevaarlijke stoffen, lozingen, chemische industrie' WHERE (`id` = '8');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'kerncentrales, financieringsfondsen, kernreactorongevallen, cijfers, zeeland, energiebedrijven, europa, marktwerking, luchtkwaliteit, broeikaseffect, energie, energiebronnen, gezondheidseffecten, duurzame energie' WHERE (`id` = '9');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'kunststoffen, zware metalen, gemeenten, recycling, afvalverwerking, bedrogsdelicten, sportorganisaties, handhaving, speeltuinen, milieudelicten' WHERE (`id` = '10');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'onbemande vliegtuigen, overlast, gedragscodes, openbaar vervoer, gehandicapten, chronische patiënten, personenvervoer' WHERE (`id` = '11');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'luchtvaart, luchtvaartmaatschappijen, vs, prijzen, milieubelastende factoren, duurzame energie, vliegtuigindustrie, duurzaamheid' WHERE (`id` = '12');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'spoorwegen, cijfers, prorail, openbaar vervoer, kwaliteit, railverkeer, woonwerkverkeer' WHERE (`id` = '13');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'luchtvaart, schiphol, telecommunicatie, ict-storingen, regionale luchthavens, informatie en communicatie' WHERE (`id` = '14');
+UPDATE `parlai`.`users` SET `spec_keywords` = 'luchtvaart, kooldioxide, luchtkwaliteit, cijfers, scheepvaart, nederlandse spoorwegen, afvalverwerking, stations, fietsen' WHERE (`id` = '15');
