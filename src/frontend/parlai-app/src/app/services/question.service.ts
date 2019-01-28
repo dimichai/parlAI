@@ -58,34 +58,34 @@ export class QuestionService {
     let keywords = '';
     switch (topic.num) {
       case 0:
-        keywords = 'Commercial Flying';
+        keywords = 'Commerciële Luchtvaart';
         break;
       case 1:
-        keywords = 'Road Regulations';
+        keywords = 'Verkeerswetgeving';
         break;
       case 2:
-        keywords = 'Waterways';
+        keywords = 'Waterwegen';
         break;
       case 3:
-        keywords = 'Transportation & Vehicles Issues';
+        keywords = 'Transport & Voertuig Problemen';
         break;
       case 4:
-        keywords = 'Environmental Issues';
+        keywords = 'Mileuproblemen';
         break;
       case 5:
-        keywords = 'Waste Management and Environment';
+        keywords = 'Afvalbeheer en mileu';
         break;
       case 6:
-        keywords = 'Airport and Aviation Issues & Policies';
+        keywords = 'Luchtvaart en Luchthavenbeleid';
         break;
       case 7:
-        keywords = 'Information from the Government';
+        keywords = 'Informatie van de Overheid';
         break;
       case 8:
-        keywords = 'Solving Issues';
+        keywords = 'Probleemoplossingen';
         break;
       case 9:
-        keywords = 'Other Matters';
+        keywords = 'Overige onderwerpen';
         break;
     }
 

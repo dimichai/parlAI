@@ -23,7 +23,7 @@
                                 <mat-card-title style="font-weight: 400;font-size: 14px;">{{i+1}}. {{question.content}}</mat-card-title>
                             </mat-card-header>
                             <mat-form-field>
-                                <textarea matInput placeholder="Answer" [(ngModel)]='question.answer'></textarea>
+                                <textarea matInput placeholder="Antwoord" [(ngModel)]='question.answer'></textarea>
                             </mat-form-field>
                             <!-- <mat-card-actions class="text-right">
                               <button mat-raised-button color="primary" *ngIf="i !== 0" (click)="viewFeedbacked(i)" >View Feedback</button>
@@ -45,15 +45,14 @@
 
                 <p align="center">
                     <button mat-raised-button color="accent" (click)="resetAnswer()" *ngIf="answers.length > 0" style="margin-right: 15px;">Terug naar vragen</button>
-                    <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Submit Answer</button>
+                    <button mat-raised-button color="accent" [routerLink]="['/question-submitted']">Antwoorden indienen</button>
                 </p>
 
                 <mat-vertical-stepper [linear]="false" #stepper>
                     <mat-step [stepControl]="firstFormGroup" [completed]="true">
                         <ng-template matStepLabel>Vragen beantwoord</ng-template>
                         <div>
-                            <p>Your answers have been saved and transfered to your peers. Any feedback you receive will
-                                be shown here.</p>
+                            <p>Uw antwoorden zijn opgeslagen en verstuurd voor feedback. De gegeven feedback zal hier worden weergeven.</p>
                         </div>
                     </mat-step>
                     <mat-step [completed]="true" [stepControl]="secondFormGroup">
@@ -76,7 +75,7 @@
                     <mat-step [completed]="false">
                         <ng-template matStepLabel>Klaar om te publiceren</ng-template>
                         <div>
-                            <p>The question answers are ready to be published.</p>
+                            <p>Uw antwoorden zijn klaar om te publiceren.</p>
                         </div>
                     </mat-step>
                 </mat-vertical-stepper>
