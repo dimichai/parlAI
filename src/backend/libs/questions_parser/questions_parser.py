@@ -1,3 +1,5 @@
+# Parses the question_data.csv file's contents, cleans the question text and inserts the data to questionDocument and question tables in the database.
+
 import pandas as pd
 from xml.dom import minidom
 from libs.questions_parser.mysql_connector import MySqlConnector
@@ -65,5 +67,6 @@ def parse_questions_from_xml(xml):
 
 if __name__ == "__main__":
     print('Question Parsing Started')
-    # clean_questions()
+    clean_questions()
     save_documents_to_database()
+    print('Question Parsing Finished')

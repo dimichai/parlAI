@@ -1,4 +1,4 @@
-# Connects to the database and downloads the ministry documents, parses them to find keywords.
+# Connects to the database and gets documents that don't have fileurls, mines this data from the dataurl website.
 
 from libs.ministry_scrapper.mysql_connector import MySqlConnector
 import requests
