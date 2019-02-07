@@ -120,6 +120,12 @@ def get_topics():
     topics = topicModeller.get_topics_scores()
     return jsonify(topics)
 
+@app.route('/topicmodeller/coherence')
+def get_model_coherence():
+    questions = pd.read_sql("SELECT * FROM question", questionService.connector)
+    coherence = topicModeller.get_coherence_score(questions['content'])
+    return jsonify(coherence)
+
 
 if __name__ == '__main__':
     app.debug = True
