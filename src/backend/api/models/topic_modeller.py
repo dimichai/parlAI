@@ -1,6 +1,5 @@
 import re
 import string
-from pprint import pprint
 
 import gensim
 import pandas as pd
@@ -118,15 +117,16 @@ class TopicModeller:
     def get_topics_scores(self):
         return self.model.print_topics()
 
-    def get_coherence_score(self):
+    def get_coherence_score(self, documents):
         # Clean questions
         if not self.cleanedDocuments:
-            self.cleanedDocuments = [self.clean_doc(q).split() for q in self.documents]
+            self.cleanedDocuments = [self.clean_doc(q).split() for q in documents]
 
         coherence_model = CoherenceModel(
             model=self.model, texts=self.cleanedDocuments, dictionary=self.dictionary, coherence='c_v')
         coherence = coherence_model.get_coherence()
         print('\nCoherence Score: ', coherence)
+        return coherence
 
     def get_topic_of_document(self, document):
         cleaned = self.clean_doc(document).split()
