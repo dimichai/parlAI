@@ -107,6 +107,7 @@ Data/*
 .vscode/launch.json
 
 src/backend/libs/mallet-2\.0\.8/
+src/backend/api/libs/mallet-2\.0\.8/
 
 \.idea/inspectionProfiles/Project_Default\.xml
 

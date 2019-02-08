@@ -105,6 +105,25 @@ class TopicModeller:
         if self.modelpath:
             self.model.save(self.modelpath)
 
+    def fit_model_mallet(self, documents):
+        # Clean questions
+        cleaned = [self.clean_doc(q).split() for q in documents]
+        self.cleanedDocuments = cleaned
+
+        # Build a Dictionary - association word to numeric id
+        self.create_dictionary(cleaned)
+        # Transform the collection of texts to a numerical form
+        self.create_corpus()
+
+        self.model = gensim.models.wrappers.LdaMallet(self.mallet_path,
+                                                      corpus=self.corpus,
+                                                      num_topics=self.num_topics,
+                                                      id2word=self.dictionary,
+                                                      alpha='auto')
+
+        if self.modelpath:
+            self.model.save(self.modelpath)
+
     def print_topics_simple(self):
         x = self.model.show_topics(num_topics=self.num_topics,
                                    num_words=10, formatted=False)

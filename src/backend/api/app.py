@@ -22,9 +22,14 @@ documentService: DocumentService = DocumentService()
 keywordService: KeywordService = KeywordService()
 NUM_TOPICS = 10
 MALLET_PATH = './libs/mallet-2.0.8/bin/mallet'
-DICT_PATH = './models/data/dictionary.pkl'
-CORPUS_PATH = './models/data/corpus.pkl'
-MODEL_PATH = './models/data/ldaModel'
+# DICT_PATH = './models/data/dictionary.pkl'
+# CORPUS_PATH = './models/data/corpus.pkl'
+# MODEL_PATH = './models/data/ldaModel'
+
+DICT_PATH = './models/pretrained_models/topic_modeller_mallet_10_topics/dictionary.pkl'
+CORPUS_PATH = './models/pretrained_models/topic_modeller_mallet_10_topics/corpus.pkl'
+MODEL_PATH = './models/pretrained_models/topic_modeller_mallet_10_topics/ldaModel'
+
 topicModeller: TopicModeller = TopicModeller(MALLET_PATH, NUM_TOPICS, CORPUS_PATH, DICT_PATH, MODEL_PATH)
 
 
@@ -115,10 +120,18 @@ def train_topic_modeller():
     return 'Topic Modeller is fit and saved.'
 
 
+@app.route('/topicmodeller/mallet/train')
+def train_mallet_topic_modeller():
+    questions = pd.read_sql("SELECT * FROM question", questionService.connector)
+    topicModeller.fit_model_mallet(questions['content'])
+    return 'Mallet Topic Modeller is fit and saved.'
+
+
 @app.route('/topicmodeller/topics')
 def get_topics():
     topics = topicModeller.get_topics_scores()
     return jsonify(topics)
+
 
 @app.route('/topicmodeller/coherence')
 def get_model_coherence():
