@@ -5,9 +5,9 @@ class BaseService:
 
     def __init__(self):
         self.connector = mysql.connector.connect(
-            host='parlai.cemkwtbxqpqj.eu-west-2.rds.amazonaws.com',
+            host='localhost',
             user='root',
-            passwd='rcbzY%vL#AXuf&4%1h^d',
+            passwd='dspparlai',
             database='parlai'
         )
 
