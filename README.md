@@ -16,3 +16,6 @@ It is publicly available for anyone to test at https://parlai.nl
 - Document Retrieval: Relevant documents are retrieved per question, providing information for answering it.
 - Call an Expert: View list of colleagues who are experts on the topics you currently work on.
 - Integrated Peer Feedback: Review the peer feedback you receive for your answers.
+
+## ParlAI's Question Inspect Screen
+![alt text](screenshots/question-inspect.png)
