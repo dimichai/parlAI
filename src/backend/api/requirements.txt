@@ -61,7 +61,7 @@ pyparsing==2.3.1
 pytest==4.1.1
 python-dateutil==2.7.5
 pytz==2018.9
-PyYAML==3.13
+PyYAML==5.4
 rake-nltk==1.0.4
 regex==2018.1.10
 requests==2.21.0
