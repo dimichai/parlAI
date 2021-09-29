@@ -45,7 +45,7 @@ msgpack-numpy==0.4.3.2
 murmurhash==1.0.1
 mysql-connector-python==8.0.13
 https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-2.0.0/nl_core_news_sm-2.0.0.tar.gz#nl_core_news_sm
-nltk==3.4
+nltk==3.6.3
 numexpr==2.6.9
 numpy==1.16.0
 pandas==0.23.4
